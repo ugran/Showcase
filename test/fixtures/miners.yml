@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  worker_name: MyString
+  hashrate: MyString
+  avg_hashrate: MyString
+  temperature: MyString
+
+two:
+  user_id: 1
+  worker_name: MyString
+  hashrate: MyString
+  avg_hashrate: MyString
+  temperature: MyString

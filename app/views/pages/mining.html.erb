@@ -1,0 +1,16 @@
+<% unless user_signed_in? %>
+    <div style='margin-top:50px; width:400px; margin-left:auto; margin-right:auto;'>
+        <div id='sign-in-form'>
+            <%= render 'devise/sessions/new' %>
+            <button id='show-sign-up' type="button" class="btn btn-outline-dark" onclick="$('#sign-in-form').hide();$('#sign-up-form').show();" style='margin-top:10px;'>Sign Up</button>
+        </div>
+        <div id='sign-up-form' style='display:none'>
+            <%= render 'devise/registrations/new' %>
+            <button id='show-sign-in' type="button" class="btn btn-outline-dark" onclick="$('#sign-up-form').hide();$('#sign-in-form').show();" style='margin-top:10px;'>Sign In</button>
+        </div>
+    </div>
+<% else %>
+    <% if current_user.active? %>
+        <%= render 'dashboard' %>
+    <% end %>
+<% end %>

@@ -1,0 +1,10 @@
+<%= render 'admin_nav' %>
+<% if @user_management == 1 %>
+    <%= render 'user_management' %>
+<% elsif @show_user.present? %>
+    <%= render 'show_user' %>
+<% elsif @edit_user.present? %>
+    <%= render 'edit_user' %>
+<% else %>
+
+<% end %>
