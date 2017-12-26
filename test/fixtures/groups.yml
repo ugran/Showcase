@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  nicehash_wallet: MyString
+  btc_wallet: MyString
+  eth_wallet: MyString
+  ltc_wallet: MyString
+  api_key: MyString
+  litecoinpool_api_key: MyString
+  slushpool_api_key: MyString
+  nicehash: false
+
+two:
+  name: MyString
+  nicehash_wallet: MyString
+  btc_wallet: MyString
+  eth_wallet: MyString
+  ltc_wallet: MyString
+  api_key: MyString
+  litecoinpool_api_key: MyString
+  slushpool_api_key: MyString
+  nicehash: false

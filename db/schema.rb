@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124103126) do
+ActiveRecord::Schema.define(version: 20171225150615) do
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "nicehash_wallet"
+    t.string "btc_wallet"
+    t.string "eth_wallet"
+    t.string "ltc_wallet"
+    t.string "api_key"
+    t.string "litecoinpool_api_key"
+    t.string "slushpool_api_key"
+    t.boolean "nicehash", default: false
+    t.string "api_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "minermodels", force: :cascade do |t|
+    t.string "name"
+    t.decimal "speed"
+    t.string "unit"
+    t.string "algo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "miners", force: :cascade do |t|
     t.integer "user_id"
@@ -28,6 +52,8 @@ ActiveRecord::Schema.define(version: 20171124103126) do
     t.string "miner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "minermodel_id"
+    t.index ["minermodel_id"], name: "index_miners_on_minermodel_id"
     t.index ["user_id"], name: "index_miners_on_user_id"
   end
 
@@ -54,14 +80,21 @@ ActiveRecord::Schema.define(version: 20171124103126) do
     t.string "nicehash_wallet"
     t.string "btc_wallet"
     t.string "eth_wallet"
+    t.string "ltc_wallet"
     t.string "api_key"
     t.string "balance"
     t.string "percent_fee"
     t.string "fixed_fee"
+    t.string "litecoinpool_api_key"
+    t.string "slushpool_api_key"
+    t.boolean "nicehash", default: false
+    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_id"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["group_id"], name: "index_users_on_group_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

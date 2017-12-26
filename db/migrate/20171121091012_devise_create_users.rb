@@ -23,10 +23,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :nicehash_wallet
       t.string :btc_wallet
       t.string :eth_wallet
+      t.string :ltc_wallet
       t.string :api_key
       t.string :balance
       t.string :percent_fee
       t.string :fixed_fee
+      t.string :litecoinpool_api_key
+      t.string :slushpool_api_key
+      t.boolean :nicehash, default: false
+      t.integer :group_id
 
       ## Confirmable
       # t.string   :confirmation_token
@@ -43,8 +48,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
+    add_index :users, :email,             unique: true
     add_index :users, :reset_password_token, unique: true
+    add_index :users, :group_id
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end

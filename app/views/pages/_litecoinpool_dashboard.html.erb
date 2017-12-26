@@ -1,0 +1,64 @@
+<div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Total Hashrate</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:hash_rate] %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Expected 24h Reward</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:expected_24h_rewards].round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Past 24h rewards</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:past_24h_rewards].round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Unpaid Rewards</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:unpaid_rewards].round(6) %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover" style='margin-top:20px;'>
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Hash Rate</th>
+            <th scope="col">Hash Rate 24h</th>
+            <th scope="col">Valid Shares</th>
+            <th scope="col">Stale Shares</th>
+            <th scope="col">Invalid Shares</th>
+            <th scope="col">Rewards</th>
+            <th scope="col">Rewards 24h</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @ltc[:workers].select{|k,v| current_user.miners.where(algorithm: 'Scrypt').map(&:worker_name).include? k.to_s}.values.each_with_index do |t,i| %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= t[:hash_rate] %></td>
+                    <td><%= t[:hash_rate_24h] %></td>
+                    <td><%= t[:valid_shares] %></td>
+                    <td><%= t[:stale_shares] %></td>
+                    <td><%= t[:invalid_shares] %></td>
+                    <td><%= t[:rewards].round(6) %></td>
+                    <td><%= t[:rewards_24h].round(6) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

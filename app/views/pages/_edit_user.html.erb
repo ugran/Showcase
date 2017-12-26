@@ -1,17 +1,49 @@
+<% groups = Group.all.map{ |g| [g.name,g.id]} %>
+<% groups = groups.unshift('') %>
+<% miner_models = Minermodel.all.map{ |m| [m.name,m.id]} %>
+<% miner_models = miner_models.unshift('') %>
 <div class='container'>
-    <%= form_with url: admin_path, html: {style: 'margin-top:20px;'} do |f| %>
+    <%= form_with url: admin_path, html: {style: 'margin-top:20px;'}, local: true do |f| %>
         <%= f.hidden_field :edit_user_id, value: @edit_user.id %>
+        <div class="form-group">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, value: @edit_user.name ,class: "form-control" %>
+        </div>
         <div class="form-group">
             <%= f.label :nicehash_wallet %><br />
             <%= f.text_field :nicehash_wallet, value: @edit_user.nicehash_wallet ,class: "form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :api_id %><br />
+            <%= f.label :nicehash_api_id %><br />
             <%= f.text_field :api_id, value: @edit_user.api_id ,class: "form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :api_key %><br />
+            <%= f.label :nicehash_api_key %><br />
             <%= f.text_field :api_key, value: @edit_user.api_key ,class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :litecoinpool_api_key %><br />
+            <%= f.text_field :litecoinpool_api_key, value: @edit_user.litecoinpool_api_key ,class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :slushpool_api_key %><br />
+            <%= f.text_field :slushpool_api_key, value: @edit_user.slushpool_api_key ,class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :btc_wallet %><br />
+            <%= f.text_field :btc_wallet, value: @edit_user.btc_wallet ,class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :eth_wallet %><br />
+            <%= f.text_field :eth_wallet, value: @edit_user.eth_wallet ,class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :ltc_wallet %><br />
+            <%= f.text_field :ltc_wallet, value: @edit_user.ltc_wallet ,class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :group %><br />
+            <%= f.select :group_id, groups, {} ,class: "form-control" %>
         </div>
         <div class="form-group">
             <%= f.label :percent_fee %><br />
@@ -25,15 +57,15 @@
     <% end %>
     <btn class='btn btn-dark' onclick="$('#new-miner-form').show();" style='margin-top:10px;'>New Miner</btn>
     <div id='new-miner-form' style='display:none;'>
-        <%= form_with url: admin_path do |f| %>
+        <%= form_with url: admin_path, local: true do |f| %>
             <%= f.hidden_field :add_miner_to_user, value: @edit_user.id %>
             <div class="form-group">
                 <%= f.label :worker_name %><br />
                 <%= f.text_field :worker_name, class: "form-control" %>
             </div>
             <div class="form-group">
-                <%= f.label :algorithm %><br />
-                <%= f.select :algorithm, options_for_select(Nsalgo.pluck(:name)), {} ,class: 'form-control' %>
+                <%= f.label :minermodel_id %><br />
+                <%= f.select :minermodel_id, options_for_select(miner_models), {} ,class: 'form-control' %>
             </div>
             <%= f.submit('Submit', class:'btn btn-dark') %>
             <button class='btn btn-dark' onclick="$('#new-miner-form').hide();">Hide</button>
@@ -64,7 +96,7 @@
                         <%= t.worker_name %>
                     </td>
                     <td>
-                        <%= t.algorithm %>
+                        <%= t.minermodel.name %>
                     </td>
                     <td>
                         <%= link_to "Delete", admin_path(delete_miner: t.id) %>

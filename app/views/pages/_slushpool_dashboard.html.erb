@@ -1,0 +1,46 @@
+<div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Total Hashrate</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @btc[:hashrate] %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Confirmed Reward</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @btc[:confirmed_reward].to_f.round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Unconfirmed Reward</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @btc[:unconfirmed_reward].to_f.round(6) %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover" style='margin-top:20px;'>
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Hash Rate</th>
+            <th scope="col">Shares</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @btc[:workers].select{|k,v| current_user.miners.where(algorithm: 'SHA256').map(&:worker_name).include? k.to_s}.values.each_with_index do |t,i| %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= t[:hashrate] %></td>
+                    <td><%= t[:shares] %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

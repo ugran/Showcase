@@ -5,6 +5,10 @@
     <%= render 'show_user' %>
 <% elsif @edit_user.present? %>
     <%= render 'edit_user' %>
+<% elsif @group.present? %>
+    <%= render 'new_group' %>
+<% elsif @model_management.present? %>
+    <%= render 'miner_models' %>
 <% else %>
 
 <% end %>

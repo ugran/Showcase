@@ -13,4 +13,11 @@
             <%= link_to "User Management", admin_path(user_management: 1), class: 'nav-link' %>
         <% end %>
     </li>
+    <li class="nav-item">
+        <% if @miner_models == 1 %>
+            <%= link_to "Miner Models", admin_path(miner_models: 1), class: 'nav-link active' %>
+        <% else %>
+            <%= link_to "Miner Models", admin_path(miner_models: 1), class: 'nav-link' %>
+        <% end %>
+    </li>
 </ul>
