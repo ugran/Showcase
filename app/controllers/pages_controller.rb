@@ -6,7 +6,11 @@ class PagesController < ApplicationController
     require "uri"
 
     def index
-        
+
+    end
+
+    def about_us
+      
     end
 
     def dashboard
@@ -32,7 +36,7 @@ class PagesController < ApplicationController
                 #        miners_array.push(hash)
                 #    end
                 #end
-                unless current_user.group.present?   
+                unless current_user.group.present?
                     if current_user.nicehash?
                         miners_array.each do |t|
                             user = User.find_by(nicehash_wallet: t[:wallet])
@@ -200,19 +204,19 @@ private
             params.require(:group).permit(:name,:nicehash_wallet,:btc_wallet,:eth_wallet,:ltc_wallet,:api_key,:litecoinpool_api_key,:slushpool_api_key,:nicehash, :api_id, :id)
         end
     end
-        
+
       def resource_name
         :user
       end
-     
+
       def resource
         @resource ||= User.new
       end
-    
+
       def resource_class
         User
       end
-     
+
       def devise_mapping
         @devise_mapping ||= Devise.mappings[:user]
       end
