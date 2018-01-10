@@ -7,7 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class='nav-item'>
-                <%= link_to 'Mining', mining_path, class:'nav-link', style:'color:white;' %>
+                <% if user_signed_in? %>
+                    <%= link_to 'Dashboard', dashboard_path, class:'nav-link', style:'color:white;' %>
+                <% end %>
             </li>
         </ul>
         <% if user_signed_in? %>
@@ -26,14 +28,51 @@
                 </li>
             </ul>
         <% end %>
+        <% unless user_signed_in? %>
+            <%= form_for(:user, :url => session_path(:user), html: {class: 'form-inline my-2 my-lg-0', style: 'text-align:center;'}) do |f| %>
+                    <div class='form-group' style='margin-left:auto; margin-right:auto;'>
+                        <%= f.text_field :email, class: 'form-control mr-sm-2', placeholder: 'Email' %>
+                        <%= f.password_field :password, class: 'form-control mr-sm-2', placeholder: 'Password' %>
+                    </div>
+                <div class='form-group' style='margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:10px;'>
+                    <%= f.submit 'Sign in', class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer;' %>
+                </div>
+            <% end %>
+        <% end %>
     </div>
 </nav>
 <% if notice.present? %>
-    <div class="alert alert-primary" role="alert" style='text-align:center'>
-        <p class="notice" style='margin-bottom:0'><%= notice %></p>
-    </div>
+    <script>
+        $(document).ready(function(){
+            iziToast.show({
+                message: '<%= notice %>',
+                messageColor: '',
+                messageSize: '',
+                messageLineHeight: '',
+                backgroundColor: '',
+                theme: 'light', // dark
+                color: 'blue', // blue, red, green, yellow
+                icon: '',
+                iconColor: '',
+                position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+            });
+        });
+    </script>
 <% elsif alert.present? %>
-    <div class="alert alert-danger" role="alert" style='text-align:center'>
-        <p class="alert" style='margin-bottom:0'><%= alert %></p>
-    </div>
+    <script>
+        $(document).ready(function(){
+            iziToast.show({
+                message: '<%= alert %>',
+                messageColor: '',
+                messageSize: '',
+                messageLineHeight: '',
+                backgroundColor: '',
+                theme: 'light', // dark
+                color: 'red', // blue, red, green, yellow
+                icon: '',
+                iconColor: '',
+                position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+            });
+        });
+    </script>
 <% end %>

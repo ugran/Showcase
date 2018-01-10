@@ -1,7 +1,13 @@
 @import "bootstrap";
+@import "iziToast";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+HTML, BODY {
+  font-family: 'Montserrat', sans-serif;
+}
 
 .selector-for-some-widget {
-    box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 @media print {
@@ -20,4 +26,23 @@
   background: -o-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */
+}
+
+.home-menu {
+  width:100%;
+  text-align:right;
+  font-size:0.9em;
+  font-weight:bold;
+  color:#000000;
+  cursor:pointer;
+}
+
+.home-menu:hover {
+  font-size:1em;
+}
+
+@media screen and (max-width: 900px) {
+  .home-menu {
+     display:none;
+  }
 }

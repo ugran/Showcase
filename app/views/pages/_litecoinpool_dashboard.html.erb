@@ -1,34 +1,65 @@
-<div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
-    <div class="row">
+<div id='ltc-dashboard' style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
+    <div class='row'>
         <div class="col-sm-6 col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Total Hashrate</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:hash_rate] %></p>
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1;'>Total Hashrate</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= number_with_delimiter(@ltc[:user][:hash_rate], :delimiter => ',') %> MH</p>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Expected 24h Reward</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:expected_24h_rewards].round(6) %></p>
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Total Rewards</h4>
+                    <% total = @ltc[:user][:total_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (total-total*current_user.percent_fee.to_i/100).round(6) %></p>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Past 24h rewards</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:past_24h_rewards].round(6) %></p>
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Paid Rewards</h4>
+                    <% paid = @ltc[:user][:paid_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (paid-paid*current_user.percent_fee.to_i/100).round(6) %></p>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Unpaid Rewards</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @ltc[:user][:unpaid_rewards].round(6) %></p>
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em'>Unpaid Rewards</h4>
+                    <% unpaid = @ltc[:user][:unpaid_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (unpaid-unpaid*current_user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style='margin-top:20px;'>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Expected 24h Reward</h4>
+                    <% expected = @ltc[:user][:expected_24h_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (expected-expected*current_user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Past 24h rewards</h4>
+                    <% past = @ltc[:user][:past_24h_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (past-past*current_user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Estimated Electricity Cost</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'>$ <%= current_user.fixed_fee %></p>
                 </div>
             </div>
         </div>

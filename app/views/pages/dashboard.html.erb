@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+    <% if current_user.active? %>
+        <div id='dashboard'>
+            <%= render 'dashboard' %>
+        </div>
+        <script>
+            $(document).ready(
+                function() {
+                setInterval(function() {
+                     $.ajax({
+                        url: '/dashboard.js',
+                        method: 'POST',
+                        cache: false,
+                        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+                    });  
+                }, 10000);
+            });
+        </script>
+    <% end %>
+<% end %>

@@ -1,52 +1,62 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="bitcoin-tab" data-toggle="tab" href="#bitcoin" role="tab" aria-controls="contact" aria-selected="false">
-            <div>
-                <img src='https://pngimg.com/uploads/bitcoin/bitcoin_PNG47.png' style='height:50px;width:50px; display:inline-block;' /><p style='display:inline-block;height:50px; line-height:50px; margin-left:10px; font-weight:bold;'>BITCOIN:</p>
-            </div>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="litecoin-tab" data-toggle="tab" href="#litecoin" role="tab" aria-controls="home" aria-selected="true">
-            <div>
-                <img src='https://d30y9cdsu7xlg0.cloudfront.net/png/90366-200.png' style='height:50px;width:50px; display:inline-block;' /><p style='display:inline-block;height:50px; line-height:50px; margin-left:10px; font-weight:bold;'>LITECOIN:</p>
-            </div>
-        </a>
-    </li>
+    <% if @btc.present? %>
+        <li class="nav-item">
+            <a class="nav-link active" id="bitcoin-tab" data-toggle="tab" href="#bitcoin" role="tab" aria-controls="contact" aria-selected="false">
+                <div>
+                    <img src='https://pngimg.com/uploads/bitcoin/bitcoin_PNG47.png' style='height:50px;width:50px; display:inline-block;' /><p style='display:inline-block;height:50px; line-height:50px; margin-left:10px; font-weight:bold;'>BITCOIN:</p>
+                </div>
+            </a>
+        </li>
+    <% end %>
+    <% if @ltc.present? %>
+        <li class="nav-item">
+            <a class="nav-link <% unless @btc.present? %> active <% end %>" id="litecoin-tab" data-toggle="tab" href="#litecoin" role="tab" aria-controls="home" aria-selected="true">
+                <div>
+                    <img src='https://d30y9cdsu7xlg0.cloudfront.net/png/90366-200.png' style='height:50px;width:50px; display:inline-block;' /><p style='display:inline-block;height:50px; line-height:50px; margin-left:10px; font-weight:bold;'>LITECOIN:</p>
+                </div>
+            </a>
+        </li>
+    <% end %>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="bitcoin" role="tabpanel" aria-labelledby="contact-tab">
-        <%= render 'slushpool_dashboard' %>
-    </div>
-    <div class="tab-pane fade" id="litecoin" role="tabpanel" aria-labelledby="home-tab">
-        <%= render 'litecoinpool_dashboard' %>
-    </div>
+    <% if @btc.present? %>
+        <div class="tab-pane fade show active" id="bitcoin" role="tabpanel" aria-labelledby="contact-tab">
+            <%= render 'slushpool_dashboard' %>
+        </div>
+    <% end %>
+    <% if @ltc.present? %>
+        <div class="tab-pane fade <% unless @btc.present? %>show active <% end %>" id="litecoin" role="tabpanel" aria-labelledby="home-tab">
+            <%= render 'litecoinpool_dashboard' %>
+        </div>
+    <% end %>
 </div>
-<div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
-        <div class='row'>
-            <% @miners.select(:algorithm).distinct.each do |a| %>
-                <div class='col-sm-12 col-md-6'>
-                    <span class="badge badge-secondary"><%= a.algorithm %></span>
-                    <table class='table'>
-                        <thead>
-                            <th>#</th>
-                            <th>Hashrate</th>
-                            <th>Avg. Hashrate</th>
-                            <th>Temp.</th>
-                        </thead>
-                        <tbody>
-                            <% @miners.where(algorithm: a.algorithm).each_with_index do |t,i| %>
-                                <tr>
-                                    <td><%= i+1 %></td>
-                                    <td><%= t.hashrate %></td>
-                                    <td><%= t.avg_hashrate %></td>
-                                    <td><%= t.temperature%>&deg;</td>
-                                </tr>
-                            <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            <% end %>
+<% if @awesome.present? %>
+    <div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
+            <div class='row'>
+                <% @miners.select(:algorithm).distinct.each do |a| %>
+                    <div class='col-sm-12 col-md-6'>
+                        <span class="badge badge-secondary"><%= a.algorithm %></span>
+                        <table class='table'>
+                            <thead>
+                                <th>#</th>
+                                <th>Hashrate</th>
+                                <th>Avg. Hashrate</th>
+                                <th>Temp.</th>
+                            </thead>
+                            <tbody>
+                                <% @miners.where(algorithm: a.algorithm).each_with_index do |t,i| %>
+                                    <tr>
+                                        <td><%= i+1 %></td>
+                                        <td><%= t.hashrate %></td>
+                                        <td><%= t.avg_hashrate %></td>
+                                        <td><%= t.temperature%>&deg;</td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
-</div>
+<% end %>

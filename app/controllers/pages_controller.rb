@@ -1,36 +1,37 @@
 class PagesController < ApplicationController
     before_action :authenticate_admin, only: [:admin]
+    helper_method :resource_name, :resource, :devise_mapping, :resource_class
     require 'net/http'
     require "open-uri"
-    require "URI"
+    require "uri"
 
     def index
-
+        
     end
 
-    def mining
+    def dashboard
         if user_signed_in?
             if current_user.active?
-                awesome = URI.parse('http://192.168.80.51:17790/api/miners?key=19a23495fd3e42c4b62e6bca34a90bb1').read
-                awesome_info = JSON.parse(awesome, :symbolize_names => true)
-                miners_array = []
-                awesome_info[:groupList].each do |g|
-                    group_miners = g[:minerList]
-                    group_miners_array = []
-                    group_miners.each do |m|
-                        hash = {}
-                        hash[:temperature] = m[:temperature]
-                        hash[:hashrate] = m[:speedInfo][:hashrate]
-                        hash[:avg_hashrate] = m[:speedInfo][:avgHashrate]
-                        m[:poolList].each_with_index do |p,i|
-                            if i == 0
-                                hash[:wallet] = p[:additionalInfo][:worker].split('.')[0]
-                                hash[:worker] = p[:additionalInfo][:worker].split('.')[1]
-                            end
-                        end
-                        miners_array.push(hash)
-                    end
-                end
+                #awesome = URI.parse('http://192.168.80.51:17790/api/miners?key=19a23495fd3e42c4b62e6bca34a90bb1').read
+                #awesome_info = JSON.parse(awesome, :symbolize_names => true)
+                #miners_array = []
+                #awesome_info[:groupList].each do |g|
+                #    group_miners = g[:minerList]
+                #    group_miners_array = []
+                #    group_miners.each do |m|
+                #        hash = {}
+                #        hash[:temperature] = m[:temperature]
+                #        hash[:hashrate] = m[:speedInfo][:hashrate]
+                #        hash[:avg_hashrate] = m[:speedInfo][:avgHashrate]
+                #        m[:poolList].each_with_index do |p,i|
+                #            if i == 0
+                #                hash[:wallet] = p[:additionalInfo][:worker].split('.')[0]
+                #                hash[:worker] = p[:additionalInfo][:worker].split('.')[1]
+                #            end
+                #        end
+                #        miners_array.push(hash)
+                #    end
+                #end
                 unless current_user.group.present?   
                     if current_user.nicehash?
                         miners_array.each do |t|
@@ -51,20 +52,28 @@ class PagesController < ApplicationController
                         @balance = JSON.parse(URI.parse('https://api.nicehash.com/api?method=balance&id='+current_user.api_id+'&key='+current_user.api_key).read, :symbolize_names => true)
                         @key = current_user.api_key
                     else
-                        miners_array.each do |t|
-                            current_user.miners.each do |t|
-                                miner_info = miners_array.select{ |m| m[:worker] == t.worker_name}
-                                if miner_info.present?
-                                    t.update(hashrate: miner_info.first[:hashrate], avg_hashrate: miner_info.first[:avg_hashrate], temperature: miner_info.first[:temperature] )
-                                end
-                            end
-                        end
+                        #miners_array.each do |t|
+                        #    current_user.miners.each do |t|
+                        #        miner_info = miners_array.select{ |m| m[:worker] == t.worker_name}
+                        #        if miner_info.present?
+                        #            t.update(hashrate: miner_info.first[:hashrate], avg_hashrate: #miner_info.first[:avg_hashrate], temperature: miner_info.first[:temperature] )
+                        #        end
+                        #    end
+                        #end
                         @miners = current_user.miners
-                        @awesome = awesome
+                        #@awesome = awesome
                         ltc_api = current_user.litecoinpool_api_key
                         slush_api = current_user.slushpool_api_key
-                        @ltc = JSON.parse(URI.parse('https://www.litecoinpool.org/api?api_key='+ltc_api).read, :symbolize_names => true)
-                        @btc = JSON.parse(URI.parse('https://slushpool.com/accounts/profile/json/'+slush_api).read, :symbolize_names => true)
+                        if current_user.litecoinpool_api_key.present?
+                            @ltc = JSON.parse(URI.parse('https://www.litecoinpool.org/api?api_key='+ltc_api).read, :symbolize_names => true)
+                        end
+                        if current_user.slushpool_api_key.present?
+                            @btc = JSON.parse(URI.parse('https://slushpool.com/accounts/profile/json/'+slush_api).read, :symbolize_names => true)
+                        end
+                        respond_to do |format|
+                            format.html
+                            format.js
+                        end
                     end
                 else
                     @group = current_user.group
@@ -172,9 +181,13 @@ class PagesController < ApplicationController
         elsif params[:unit].present?
             @model_management = 1
             Minermodel.create(name: params[:name], speed: params[:speed].to_f, unit: params[:unit], algo: params[:algo])
+            @miner_models = Minermodel.all
+            @nsalgos = Nsalgo.all
         elsif params[:number].present?
             @model_management = 1
             Nsalgo.create(name: params[:name], number: params[:number].to_i)
+            @miner_models = Minermodel.all
+            @nsalgos = Nsalgo.all
         else
 
         end
@@ -187,8 +200,6 @@ private
             params.require(:group).permit(:name,:nicehash_wallet,:btc_wallet,:eth_wallet,:ltc_wallet,:api_key,:litecoinpool_api_key,:slushpool_api_key,:nicehash, :api_id, :id)
         end
     end
-
-    helper_method :resource_name, :resource, :devise_mapping, :resource_class
         
       def resource_name
         :user
