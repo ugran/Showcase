@@ -33,13 +33,47 @@ HTML, BODY {
   text-align:right;
   font-size:0.9em;
   font-weight:bold;
-  color:#000000;
+  color:white;
   cursor:pointer;
 }
 
 .home-menu:hover {
   font-size:1em;
 }
+
+.menu-item-wrapper {
+  background:rgba(0, 0, 0, 0.7);
+  height:250px;
+  width:100%;
+  text-align:center;
+  line-height:250px;
+  color:#fcc118;
+  font-weight:bold;
+  font-size:2em;
+  cursor:pointer;
+}
+
+.btn-outline-light {
+  border-color:#fcc118;
+  color:#fcc118;
+}
+
+.btn-outline-light:hover {
+  background-color: #fcc118;
+  color: black;
+  border-color:#fcc118;
+}
+
+.menu-item-wrapper {
+  text-shadow:0px 0px 3px #333333;
+}
+
+.menu-item-wrapper:hover {
+  background:rgba(252, 193, 24, 0.85);
+  color:black;
+  text-shadow:none;
+}
+
 
 @media screen and (max-width: 900px) {
   .home-menu {

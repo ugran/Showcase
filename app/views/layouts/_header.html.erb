@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style='background-color:black; color:white;'>
-    <%= link_to root_path, class:"navbar-brand" do %> <span style='vertical-align:top;'><i class='material-icons' style='vertical-align:middle'>pie_chart</i> CRYPTOGRAFS</span><% end %>
+    <%= link_to root_path, class:"navbar-brand" do %> <span style='vertical-align:top; color:#fcc118; font-weight:bold;'><i class='material-icons' style='vertical-align:middle; margin-top:-3px; color:#fcc118;'>pie_chart</i> CRYPTOGRAFS</span><% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,6 +10,33 @@
                 <% if user_signed_in? %>
                     <%= link_to 'Dashboard', dashboard_path, class:'nav-link', style:'color:white;' %>
                 <% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'ABOUT US', about_us_path, class: 'nav-link', style:'color:white' %>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='color:white;'>
+                SERVICES
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Colocation Hosting</a>
+                <a class="dropdown-item" href="#">Turnkey Mining</a>
+                <a class="dropdown-item" href="#">Our Facility</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='color:white;'>
+                PRODUCTS
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">ASIC Miners</a>
+                <a class="dropdown-item" href="#">GPU Miners</a>
+                <a class="dropdown-item" href="#">Parts & Accessories</a>
+                <a class="dropdown-item" href="#">Software</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style='color:white;'>CONTACT</a>
             </li>
         </ul>
         <% if user_signed_in? %>
@@ -31,8 +58,8 @@
         <% unless user_signed_in? %>
             <%= form_for(:user, :url => session_path(:user), html: {class: 'form-inline my-2 my-lg-0', style: 'text-align:center;'}) do |f| %>
                     <div class='form-group' style='margin-left:auto; margin-right:auto;'>
-                        <%= f.text_field :email, class: 'form-control mr-sm-2', placeholder: 'Email' %>
-                        <%= f.password_field :password, class: 'form-control mr-sm-2', placeholder: 'Password' %>
+                        <%= f.text_field :email, class: 'form-control mr-sm-2', placeholder: 'Email', style: 'width:200px;' %>
+                        <%= f.password_field :password, class: 'form-control mr-sm-2', placeholder: 'Password', style: 'width:200px;' %>
                     </div>
                 <div class='form-group' style='margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:10px;'>
                     <%= f.submit 'Sign in', class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer;' %>
