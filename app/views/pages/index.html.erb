@@ -1,54 +1,56 @@
+<div id="particles-js" style='position:absolute; top:0; left:0; width:100%; z-index:-10;'>
+</div>
 <div class='container-fluid'>
   <div class='row'>
-    <div class='col-lg-8 col-md-8 col-sm-12' style='padding:0;'>
+    <div id='price-charts' class='col-lg-8 col-md-8 col-sm-12' style='padding:0; background-color:white;'>
       <div class='container-fluid' style='-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
         <div class='row'>
-          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding-top:0; padding-bottom:0; border-right:1px solid black; border-bottom:1px solid black;'>
+          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'btc.png', style: 'height:16px; width:16px;' %> BTC Price:
+                <%= image_tag 'btc.png', style: 'height:16px; width:16px; margin-left:5px;' %> BTC Price:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
-                $ <span id="btc_usd"></span>
+                $ <span id="btc_usd" style='margin-right:5px;'><%= @btc_last_100.last %></span>
               </div>
             </div>
             <div style='height:220px; margin-top:6px;'>
               <canvas id="btcChart"></canvas>
             </div>
           </div>
-          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding-top:0; padding-bottom:0; border-left:1px solid black; border-bottom:1px solid black;'>
+          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'eth.png', style: 'height:16px; width:16px;' %> ETH Price:
+                <%= image_tag 'eth.png', style: 'height:16px; width:16px; margin-left:5px;' %> ETH Price:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
-                $ <span id="eth_usd"></span>
+                $ <span id="eth_usd" style='margin-right:5px;'><%= @eth_last_100.last %></span>
               </div>
             </div>
             <div style='height:220px; margin-top:6px;'>
               <canvas id="ethChart"></canvas>
             </div>
           </div>
-          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding-top:0; padding-bottom:0; border-right:1px solid black; border-top:1px solid black;'>
+          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'xrp.png', style: 'height:16px; width:16px;' %> XRP Price:
+                <%= image_tag 'xrp.png', style: 'height:16px; width:16px; margin-left:5px;' %> XRP Price:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
-                $ <span id="xrp_usd"></span>
+                $ <span id="xrp_usd" style='margin-right:5px;'><%= @xrp_last_100.last %></span>
               </div>
             </div>
             <div style='height:220px; margin-top:6px;'>
               <canvas id="xrpChart"></canvas>
             </div>
           </div>
-          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding-top:0; padding-bottom:0; border-left:1px solid black;  border-top:1px solid black;'>
+          <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'ltc.png', style: 'height:16px; width:16px;' %> LTC Price:
+                <%= image_tag 'ltc.png', style: 'height:16px; width:16px; margin-left:5px;' %> LTC Price:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
-                $ <span id="ltc_usd"></span>
+                $ <span id="ltc_usd" style='margin-right:5px;'><%= @ltc_last_100.last %></span>
               </div>
             </div>
             <div style='height:220px; margin-top:6px;'>
@@ -60,8 +62,6 @@
     </div>
     <div class='col-lg-4 col-md-4 col-sm-12' style='padding:0;'>
         <div style='width:100%; height:250px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
-          <div id="particles-js" style='position:absolute; top:0; left:0; height:250px; width:100%; z-index:-10;'>
-          </div>
           <div class='menu-item-wrapper' style='position:absolute; top:0; left:0; z-index:1;'>
             <%= link_to about_us_path, class: 'nav-link', style:'color:white; color:inherit; height:100%; width:100%;' do %><span>ABOUT US</span><% end %>
           </div>
@@ -75,13 +75,13 @@
   </div>
   <div class='row'>
     <div class='col-lg-6 col-md-6 col-sm-12' style='padding:0;'>
-      <div class='menu-item-wrapper' style='-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
+      <div class='menu-item-wrapper' style='-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
         <span>PRODUCTS</span>
       </div>
     </div>
     <div class='col-lg-6 col-md-6 col-sm-12' style='padding:0;'>
       <div class='menu-item-wrapper' style='-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
-        <span>CONTACT</span>
+        <%= link_to contact_path, class: 'nav-link', style:'color:white; color:inherit; height:100%; width:100%;' do %>CONTACT</span><% end %>
       </div>
     </div>
   </div>
@@ -95,9 +95,10 @@
   ctx_eth = document.getElementById('ethChart').getContext('2d');
   ctx_xrp = document.getElementById('xrpChart').getContext('2d');
   ctx_ltc = document.getElementById('ltcChart').getContext('2d');
+  
 
   chart_labels_btc = [];
-  for (i = 0; i <= 50; i++) {
+  for (i = 0; i <= 100; i++) {
     chart_labels_btc[i] = i;
   }
   chart_btc = new Chart(ctx_btc, {
@@ -107,7 +108,7 @@
           datasets: [{
               label: "BTC Price",
               backgroundColor: 'black',
-              data: [],
+              data: <%= @btc_last_100 %>,
           }]
       },
       options: {
@@ -129,7 +130,7 @@
   });
   
   chart_labels_eth = [];
-  for (i = 0; i <= 50; i++) {
+  for (i = 0; i <= 100; i++) {
     chart_labels_eth[i] = i;
   }
   chart_eth = new Chart(ctx_eth, {
@@ -139,7 +140,7 @@
           datasets: [{
               label: "ETH Price",
               backgroundColor: 'black',
-              data: [],
+              data: <%= @eth_last_100 %>,
           }]
       },
       options: {
@@ -161,7 +162,7 @@
   });
   
   chart_labels_xrp = [];
-  for (i = 0; i <= 50; i++) {
+  for (i = 0; i <= 100; i++) {
     chart_labels_xrp[i] = i;
   }
   chart_xrp = new Chart(ctx_xrp, {
@@ -171,7 +172,7 @@
           datasets: [{
               label: "XRP Price",
               backgroundColor: 'black',
-              data: [],
+              data: <%= @xrp_last_100 %>,
           }]
       },
       options: {
@@ -193,7 +194,7 @@
   });
   
   chart_labels_ltc = [];
-  for (i = 0; i <= 50; i++) {
+  for (i = 0; i <= 100; i++) {
     chart_labels_ltc[i] = i;
   }
   chart_ltc = new Chart(ctx_ltc, {
@@ -203,7 +204,7 @@
           datasets: [{
               label: "LTC Price",
               backgroundColor: 'black',
-              data: [],
+              data: <%= @ltc_last_100 %>,
           }]
       },
       options: {

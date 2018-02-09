@@ -6,6 +6,24 @@ HTML, BODY {
   font-family: 'Montserrat', sans-serif;
 }
 
+#main {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  min-height:100%;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 60px;
+  line-height: 60px;
+  background-color: black;
+  color:white;
+}
+
 .selector-for-some-widget {
   box-sizing: content-box;
 }
@@ -42,15 +60,23 @@ HTML, BODY {
 }
 
 .menu-item-wrapper {
-  background:rgba(0, 0, 0, 0.7);
   height:250px;
   width:100%;
   text-align:center;
   line-height:250px;
-  color:#fcc118;
   font-weight:bold;
   font-size:2em;
   cursor:pointer;
+  background:rgba(251, 185, 4, 0.8);
+  color:black;
+  text-shadow:none;
+  text-shadow:0px 0px 1px #999999;
+}
+
+.menu-item-wrapper:hover {
+  background:rgba(0, 0, 0, 0.7);
+  color:white;
+  text-shadow:0px 0px 3px #333333;
 }
 
 .btn-outline-light {
@@ -64,14 +90,8 @@ HTML, BODY {
   border-color:#fcc118;
 }
 
-.menu-item-wrapper {
-  text-shadow:0px 0px 3px #333333;
-}
-
-.menu-item-wrapper:hover {
-  background:rgba(252, 193, 24, 0.85);
-  color:black;
-  text-shadow:none;
+.product:hover {
+  box-shadow: 0px 0px 0px 2px #000000;  
 }
 
 

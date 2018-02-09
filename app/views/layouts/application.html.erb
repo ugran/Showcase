@@ -10,10 +10,24 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
     <script src="https://use.fontawesome.com/25a3e13073.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <div id='main'>
+      <%= render 'layouts/header' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+    <script>
+      $(document).ready(function(){
+        height = $('#footer').height();
+        $('#main').css('padding-bottom',height+'px');
+      });
+      $(window).on('resize', function(){
+        height = $('#footer').height();
+        $('#main').css('padding-bottom',height+'px');
+      });
+    </script>
   </body>
 </html>

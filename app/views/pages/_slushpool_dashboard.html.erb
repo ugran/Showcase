@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Total Hashrate</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @btc[:hashrate] %></p>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (@btc[:hashrate].to_f/1000000).round(2) %> TH/s</p>
                 </div>
             </div>
         </div>
@@ -12,7 +12,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Confirmed Reward</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @btc[:confirmed_reward].to_f.round(6) %></p>
+                    <% confirmed = @btc[:confirmed_reward].to_f.round(6) %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (confirmed-confirmed*current_user.percent_fee.to_i/100).round(6) %></p>
                 </div>
             </div>
         </div>
@@ -20,7 +21,27 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Unconfirmed Reward</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= @btc[:unconfirmed_reward].to_f.round(6) %></p>
+                    <% unconfirmed = @btc[:unconfirmed_reward].to_f.round(6) %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (unconfirmed-unconfirmed*current_user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row' style='margin-top:20px;'>
+        <div class="col-sm-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1.5em;'>Estimated Reward</h4>
+                    <% estimated = @btc[:estimated_reward].to_f.round(6) %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (estimated-estimated*current_user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Estimated Electricity Cost</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'>$ <%= current_user.fixed_fee %></p>
                 </div>
             </div>
         </div>
@@ -37,7 +58,7 @@
             <% @btc[:workers].select{|k,v| current_user.miners.where(algorithm: 'SHA256').map(&:worker_name).include? k.to_s}.values.each_with_index do |t,i| %>
                 <tr>
                     <td><%= i+1 %></td>
-                    <td><%= t[:hashrate] %></td>
+                    <td><%= t[:hashrate].to_f/1000000 %> TH/s</td>
                     <td><%= t[:shares] %></td>
                 </tr>
             <% end %>

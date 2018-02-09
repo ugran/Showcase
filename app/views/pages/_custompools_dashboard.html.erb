@@ -29,9 +29,8 @@
             <%= render 'litecoinpool_dashboard' %>
         </div>
     <% end %>
-</div>
-<% if @awesome.present? %>
-    <div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
+    <% if @awesome.present? %>
+        <div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
             <div class='row'>
                 <% @miners.select(:algorithm).distinct.each do |a| %>
                     <div class='col-sm-12 col-md-6'>
@@ -58,5 +57,5 @@
                 <% end %>
             </div>
         </div>
-    </div>
-<% end %>
+    <% end %>
+</div>

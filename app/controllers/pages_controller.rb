@@ -6,36 +6,64 @@ class PagesController < ApplicationController
     require "uri"
 
     def index
+        @btc_last_100 = BtcHistory.last(100).map(&:price)
+        @eth_last_100 = EthHistory.last(100).map(&:price)
+        @ltc_last_100 = LtcHistory.last(100).map(&:price)
+        @xrp_last_100 = XrpHistory.last(100).map(&:price)
+    end
 
+    def products
+      if params[:asic_miners].present?
+        @asic_miners = 1
+      elsif params[:gpu_miners].present?
+        @gpu_miners = 1
+      elsif params[:parts_and_accessories].present?
+        @parts_and_accessories = 1
+      elsif params[:software].present?
+        @software = 1
+      end
+      @products_all = Product.all
     end
 
     def about_us
-      
+
+    end
+
+    def contact
+        if params[:message].present? && params[:name].present? && params[:email].present? && params[:phone].present?
+            if verify_recaptcha
+                ContactMailer.contact_email(params[:name], params[:email], params[:phone], params[:message]).deliver_later
+            else
+                redirect_back fallback_location: contact_path, alert: "Please verify that you are not a robot."
+            end
+        elsif params[:message].present? || params[:name].present? || params[:email].present? || params[:phone].present?
+            redirect_back fallback_location: contact_path, alert: "Please fill in all the fields."
+        end
     end
 
     def dashboard
         if user_signed_in?
             if current_user.active?
-                #awesome = URI.parse('http://192.168.80.51:17790/api/miners?key=19a23495fd3e42c4b62e6bca34a90bb1').read
-                #awesome_info = JSON.parse(awesome, :symbolize_names => true)
-                #miners_array = []
-                #awesome_info[:groupList].each do |g|
-                #    group_miners = g[:minerList]
-                #    group_miners_array = []
-                #    group_miners.each do |m|
-                #        hash = {}
-                #        hash[:temperature] = m[:temperature]
-                #        hash[:hashrate] = m[:speedInfo][:hashrate]
-                #        hash[:avg_hashrate] = m[:speedInfo][:avgHashrate]
-                #        m[:poolList].each_with_index do |p,i|
-                #            if i == 0
-                #                hash[:wallet] = p[:additionalInfo][:worker].split('.')[0]
-                #                hash[:worker] = p[:additionalInfo][:worker].split('.')[1]
-                #            end
-                #        end
-                #        miners_array.push(hash)
-                #    end
-                #end
+                awesome = URI.parse('http://109.172.247.148:17790/api/miners?key=19a23495fd3e42c4b62e6bca34a90bb1').read
+                awesome_info = JSON.parse(awesome, :symbolize_names => true)
+                miners_array = []
+                awesome_info[:groupList].each do |g|
+                    group_miners = g[:minerList]
+                    group_miners_array = []
+                    group_miners.each do |m|
+                        hash = {}
+                        hash[:temperature] = m[:temperature]
+                        hash[:hashrate] = m[:speedInfo][:hashrate]
+                        hash[:avg_hashrate] = m[:speedInfo][:avgHashrate]
+                        m[:poolList].each_with_index do |p,i|
+                            if i == 0
+                                hash[:wallet] = p[:additionalInfo][:worker].split('.')[0]
+                                hash[:worker] = p[:additionalInfo][:worker].split('.')[1]
+                            end
+                        end
+                        miners_array.push(hash)
+                    end
+                end
                 unless current_user.group.present?
                     if current_user.nicehash?
                         miners_array.each do |t|
@@ -56,16 +84,16 @@ class PagesController < ApplicationController
                         @balance = JSON.parse(URI.parse('https://api.nicehash.com/api?method=balance&id='+current_user.api_id+'&key='+current_user.api_key).read, :symbolize_names => true)
                         @key = current_user.api_key
                     else
-                        #miners_array.each do |t|
-                        #    current_user.miners.each do |t|
-                        #        miner_info = miners_array.select{ |m| m[:worker] == t.worker_name}
-                        #        if miner_info.present?
-                        #            t.update(hashrate: miner_info.first[:hashrate], avg_hashrate: #miner_info.first[:avg_hashrate], temperature: miner_info.first[:temperature] )
-                        #        end
-                        #    end
-                        #end
+                        miners_array.each do |a|
+                            current_user.miners.each do |t|
+                                miner_info = miners_array.select{ |m| (m[:wallet]+'.'+m[:worker]) == t.worker_name}
+                                if miner_info.present?
+                                    t.update(hashrate: miner_info.first[:hashrate], avg_hashrate: miner_info.first[:avg_hashrate], temperature: miner_info.first[:temperature] )
+                                end
+                            end
+                        end
                         @miners = current_user.miners
-                        #@awesome = awesome
+                        @awesome = 1
                         ltc_api = current_user.litecoinpool_api_key
                         slush_api = current_user.slushpool_api_key
                         if current_user.litecoinpool_api_key.present?
@@ -192,6 +220,32 @@ class PagesController < ApplicationController
             Nsalgo.create(name: params[:name], number: params[:number].to_i)
             @miner_models = Minermodel.all
             @nsalgos = Nsalgo.all
+        elsif params[:start_scheduler].present?
+            scheduler = Rufus::Scheduler.new
+            job = scheduler.every '10s' do
+                price_coin_usd = JSON.parse(URI.parse('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,XRP,LTC&tsyms=USD').read, :symbolize_names => true)
+                BtcHistory.create(price: price_coin_usd[:BTC][:USD])
+                EthHistory.create(price: price_coin_usd[:ETH][:USD])
+                XrpHistory.create(price: price_coin_usd[:XRP][:USD])
+                LtcHistory.create(price: price_coin_usd[:LTC][:USD])
+            end
+        elsif params[:products].present?
+          @products = 1
+          @products_all = Product.all
+          @product = Product.new
+        elsif product_params.present?
+          @products = 1
+          Product.create(product_params)
+          @products_all = Product.all
+          @product = Product.new
+          redirect_back fallback_location: admin_path, notice: "Product created."
+        elsif params[:edit_product].present?
+          @edit_product = Product.find(params[:edit_product].to_i)
+        elsif params[:edit_product_submit].present?
+          Product.find_by(id: params[:edit_product_submit]).update(name: params[:edit_name], description: params[:edit_description], specifications: params[:edit_specifications])
+        elsif params[:delete_product].present?
+          Product.find(params[:delete_product].to_i).destroy
+          redirect_back fallback_location: admin_path, notice: "Product deleted."
         else
 
         end
@@ -205,30 +259,36 @@ private
         end
     end
 
-      def resource_name
-        :user
-      end
+    def product_params
+        if params[:product].present?
+            params[:product].permit(:name, :description, :specifications, :category, :image)
+        end
+    end
 
-      def resource
-        @resource ||= User.new
-      end
+    def resource_name
+    :user
+    end
 
-      def resource_class
-        User
-      end
+    def resource
+    @resource ||= User.new
+    end
 
-      def devise_mapping
-        @devise_mapping ||= Devise.mappings[:user]
-      end
+    def resource_class
+    User
+    end
 
-      def authenticate_admin
-        if user_signed_in?
-            unless current_user.admin?
-                redirect_to :root
-            end
-        else
+    def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+    end
+
+    def authenticate_admin
+    if user_signed_in?
+        unless current_user.admin?
             redirect_to :root
         end
-      end
+    else
+        redirect_to :root
+    end
+    end
 
 end

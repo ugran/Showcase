@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1;'>Total Hashrate</h4>
-                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= number_with_delimiter(@ltc[:user][:hash_rate], :delimiter => ',') %> MH</p>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= number_with_delimiter(@ltc[:user][:hash_rate], :delimiter => ',') %> MH/s</p>
                 </div>
             </div>
         </div>
@@ -81,13 +81,13 @@
             <% @ltc[:workers].select{|k,v| current_user.miners.where(algorithm: 'Scrypt').map(&:worker_name).include? k.to_s}.values.each_with_index do |t,i| %>
                 <tr>
                     <td><%= i+1 %></td>
-                    <td><%= t[:hash_rate] %></td>
-                    <td><%= t[:hash_rate_24h] %></td>
+                    <td><%= t[:hash_rate].to_f/1000 %> MH/s</td>
+                    <td><%= t[:hash_rate_24h].to_f/1000 %> MH/s</td>
                     <td><%= t[:valid_shares] %></td>
                     <td><%= t[:stale_shares] %></td>
                     <td><%= t[:invalid_shares] %></td>
-                    <td><%= t[:rewards].round(6) %></td>
-                    <td><%= t[:rewards_24h].round(6) %></td>
+                    <td><%= (t[:rewards]-t[:rewards]*current_user.percent_fee.to_i/100).round(6) %></td>
+                    <td><%= (t[:rewards_24h]-t[:rewards_24h]*current_user.percent_fee.to_i/100).round(6) %></td>
                 </tr>
             <% end %>
         </tbody>

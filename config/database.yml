@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: cryptodb
+  username: crypto_db_admin # replace this with your own user name
+  password: Sh3m1shv1!#* # replace this with your own password
+  host: localhost
+  encoding: UTF8
+  pool: 6
+  timeout: 5000

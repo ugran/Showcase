@@ -1,0 +1,1685 @@
+=== puma startup: 2018-01-11 14:49:58 +0100 ===
+[16556] - Worker 0 (pid: 16560) booted, phase: 0
+[16556] - Worker 1 (pid: 16564) booted, phase: 0
+[16556] - Worker 2 (pid: 16575) booted, phase: 0
+[16556] - Worker 3 (pid: 16586) booted, phase: 0
+[16556] - Worker 4 (pid: 16594) booted, phase: 0
+[16556] - Worker 5 (pid: 16607) booted, phase: 0
+[16556] - Gracefully shutting down workers...
+[16556] * Restarting...
+[16556] Puma starting in cluster mode...
+[16556] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16556] * Min threads: 1, max threads: 6
+[16556] * Environment: production
+[16556] * Process workers: 6
+[16556] * Preloading application
+[16556] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16556] * Daemonizing...
+=== puma startup: 2018-01-11 14:54:53 +0100 ===
+[16817] - Worker 0 (pid: 16821) booted, phase: 0
+[16817] - Worker 1 (pid: 16825) booted, phase: 0
+[16817] - Worker 2 (pid: 16835) booted, phase: 0
+[16817] - Worker 3 (pid: 16845) booted, phase: 0
+[16817] - Worker 4 (pid: 16855) booted, phase: 0
+[16817] - Worker 5 (pid: 16865) booted, phase: 0
+[16817] - Gracefully shutting down workers...
+[16817] * Restarting...
+[16817] Puma starting in cluster mode...
+[16817] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16817] * Min threads: 1, max threads: 6
+[16817] * Environment: production
+[16817] * Process workers: 6
+[16817] * Preloading application
+[16817] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16817] * Daemonizing...
+=== puma startup: 2018-01-11 15:30:04 +0100 ===
+[17402] - Worker 0 (pid: 17406) booted, phase: 0
+[17402] - Worker 1 (pid: 17410) booted, phase: 0
+[17402] - Worker 2 (pid: 17420) booted, phase: 0
+[17402] - Worker 4 (pid: 17438) booted, phase: 0
+[17402] - Worker 5 (pid: 17442) booted, phase: 0
+[17402] - Worker 3 (pid: 17431) booted, phase: 0
+[17402] - Gracefully shutting down workers...
+[17402] * Restarting...
+[17402] Puma starting in cluster mode...
+[17402] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[17402] * Min threads: 1, max threads: 6
+[17402] * Environment: production
+[17402] * Process workers: 6
+[17402] * Preloading application
+[17402] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[17402] * Daemonizing...
+=== puma startup: 2018-01-11 16:01:01 +0100 ===
+[17873] - Worker 0 (pid: 17877) booted, phase: 0
+[17873] - Worker 1 (pid: 17881) booted, phase: 0
+[17873] - Worker 2 (pid: 17891) booted, phase: 0
+[17873] - Worker 3 (pid: 17901) booted, phase: 0
+[17873] - Worker 4 (pid: 17911) booted, phase: 0
+[17873] - Worker 5 (pid: 17921) booted, phase: 0
+[17873] - Gracefully shutting down workers...
+[17873] * Restarting...
+[17873] Puma starting in cluster mode...
+[17873] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[17873] * Min threads: 1, max threads: 6
+[17873] * Environment: production
+[17873] * Process workers: 6
+[17873] * Preloading application
+[17873] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[17873] * Daemonizing...
+=== puma startup: 2018-01-11 16:03:03 +0100 ===
+[18066] - Worker 0 (pid: 18070) booted, phase: 0
+[18066] - Worker 1 (pid: 18074) booted, phase: 0
+[18066] - Worker 2 (pid: 18084) booted, phase: 0
+[18066] - Worker 3 (pid: 18095) booted, phase: 0
+[18066] - Worker 4 (pid: 18104) booted, phase: 0
+[18066] - Worker 5 (pid: 18114) booted, phase: 0
+[18066] - Gracefully shutting down workers...
+[18066] * Restarting...
+[18066] Puma starting in cluster mode...
+[18066] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[18066] * Min threads: 1, max threads: 6
+[18066] * Environment: production
+[18066] * Process workers: 6
+[18066] * Preloading application
+[18066] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[18066] * Daemonizing...
+=== puma startup: 2018-01-13 14:45:29 +0100 ===
+[12152] - Worker 0 (pid: 12156) booted, phase: 0
+[12152] - Worker 1 (pid: 12160) booted, phase: 0
+[12152] - Worker 2 (pid: 12169) booted, phase: 0
+[12152] - Worker 3 (pid: 12181) booted, phase: 0
+[12152] - Worker 4 (pid: 12191) booted, phase: 0
+[12152] - Worker 5 (pid: 12201) booted, phase: 0
+[12152] - Gracefully shutting down workers...
+[12152] * Restarting...
+[12152] Puma starting in cluster mode...
+[12152] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[12152] * Min threads: 1, max threads: 6
+[12152] * Environment: production
+[12152] * Process workers: 6
+[12152] * Preloading application
+[12152] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[12152] * Daemonizing...
+=== puma startup: 2018-01-13 14:46:24 +0100 ===
+[12282] - Worker 0 (pid: 12286) booted, phase: 0
+[12282] - Worker 1 (pid: 12290) booted, phase: 0
+[12282] - Worker 2 (pid: 12301) booted, phase: 0
+[12282] - Worker 3 (pid: 12310) booted, phase: 0
+[12282] - Worker 4 (pid: 12321) booted, phase: 0
+[12282] - Worker 5 (pid: 12330) booted, phase: 0
+[12282] - Gracefully shutting down workers...
+[12282] * Restarting...
+[12282] Puma starting in cluster mode...
+[12282] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[12282] * Min threads: 1, max threads: 6
+[12282] * Environment: production
+[12282] * Process workers: 6
+[12282] * Preloading application
+[12282] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[12282] * Daemonizing...
+=== puma startup: 2018-01-13 14:49:08 +0100 ===
+[12408] - Worker 0 (pid: 12412) booted, phase: 0
+[12408] - Worker 1 (pid: 12416) booted, phase: 0
+[12408] - Worker 2 (pid: 12429) booted, phase: 0
+[12408] - Worker 3 (pid: 12436) booted, phase: 0
+[12408] - Worker 4 (pid: 12449) booted, phase: 0
+[12408] - Worker 5 (pid: 12457) booted, phase: 0
+[12408] - Gracefully shutting down workers...
+[12408] * Restarting...
+[12408] Puma starting in cluster mode...
+[12408] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[12408] * Min threads: 1, max threads: 6
+[12408] * Environment: production
+[12408] * Process workers: 6
+[12408] * Preloading application
+[12408] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[12408] * Daemonizing...
+=== puma startup: 2018-01-13 14:50:27 +0100 ===
+[12533] - Worker 0 (pid: 12537) booted, phase: 0
+[12533] - Worker 1 (pid: 12542) booted, phase: 0
+[12533] - Worker 2 (pid: 12552) booted, phase: 0
+[12533] - Worker 3 (pid: 12562) booted, phase: 0
+[12533] - Worker 4 (pid: 12575) booted, phase: 0
+[12533] - Worker 5 (pid: 12584) booted, phase: 0
+[12533] - Gracefully shutting down workers...
+[12533] * Restarting...
+[12533] Puma starting in cluster mode...
+[12533] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[12533] * Min threads: 1, max threads: 6
+[12533] * Environment: production
+[12533] * Process workers: 6
+[12533] * Preloading application
+[12533] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[12533] * Daemonizing...
+=== puma startup: 2018-01-13 14:53:07 +0100 ===
+[12660] - Worker 0 (pid: 12664) booted, phase: 0
+[12660] - Worker 1 (pid: 12668) booted, phase: 0
+[12660] - Worker 2 (pid: 12678) booted, phase: 0
+[12660] - Worker 3 (pid: 12686) booted, phase: 0
+[12660] - Worker 4 (pid: 12698) booted, phase: 0
+[12660] - Worker 5 (pid: 12709) booted, phase: 0
+[12660] - Gracefully shutting down workers...
+[12660] * Restarting...
+[12660] Puma starting in cluster mode...
+[12660] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[12660] * Min threads: 1, max threads: 6
+[12660] * Environment: production
+[12660] * Process workers: 6
+[12660] * Preloading application
+[12660] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[12660] * Daemonizing...
+=== puma startup: 2018-01-13 14:54:38 +0100 ===
+[12784] - Worker 0 (pid: 12788) booted, phase: 0
+[12784] - Worker 1 (pid: 12792) booted, phase: 0
+[12784] - Worker 2 (pid: 12803) booted, phase: 0
+[12784] - Worker 3 (pid: 12813) booted, phase: 0
+[12784] - Worker 4 (pid: 12828) booted, phase: 0
+[12784] - Worker 5 (pid: 12838) booted, phase: 0
+[12784] - Gracefully shutting down workers...
+[12784] * Restarting...
+[12784] Puma starting in cluster mode...
+[12784] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[12784] * Min threads: 1, max threads: 6
+[12784] * Environment: production
+[12784] * Process workers: 6
+[12784] * Preloading application
+[12784] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[12784] * Daemonizing...
+=== puma startup: 2018-01-13 14:56:32 +0100 ===
+[12910] - Worker 0 (pid: 12914) booted, phase: 0
+[12910] - Worker 1 (pid: 12919) booted, phase: 0
+[12910] - Worker 2 (pid: 12930) booted, phase: 0
+[12910] - Worker 3 (pid: 12940) booted, phase: 0
+[12910] - Worker 4 (pid: 12949) booted, phase: 0
+[12910] - Worker 5 (pid: 12959) booted, phase: 0
+[12910] - Gracefully shutting down workers...
+[12910] * Restarting...
+[12910] Puma starting in cluster mode...
+[12910] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[12910] * Min threads: 1, max threads: 6
+[12910] * Environment: production
+[12910] * Process workers: 6
+[12910] * Preloading application
+[12910] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[12910] * Daemonizing...
+=== puma startup: 2018-01-13 15:01:07 +0100 ===
+[13055] - Worker 0 (pid: 13059) booted, phase: 0
+[13055] - Worker 1 (pid: 13063) booted, phase: 0
+[13055] - Worker 2 (pid: 13074) booted, phase: 0
+[13055] - Worker 3 (pid: 13084) booted, phase: 0
+[13055] - Worker 4 (pid: 13094) booted, phase: 0
+[13055] - Worker 5 (pid: 13104) booted, phase: 0
+[13055] - Gracefully shutting down workers...
+[13055] * Restarting...
+[13055] Puma starting in cluster mode...
+[13055] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13055] * Min threads: 1, max threads: 6
+[13055] * Environment: production
+[13055] * Process workers: 6
+[13055] * Preloading application
+[13055] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13055] * Daemonizing...
+=== puma startup: 2018-01-13 15:01:59 +0100 ===
+[13160] - Worker 0 (pid: 13164) booted, phase: 0
+[13160] - Worker 1 (pid: 13170) booted, phase: 0
+[13160] - Worker 2 (pid: 13179) booted, phase: 0
+[13160] - Worker 3 (pid: 13189) booted, phase: 0
+[13160] - Worker 4 (pid: 13198) booted, phase: 0
+[13160] - Worker 5 (pid: 13208) booted, phase: 0
+[13160] - Gracefully shutting down workers...
+[13160] * Restarting...
+[13160] Puma starting in cluster mode...
+[13160] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13160] * Min threads: 1, max threads: 6
+[13160] * Environment: production
+[13160] * Process workers: 6
+[13160] * Preloading application
+[13160] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13160] * Daemonizing...
+=== puma startup: 2018-01-13 15:04:14 +0100 ===
+[13291] - Worker 0 (pid: 13295) booted, phase: 0
+[13291] - Worker 1 (pid: 13299) booted, phase: 0
+[13291] - Worker 2 (pid: 13309) booted, phase: 0
+[13291] - Worker 3 (pid: 13324) booted, phase: 0
+[13291] - Worker 4 (pid: 13335) booted, phase: 0
+[13291] - Worker 5 (pid: 13345) booted, phase: 0
+[13291] - Gracefully shutting down workers...
+[13291] * Restarting...
+[13291] Puma starting in cluster mode...
+[13291] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13291] * Min threads: 1, max threads: 6
+[13291] * Environment: production
+[13291] * Process workers: 6
+[13291] * Preloading application
+[13291] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13291] * Daemonizing...
+=== puma startup: 2018-01-13 15:10:40 +0100 ===
+[13511] - Worker 0 (pid: 13515) booted, phase: 0
+[13511] - Worker 1 (pid: 13519) booted, phase: 0
+[13511] - Worker 2 (pid: 13529) booted, phase: 0
+[13511] - Worker 3 (pid: 13539) booted, phase: 0
+[13511] - Worker 4 (pid: 13549) booted, phase: 0
+[13511] - Worker 5 (pid: 13560) booted, phase: 0
+[13511] - Gracefully shutting down workers...
+[13511] * Restarting...
+[13511] Puma starting in cluster mode...
+[13511] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13511] * Min threads: 1, max threads: 6
+[13511] * Environment: production
+[13511] * Process workers: 6
+[13511] * Preloading application
+[13511] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13511] * Daemonizing...
+=== puma startup: 2018-01-13 15:11:53 +0100 ===
+[13682] - Worker 0 (pid: 13686) booted, phase: 0
+[13682] - Worker 1 (pid: 13691) booted, phase: 0
+[13682] - Worker 2 (pid: 13700) booted, phase: 0
+[13682] - Worker 3 (pid: 13711) booted, phase: 0
+[13682] - Worker 4 (pid: 13726) booted, phase: 0
+[13682] - Worker 5 (pid: 13730) booted, phase: 0
+[13682] - Gracefully shutting down workers...
+[13682] * Restarting...
+[13682] Puma starting in cluster mode...
+[13682] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13682] * Min threads: 1, max threads: 6
+[13682] * Environment: production
+[13682] * Process workers: 6
+[13682] * Preloading application
+[13682] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13682] * Daemonizing...
+=== puma startup: 2018-01-13 15:14:21 +0100 ===
+[13807] - Worker 0 (pid: 13811) booted, phase: 0
+[13807] - Worker 1 (pid: 13816) booted, phase: 0
+[13807] - Worker 2 (pid: 13830) booted, phase: 0
+[13807] - Worker 3 (pid: 13837) booted, phase: 0
+[13807] - Worker 4 (pid: 13846) booted, phase: 0
+[13807] - Worker 5 (pid: 13858) booted, phase: 0
+[13807] - Gracefully shutting down workers...
+[13807] * Restarting...
+[13807] Puma starting in cluster mode...
+[13807] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13807] * Min threads: 1, max threads: 6
+[13807] * Environment: production
+[13807] * Process workers: 6
+[13807] * Preloading application
+[13807] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13807] * Daemonizing...
+=== puma startup: 2018-01-13 15:15:31 +0100 ===
+[13985] - Worker 0 (pid: 13989) booted, phase: 0
+[13985] - Worker 1 (pid: 13994) booted, phase: 0
+[13985] - Worker 2 (pid: 14004) booted, phase: 0
+[13985] - Worker 3 (pid: 14013) booted, phase: 0
+[13985] - Worker 4 (pid: 14026) booted, phase: 0
+[13985] - Worker 5 (pid: 14033) booted, phase: 0
+[13985] - Gracefully shutting down workers...
+[13985] * Restarting...
+[13985] Puma starting in cluster mode...
+[13985] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13985] * Min threads: 1, max threads: 6
+[13985] * Environment: production
+[13985] * Process workers: 6
+[13985] * Preloading application
+[13985] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13985] * Daemonizing...
+=== puma startup: 2018-01-13 15:17:12 +0100 ===
+[14108] - Worker 0 (pid: 14112) booted, phase: 0
+[14108] - Worker 1 (pid: 14116) booted, phase: 0
+[14108] - Worker 2 (pid: 14126) booted, phase: 0
+[14108] - Worker 3 (pid: 14137) booted, phase: 0
+[14108] - Worker 4 (pid: 14148) booted, phase: 0
+[14108] - Worker 5 (pid: 14156) booted, phase: 0
+[14108] - Gracefully shutting down workers...
+[14108] * Restarting...
+[14108] Puma starting in cluster mode...
+[14108] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[14108] * Min threads: 1, max threads: 6
+[14108] * Environment: production
+[14108] * Process workers: 6
+[14108] * Preloading application
+[14108] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[14108] * Daemonizing...
+=== puma startup: 2018-01-16 20:14:59 +0100 ===
+[23365] - Worker 0 (pid: 23369) booted, phase: 0
+[23365] - Worker 1 (pid: 23373) booted, phase: 0
+[23365] - Worker 2 (pid: 23383) booted, phase: 0
+[23365] - Worker 3 (pid: 23397) booted, phase: 0
+[23365] - Worker 4 (pid: 23405) booted, phase: 0
+[23365] - Worker 5 (pid: 23414) booted, phase: 0
+[23365] - Gracefully shutting down workers...
+[23365] * Restarting...
+[23365] Puma starting in cluster mode...
+[23365] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23365] * Min threads: 1, max threads: 6
+[23365] * Environment: production
+[23365] * Process workers: 6
+[23365] * Preloading application
+[23365] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23365] * Daemonizing...
+=== puma startup: 2018-01-16 20:19:39 +0100 ===
+[23602] - Worker 0 (pid: 23606) booted, phase: 0
+[23602] - Worker 1 (pid: 23610) booted, phase: 0
+[23602] - Worker 2 (pid: 23620) booted, phase: 0
+[23602] - Worker 3 (pid: 23631) booted, phase: 0
+[23602] - Worker 4 (pid: 23644) booted, phase: 0
+[23602] - Worker 5 (pid: 23655) booted, phase: 0
+[23602] - Gracefully shutting down workers...
+[23602] * Restarting...
+[23602] Puma starting in cluster mode...
+[23602] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23602] * Min threads: 1, max threads: 6
+[23602] * Environment: production
+[23602] * Process workers: 6
+[23602] * Preloading application
+[23602] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23602] * Daemonizing...
+=== puma startup: 2018-01-16 20:26:16 +0100 ===
+[23910] - Worker 0 (pid: 23914) booted, phase: 0
+[23910] - Worker 1 (pid: 23918) booted, phase: 0
+[23910] - Worker 2 (pid: 23930) booted, phase: 0
+[23910] - Worker 3 (pid: 23939) booted, phase: 0
+[23910] - Worker 4 (pid: 23950) booted, phase: 0
+[23910] - Worker 5 (pid: 23959) booted, phase: 0
+[23910] - Gracefully shutting down workers...
+[23910] * Restarting...
+[23910] Puma starting in cluster mode...
+[23910] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23910] * Min threads: 1, max threads: 6
+[23910] * Environment: production
+[23910] * Process workers: 6
+[23910] * Preloading application
+[23910] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23910] * Daemonizing...
+=== puma startup: 2018-01-16 20:35:31 +0100 ===
+[24589] - Worker 0 (pid: 24593) booted, phase: 0
+[24589] - Worker 1 (pid: 24603) booted, phase: 0
+[24589] - Worker 2 (pid: 24612) booted, phase: 0
+[24589] - Worker 3 (pid: 24620) booted, phase: 0
+[24589] - Worker 4 (pid: 24633) booted, phase: 0
+[24589] - Worker 5 (pid: 24643) booted, phase: 0
+[24589] - Gracefully shutting down workers...
+[24589] * Restarting...
+[24589] Puma starting in cluster mode...
+[24589] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[24589] * Min threads: 1, max threads: 6
+[24589] * Environment: production
+[24589] * Process workers: 6
+[24589] * Preloading application
+[24589] ! Unable to load application: NameError: undefined local variable or method `hostname' for #<MinerMonitoring::Application:0x007fe951415db0>
+=== puma startup: 2018-01-16 20:45:53 +0100 ===
+[24989] - Worker 0 (pid: 24993) booted, phase: 0
+[24989] - Worker 1 (pid: 24997) booted, phase: 0
+[24989] - Worker 2 (pid: 25007) booted, phase: 0
+[24989] - Worker 3 (pid: 25017) booted, phase: 0
+[24989] - Worker 4 (pid: 25027) booted, phase: 0
+[24989] - Worker 5 (pid: 25037) booted, phase: 0
+[24989] - Gracefully shutting down workers...
+[24989] * Restarting...
+[24989] Puma starting in cluster mode...
+[24989] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[24989] * Min threads: 1, max threads: 6
+[24989] * Environment: production
+[24989] * Process workers: 6
+[24989] * Preloading application
+[24989] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[24989] * Daemonizing...
+=== puma startup: 2018-01-16 20:47:38 +0100 ===
+[25106] - Worker 0 (pid: 25110) booted, phase: 0
+[25106] - Worker 1 (pid: 25115) booted, phase: 0
+[25106] - Worker 2 (pid: 25126) booted, phase: 0
+[25106] - Worker 3 (pid: 25135) booted, phase: 0
+[25106] - Worker 4 (pid: 25145) booted, phase: 0
+[25106] - Worker 5 (pid: 25160) booted, phase: 0
+[25106] - Gracefully shutting down workers...
+[25106] * Restarting...
+[25106] Puma starting in cluster mode...
+[25106] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[25106] * Min threads: 1, max threads: 6
+[25106] * Environment: production
+[25106] * Process workers: 6
+[25106] * Preloading application
+[25106] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[25106] * Daemonizing...
+=== puma startup: 2018-01-16 20:48:21 +0100 ===
+[25208] - Worker 0 (pid: 25212) booted, phase: 0
+[25208] - Worker 1 (pid: 25219) booted, phase: 0
+[25208] - Worker 2 (pid: 25232) booted, phase: 0
+[25208] - Worker 3 (pid: 25240) booted, phase: 0
+[25208] - Worker 4 (pid: 25247) booted, phase: 0
+[25208] - Worker 5 (pid: 25256) booted, phase: 0
+[25208] - Gracefully shutting down workers...
+[25208] * Restarting...
+[25208] Puma starting in cluster mode...
+[25208] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[25208] * Min threads: 1, max threads: 6
+[25208] * Environment: production
+[25208] * Process workers: 6
+[25208] * Preloading application
+[25208] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[25208] * Daemonizing...
+=== puma startup: 2018-01-16 20:50:47 +0100 ===
+[25420] - Worker 0 (pid: 25424) booted, phase: 0
+[25420] - Worker 1 (pid: 25428) booted, phase: 0
+[25420] - Worker 2 (pid: 25441) booted, phase: 0
+[25420] - Worker 3 (pid: 25449) booted, phase: 0
+[25420] - Worker 4 (pid: 25464) booted, phase: 0
+[25420] - Worker 5 (pid: 25469) booted, phase: 0
+[25420] - Gracefully shutting down workers...
+[25420] * Restarting...
+[25420] Puma starting in cluster mode...
+[25420] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[25420] * Min threads: 1, max threads: 6
+[25420] * Environment: production
+[25420] * Process workers: 6
+[25420] * Preloading application
+[25420] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[25420] * Daemonizing...
+=== puma startup: 2018-01-17 13:04:51 +0100 ===
+[13206] - Worker 0 (pid: 13210) booted, phase: 0
+[13206] - Worker 1 (pid: 13216) booted, phase: 0
+[13206] - Worker 2 (pid: 13228) booted, phase: 0
+[13206] - Worker 3 (pid: 13237) booted, phase: 0
+[13206] - Worker 4 (pid: 13244) booted, phase: 0
+[13206] - Worker 5 (pid: 13256) booted, phase: 0
+[13206] - Gracefully shutting down workers...
+[13206] * Restarting...
+[13206] Puma starting in cluster mode...
+[13206] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13206] * Min threads: 1, max threads: 6
+[13206] * Environment: production
+[13206] * Process workers: 6
+[13206] * Preloading application
+[13206] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13206] * Daemonizing...
+=== puma startup: 2018-01-17 13:09:44 +0100 ===
+[13907] - Worker 0 (pid: 13911) booted, phase: 0
+[13907] - Worker 1 (pid: 13916) booted, phase: 0
+[13907] - Worker 2 (pid: 13926) booted, phase: 0
+[13907] - Worker 3 (pid: 13936) booted, phase: 0
+[13907] - Worker 4 (pid: 13947) booted, phase: 0
+[13907] - Worker 5 (pid: 13957) booted, phase: 0
+[13907] - Gracefully shutting down workers...
+[13907] * Restarting...
+[13907] Puma starting in cluster mode...
+[13907] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[13907] * Min threads: 1, max threads: 6
+[13907] * Environment: production
+[13907] * Process workers: 6
+[13907] * Preloading application
+[13907] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[13907] * Daemonizing...
+=== puma startup: 2018-01-17 13:14:22 +0100 ===
+[14204] - Worker 0 (pid: 14208) booted, phase: 0
+[14204] - Worker 1 (pid: 14215) booted, phase: 0
+[14204] - Worker 2 (pid: 14223) booted, phase: 0
+[14204] - Worker 3 (pid: 14232) booted, phase: 0
+[14204] - Worker 4 (pid: 14243) booted, phase: 0
+[14204] - Worker 5 (pid: 14252) booted, phase: 0
+[14204] - Gracefully shutting down workers...
+[14204] * Restarting...
+[14204] Puma starting in cluster mode...
+[14204] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[14204] * Min threads: 1, max threads: 6
+[14204] * Environment: production
+[14204] * Process workers: 6
+[14204] * Preloading application
+[14204] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[14204] * Daemonizing...
+=== puma startup: 2018-01-17 13:19:19 +0100 ===
+[14464] - Worker 0 (pid: 14468) booted, phase: 0
+[14464] - Worker 1 (pid: 14474) booted, phase: 0
+[14464] - Worker 2 (pid: 14484) booted, phase: 0
+[14464] - Worker 3 (pid: 14492) booted, phase: 0
+[14464] - Worker 4 (pid: 14502) booted, phase: 0
+[14464] - Worker 5 (pid: 14513) booted, phase: 0
+[14464] - Gracefully shutting down workers...
+[14464] * Restarting...
+[14464] Puma starting in cluster mode...
+[14464] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[14464] * Min threads: 1, max threads: 6
+[14464] * Environment: production
+[14464] * Process workers: 6
+[14464] * Preloading application
+[14464] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[14464] * Daemonizing...
+=== puma startup: 2018-01-17 13:20:20 +0100 ===
+[14611] - Worker 0 (pid: 14615) booted, phase: 0
+[14611] - Worker 1 (pid: 14619) booted, phase: 0
+[14611] - Worker 2 (pid: 14629) booted, phase: 0
+[14611] - Worker 3 (pid: 14640) booted, phase: 0
+[14611] - Worker 4 (pid: 14650) booted, phase: 0
+[14611] - Worker 5 (pid: 14662) booted, phase: 0
+[14611] - Gracefully shutting down workers...
+[14611] * Restarting...
+[14611] Puma starting in cluster mode...
+[14611] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[14611] * Min threads: 1, max threads: 6
+[14611] * Environment: production
+[14611] * Process workers: 6
+[14611] * Preloading application
+[14611] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[14611] * Daemonizing...
+=== puma startup: 2018-01-17 13:24:30 +0100 ===
+[14790] - Worker 0 (pid: 14794) booted, phase: 0
+[14790] - Worker 1 (pid: 14805) booted, phase: 0
+[14790] - Worker 2 (pid: 14815) booted, phase: 0
+[14790] - Worker 3 (pid: 14824) booted, phase: 0
+[14790] - Worker 4 (pid: 14829) booted, phase: 0
+[14790] - Worker 5 (pid: 14840) booted, phase: 0
+[14790] - Gracefully shutting down workers...
+[14790] * Restarting...
+[14790] Puma starting in cluster mode...
+[14790] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[14790] * Min threads: 1, max threads: 6
+[14790] * Environment: production
+[14790] * Process workers: 6
+[14790] * Preloading application
+[14790] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[14790] * Daemonizing...
+=== puma startup: 2018-01-17 13:48:35 +0100 ===
+[15707] - Worker 0 (pid: 15711) booted, phase: 0
+[15707] - Worker 1 (pid: 15715) booted, phase: 0
+[15707] - Worker 2 (pid: 15725) booted, phase: 0
+[15707] - Worker 3 (pid: 15735) booted, phase: 0
+[15707] - Worker 4 (pid: 15745) booted, phase: 0
+[15707] - Worker 5 (pid: 15755) booted, phase: 0
+[15707] - Gracefully shutting down workers...
+[15707] * Restarting...
+[15707] Puma starting in cluster mode...
+[15707] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[15707] * Min threads: 1, max threads: 6
+[15707] * Environment: production
+[15707] * Process workers: 6
+[15707] * Preloading application
+[15707] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[15707] * Daemonizing...
+=== puma startup: 2018-01-17 13:49:41 +0100 ===
+[15840] - Worker 0 (pid: 15844) booted, phase: 0
+[15840] - Worker 1 (pid: 15849) booted, phase: 0
+[15840] - Worker 2 (pid: 15862) booted, phase: 0
+[15840] - Worker 3 (pid: 15871) booted, phase: 0
+[15840] - Worker 4 (pid: 15880) booted, phase: 0
+[15840] - Worker 5 (pid: 15889) booted, phase: 0
+[15840] - Gracefully shutting down workers...
+[15840] * Restarting...
+[15840] Puma starting in cluster mode...
+[15840] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[15840] * Min threads: 1, max threads: 6
+[15840] * Environment: production
+[15840] * Process workers: 6
+[15840] * Preloading application
+[15840] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[15840] * Daemonizing...
+=== puma startup: 2018-01-17 13:50:18 +0100 ===
+[15945] - Worker 0 (pid: 15949) booted, phase: 0
+[15945] - Worker 1 (pid: 15954) booted, phase: 0
+[15945] - Worker 2 (pid: 15964) booted, phase: 0
+[15945] - Worker 3 (pid: 15973) booted, phase: 0
+[15945] - Worker 4 (pid: 15984) booted, phase: 0
+[15945] - Worker 5 (pid: 15994) booted, phase: 0
+[15945] - Gracefully shutting down workers...
+[15945] * Restarting...
+[15945] Puma starting in cluster mode...
+[15945] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[15945] * Min threads: 1, max threads: 6
+[15945] * Environment: production
+[15945] * Process workers: 6
+[15945] * Preloading application
+[15945] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[15945] * Daemonizing...
+=== puma startup: 2018-01-17 13:52:02 +0100 ===
+[16183] - Worker 0 (pid: 16187) booted, phase: 0
+[16183] - Worker 1 (pid: 16191) booted, phase: 0
+[16183] - Worker 2 (pid: 16202) booted, phase: 0
+[16183] - Worker 3 (pid: 16211) booted, phase: 0
+[16183] - Worker 4 (pid: 16221) booted, phase: 0
+[16183] - Worker 5 (pid: 16232) booted, phase: 0
+[16183] - Gracefully shutting down workers...
+[16183] * Restarting...
+[16183] Puma starting in cluster mode...
+[16183] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16183] * Min threads: 1, max threads: 6
+[16183] * Environment: production
+[16183] * Process workers: 6
+[16183] * Preloading application
+[16183] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16183] * Daemonizing...
+=== puma startup: 2018-01-17 13:55:21 +0100 ===
+[16394] - Worker 0 (pid: 16398) booted, phase: 0
+[16394] - Worker 1 (pid: 16402) booted, phase: 0
+[16394] - Worker 2 (pid: 16412) booted, phase: 0
+[16394] - Worker 3 (pid: 16422) booted, phase: 0
+[16394] - Worker 4 (pid: 16432) booted, phase: 0
+[16394] - Worker 5 (pid: 16442) booted, phase: 0
+[16394] - Gracefully shutting down workers...
+[16394] * Restarting...
+[16394] Puma starting in cluster mode...
+[16394] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16394] * Min threads: 1, max threads: 6
+[16394] * Environment: production
+[16394] * Process workers: 6
+[16394] * Preloading application
+[16394] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16394] * Daemonizing...
+=== puma startup: 2018-01-17 13:59:56 +0100 ===
+[16591] - Worker 0 (pid: 16595) booted, phase: 0
+[16591] - Worker 1 (pid: 16600) booted, phase: 0
+[16591] - Worker 2 (pid: 16609) booted, phase: 0
+[16591] - Worker 3 (pid: 16619) booted, phase: 0
+[16591] - Worker 4 (pid: 16629) booted, phase: 0
+[16591] - Worker 5 (pid: 16639) booted, phase: 0
+[16595] ! Detected parent died, dying[16639] ! Detected parent died, dying[16609] ! Detected parent died, dying[16629] ! Detected parent died, dying
+
+
+[16619] ! Detected parent died, dying
+
+[16600] ! Detected parent died, dying
+=== puma startup: 2018-01-17 14:02:43 +0100 ===
+[16744] - Worker 0 (pid: 16748) booted, phase: 0
+[16744] - Worker 1 (pid: 16752) booted, phase: 0
+[16744] - Worker 2 (pid: 16762) booted, phase: 0
+[16744] - Worker 3 (pid: 16774) booted, phase: 0
+[16744] - Worker 4 (pid: 16783) booted, phase: 0
+[16744] - Worker 5 (pid: 16795) booted, phase: 0
+[16744] - Gracefully shutting down workers...
+[16744] * Restarting...
+[16744] Puma starting in cluster mode...
+[16744] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16744] * Min threads: 1, max threads: 6
+[16744] * Environment: production
+[16744] * Process workers: 6
+[16744] * Preloading application
+[16744] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16744] * Daemonizing...
+=== puma startup: 2018-01-17 14:36:50 +0100 ===
+[18003] - Worker 0 (pid: 18007) booted, phase: 0
+[18003] - Worker 1 (pid: 18011) booted, phase: 0
+[18003] - Worker 2 (pid: 18021) booted, phase: 0
+[18003] - Worker 3 (pid: 18033) booted, phase: 0
+[18003] - Worker 4 (pid: 18041) booted, phase: 0
+[18003] - Worker 5 (pid: 18051) booted, phase: 0
+[18003] - Gracefully shutting down workers...
+[18003] * Restarting...
+[18003] Puma starting in cluster mode...
+[18003] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[18003] * Min threads: 1, max threads: 6
+[18003] * Environment: production
+[18003] * Process workers: 6
+[18003] * Preloading application
+[18003] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[18003] * Daemonizing...
+=== puma startup: 2018-01-17 14:41:01 +0100 ===
+[18360] - Worker 0 (pid: 18364) booted, phase: 0
+[18360] - Worker 1 (pid: 18368) booted, phase: 0
+[18360] - Worker 2 (pid: 18378) booted, phase: 0
+[18360] - Worker 3 (pid: 18388) booted, phase: 0
+[18360] - Worker 4 (pid: 18398) booted, phase: 0
+[18360] - Worker 5 (pid: 18413) booted, phase: 0
+[18360] - Gracefully shutting down workers...
+[18360] * Restarting...
+[18360] Puma starting in cluster mode...
+[18360] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[18360] * Min threads: 1, max threads: 6
+[18360] * Environment: production
+[18360] * Process workers: 6
+[18360] * Preloading application
+[18360] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[18360] * Daemonizing...
+=== puma startup: 2018-01-17 14:50:23 +0100 ===
+[18644] - Worker 0 (pid: 18648) booted, phase: 0
+[18644] - Worker 1 (pid: 18653) booted, phase: 0
+[18644] - Worker 2 (pid: 18663) booted, phase: 0
+[18644] - Worker 3 (pid: 18673) booted, phase: 0
+[18644] - Worker 4 (pid: 18683) booted, phase: 0
+[18644] - Worker 5 (pid: 18695) booted, phase: 0
+[18644] - Gracefully shutting down workers...
+[18644] * Restarting...
+[18644] Puma starting in cluster mode...
+[18644] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[18644] * Min threads: 1, max threads: 6
+[18644] * Environment: production
+[18644] * Process workers: 6
+[18644] * Preloading application
+[18644] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[18644] * Daemonizing...
+=== puma startup: 2018-01-17 15:03:02 +0100 ===
+[18900] - Worker 0 (pid: 18904) booted, phase: 0
+[18900] - Worker 1 (pid: 18909) booted, phase: 0
+[18900] - Worker 2 (pid: 18919) booted, phase: 0
+[18900] - Worker 3 (pid: 18930) booted, phase: 0
+[18900] - Worker 4 (pid: 18940) booted, phase: 0
+[18900] - Worker 5 (pid: 18948) booted, phase: 0
+[18900] - Gracefully shutting down workers...
+[18900] * Restarting...
+[18900] Puma starting in cluster mode...
+[18900] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[18900] * Min threads: 1, max threads: 6
+[18900] * Environment: production
+[18900] * Process workers: 6
+[18900] * Preloading application
+[18900] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[18900] * Daemonizing...
+=== puma startup: 2018-01-17 15:04:02 +0100 ===
+[19052] - Worker 0 (pid: 19056) booted, phase: 0
+[19052] - Worker 1 (pid: 19061) booted, phase: 0
+[19052] - Worker 2 (pid: 19070) booted, phase: 0
+[19052] - Worker 3 (pid: 19081) booted, phase: 0
+[19052] - Worker 4 (pid: 19090) booted, phase: 0
+[19052] - Worker 5 (pid: 19100) booted, phase: 0
+[19052] - Gracefully shutting down workers...
+[19052] * Restarting...
+[19052] Puma starting in cluster mode...
+[19052] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19052] * Min threads: 1, max threads: 6
+[19052] * Environment: production
+[19052] * Process workers: 6
+[19052] * Preloading application
+[19052] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19052] * Daemonizing...
+=== puma startup: 2018-01-17 15:04:33 +0100 ===
+[19171] - Worker 0 (pid: 19175) booted, phase: 0
+[19171] - Worker 1 (pid: 19180) booted, phase: 0
+[19171] - Worker 2 (pid: 19192) booted, phase: 0
+[19171] - Worker 3 (pid: 19199) booted, phase: 0
+[19171] - Worker 4 (pid: 19209) booted, phase: 0
+[19171] - Worker 5 (pid: 19222) booted, phase: 0
+[19171] - Gracefully shutting down workers...
+[19171] * Restarting...
+[19171] Puma starting in cluster mode...
+[19171] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19171] * Min threads: 1, max threads: 6
+[19171] * Environment: production
+[19171] * Process workers: 6
+[19171] * Preloading application
+[19171] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19171] * Daemonizing...
+=== puma startup: 2018-01-17 15:05:01 +0100 ===
+[19277] - Worker 0 (pid: 19281) booted, phase: 0
+[19277] - Worker 1 (pid: 19285) booted, phase: 0
+[19277] - Worker 2 (pid: 19295) booted, phase: 0
+[19277] - Worker 3 (pid: 19305) booted, phase: 0
+[19277] - Worker 4 (pid: 19315) booted, phase: 0
+[19277] - Worker 5 (pid: 19325) booted, phase: 0
+[19277] - Gracefully shutting down workers...
+[19277] * Restarting...
+[19277] Puma starting in cluster mode...
+[19277] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19277] * Min threads: 1, max threads: 6
+[19277] * Environment: production
+[19277] * Process workers: 6
+[19277] * Preloading application
+[19277] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19277] * Daemonizing...
+=== puma startup: 2018-01-17 15:07:02 +0100 ===
+[19398] - Worker 0 (pid: 19402) booted, phase: 0
+[19398] - Worker 1 (pid: 19406) booted, phase: 0
+[19398] - Worker 2 (pid: 19416) booted, phase: 0
+[19398] - Worker 3 (pid: 19426) booted, phase: 0
+[19398] - Worker 4 (pid: 19438) booted, phase: 0
+[19398] - Worker 5 (pid: 19447) booted, phase: 0
+[19398] - Gracefully shutting down workers...
+[19398] * Restarting...
+[19398] Puma starting in cluster mode...
+[19398] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19398] * Min threads: 1, max threads: 6
+[19398] * Environment: production
+[19398] * Process workers: 6
+[19398] * Preloading application
+[19398] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19398] * Daemonizing...
+=== puma startup: 2018-01-17 15:07:30 +0100 ===
+[19529] - Worker 0 (pid: 19533) booted, phase: 0
+[19529] - Worker 1 (pid: 19540) booted, phase: 0
+[19529] - Worker 2 (pid: 19549) booted, phase: 0
+[19529] - Worker 3 (pid: 19557) booted, phase: 0
+[19529] - Worker 4 (pid: 19573) booted, phase: 0
+[19529] - Worker 5 (pid: 19583) booted, phase: 0
+[19529] - Gracefully shutting down workers...
+[19529] * Restarting...
+[19529] Puma starting in cluster mode...
+[19529] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19529] * Min threads: 1, max threads: 6
+[19529] * Environment: production
+[19529] * Process workers: 6
+[19529] * Preloading application
+[19529] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19529] * Daemonizing...
+=== puma startup: 2018-01-17 15:09:29 +0100 ===
+[19746] - Worker 0 (pid: 19750) booted, phase: 0
+[19746] - Worker 1 (pid: 19754) booted, phase: 0
+[19746] - Worker 2 (pid: 19764) booted, phase: 0
+[19746] - Worker 3 (pid: 19774) booted, phase: 0
+[19746] - Worker 4 (pid: 19787) booted, phase: 0
+[19746] - Worker 5 (pid: 19794) booted, phase: 0
+[19746] - Gracefully shutting down workers...
+[19746] * Restarting...
+[19746] Puma starting in cluster mode...
+[19746] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19746] * Min threads: 1, max threads: 6
+[19746] * Environment: production
+[19746] * Process workers: 6
+[19746] * Preloading application
+[19746] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19746] * Daemonizing...
+=== puma startup: 2018-01-17 15:10:33 +0100 ===
+[19859] - Worker 0 (pid: 19863) booted, phase: 0
+[19859] - Worker 1 (pid: 19867) booted, phase: 0
+[19859] - Worker 2 (pid: 19879) booted, phase: 0
+[19859] - Worker 3 (pid: 19892) booted, phase: 0
+[19859] - Worker 4 (pid: 19903) booted, phase: 0
+[19859] - Worker 5 (pid: 19913) booted, phase: 0
+[19859] - Gracefully shutting down workers...
+[19859] * Restarting...
+[19859] Puma starting in cluster mode...
+[19859] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19859] * Min threads: 1, max threads: 6
+[19859] * Environment: production
+[19859] * Process workers: 6
+[19859] * Preloading application
+[19859] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19859] * Daemonizing...
+=== puma startup: 2018-01-17 15:16:30 +0100 ===
+[20053] - Worker 0 (pid: 20057) booted, phase: 0
+[20053] - Worker 1 (pid: 20063) booted, phase: 0
+[20053] - Worker 2 (pid: 20071) booted, phase: 0
+[20053] - Worker 3 (pid: 20084) booted, phase: 0
+[20053] - Worker 4 (pid: 20095) booted, phase: 0
+[20053] - Worker 5 (pid: 20104) booted, phase: 0
+[20053] - Gracefully shutting down workers...
+[20053] * Restarting...
+[20053] Puma starting in cluster mode...
+[20053] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[20053] * Min threads: 1, max threads: 6
+[20053] * Environment: production
+[20053] * Process workers: 6
+[20053] * Preloading application
+[20053] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[20053] * Daemonizing...
+=== puma startup: 2018-01-17 15:18:43 +0100 ===
+[20168] - Worker 0 (pid: 20179) booted, phase: 0
+[20168] - Worker 1 (pid: 20183) booted, phase: 0
+[20168] - Worker 2 (pid: 20193) booted, phase: 0
+[20168] - Worker 3 (pid: 20203) booted, phase: 0
+[20168] - Worker 4 (pid: 20213) booted, phase: 0
+[20168] - Worker 5 (pid: 20223) booted, phase: 0
+[20168] - Gracefully shutting down workers...
+[20168] * Restarting...
+[20168] Puma starting in cluster mode...
+[20168] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[20168] * Min threads: 1, max threads: 6
+[20168] * Environment: production
+[20168] * Process workers: 6
+[20168] * Preloading application
+[20168] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[20168] * Daemonizing...
+=== puma startup: 2018-01-17 15:19:03 +0100 ===
+[20281] - Worker 0 (pid: 20285) booted, phase: 0
+[20281] - Worker 1 (pid: 20290) booted, phase: 0
+[20281] - Worker 2 (pid: 20301) booted, phase: 0
+[20281] - Worker 3 (pid: 20311) booted, phase: 0
+[20281] - Worker 4 (pid: 20321) booted, phase: 0
+[20281] - Worker 5 (pid: 20329) booted, phase: 0
+[20281] - Gracefully shutting down workers...
+[20281] * Restarting...
+[20281] Puma starting in cluster mode...
+[20281] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[20281] * Min threads: 1, max threads: 6
+[20281] * Environment: production
+[20281] * Process workers: 6
+[20281] * Preloading application
+[20281] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[20281] * Daemonizing...
+=== puma startup: 2018-01-17 15:37:54 +0100 ===
+[20878] - Worker 0 (pid: 20882) booted, phase: 0
+[20878] - Worker 1 (pid: 20887) booted, phase: 0
+[20878] - Worker 2 (pid: 20896) booted, phase: 0
+[20878] - Worker 3 (pid: 20906) booted, phase: 0
+[20878] - Worker 4 (pid: 20916) booted, phase: 0
+[20878] - Worker 5 (pid: 20927) booted, phase: 0
+[20878] - Gracefully shutting down workers...
+[20878] * Restarting...
+[20878] Puma starting in cluster mode...
+[20878] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[20878] * Min threads: 1, max threads: 6
+[20878] * Environment: production
+[20878] * Process workers: 6
+[20878] * Preloading application
+[20878] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[20878] * Daemonizing...
+=== puma startup: 2018-01-17 15:45:32 +0100 ===
+[21410] - Worker 0 (pid: 21414) booted, phase: 0
+[21410] - Worker 1 (pid: 21424) booted, phase: 0
+[21410] - Worker 2 (pid: 21434) booted, phase: 0
+[21410] - Worker 3 (pid: 21444) booted, phase: 0
+[21410] - Worker 4 (pid: 21448) booted, phase: 0
+[21410] - Worker 5 (pid: 21464) booted, phase: 0
+[21410] - Gracefully shutting down workers...
+[21410] * Restarting...
+[21410] Puma starting in cluster mode...
+[21410] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[21410] * Min threads: 1, max threads: 6
+[21410] * Environment: production
+[21410] * Process workers: 6
+[21410] * Preloading application
+[21410] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[21410] * Daemonizing...
+=== puma startup: 2018-01-17 15:51:53 +0100 ===
+[21709] - Worker 0 (pid: 21713) booted, phase: 0
+[21709] - Worker 1 (pid: 21718) booted, phase: 0
+[21709] - Worker 2 (pid: 21728) booted, phase: 0
+[21709] - Worker 3 (pid: 21737) booted, phase: 0
+[21709] - Worker 4 (pid: 21747) booted, phase: 0
+[21709] - Worker 5 (pid: 21757) booted, phase: 0
+[21709] - Gracefully shutting down workers...
+[21709] * Restarting...
+[21709] Puma starting in cluster mode...
+[21709] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[21709] * Min threads: 1, max threads: 6
+[21709] * Environment: production
+[21709] * Process workers: 6
+[21709] * Preloading application
+[21709] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[21709] * Daemonizing...
+=== puma startup: 2018-01-17 15:54:19 +0100 ===
+[21900] - Worker 0 (pid: 21904) booted, phase: 0
+[21900] - Worker 1 (pid: 21909) booted, phase: 0
+[21900] - Worker 2 (pid: 21924) booted, phase: 0
+[21900] - Worker 3 (pid: 21931) booted, phase: 0
+[21900] - Worker 4 (pid: 21944) booted, phase: 0
+[21900] - Worker 5 (pid: 21954) booted, phase: 0
+[21900] - Gracefully shutting down workers...
+[21900] * Restarting...
+[21900] Puma starting in cluster mode...
+[21900] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[21900] * Min threads: 1, max threads: 6
+[21900] * Environment: production
+[21900] * Process workers: 6
+[21900] * Preloading application
+[21900] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[21900] * Daemonizing...
+=== puma startup: 2018-01-17 15:55:46 +0100 ===
+[22200] - Worker 0 (pid: 22204) booted, phase: 0
+[22200] - Worker 1 (pid: 22209) booted, phase: 0
+[22200] - Worker 2 (pid: 22220) booted, phase: 0
+[22200] - Worker 3 (pid: 22228) booted, phase: 0
+[22200] - Worker 4 (pid: 22239) booted, phase: 0
+[22200] - Worker 5 (pid: 22251) booted, phase: 0
+[22200] - Gracefully shutting down workers...
+[22200] * Restarting...
+[22200] Puma starting in cluster mode...
+[22200] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[22200] * Min threads: 1, max threads: 6
+[22200] * Environment: production
+[22200] * Process workers: 6
+[22200] * Preloading application
+[22200] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[22200] * Daemonizing...
+=== puma startup: 2018-01-17 15:57:25 +0100 ===
+[22375] - Worker 0 (pid: 22379) booted, phase: 0
+[22375] - Worker 1 (pid: 22384) booted, phase: 0
+[22375] - Worker 2 (pid: 22395) booted, phase: 0
+[22375] - Worker 3 (pid: 22404) booted, phase: 0
+[22375] - Worker 4 (pid: 22416) booted, phase: 0
+[22375] - Worker 5 (pid: 22428) booted, phase: 0
+[22375] - Gracefully shutting down workers...
+[22375] * Restarting...
+[22375] Puma starting in cluster mode...
+[22375] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[22375] * Min threads: 1, max threads: 6
+[22375] * Environment: production
+[22375] * Process workers: 6
+[22375] * Preloading application
+[22375] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[22375] * Daemonizing...
+=== puma startup: 2018-01-17 16:07:11 +0100 ===
+[22832] - Worker 0 (pid: 22836) booted, phase: 0
+[22832] - Worker 1 (pid: 22841) booted, phase: 0
+[22832] - Worker 2 (pid: 22851) booted, phase: 0
+[22832] - Worker 3 (pid: 22861) booted, phase: 0
+[22832] - Worker 4 (pid: 22871) booted, phase: 0
+[22832] - Worker 5 (pid: 22882) booted, phase: 0
+[22832] - Gracefully shutting down workers...
+[22832] * Restarting...
+[22832] Puma starting in cluster mode...
+[22832] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[22832] * Min threads: 1, max threads: 6
+[22832] * Environment: production
+[22832] * Process workers: 6
+[22832] * Preloading application
+[22832] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[22832] * Daemonizing...
+=== puma startup: 2018-01-17 16:08:20 +0100 ===
+[23005] - Worker 0 (pid: 23009) booted, phase: 0
+[23005] - Worker 1 (pid: 23014) booted, phase: 0
+[23005] - Worker 2 (pid: 23024) booted, phase: 0
+[23005] - Worker 3 (pid: 23034) booted, phase: 0
+[23005] - Worker 4 (pid: 23043) booted, phase: 0
+[23005] - Worker 5 (pid: 23054) booted, phase: 0
+[23005] - Gracefully shutting down workers...
+[23005] * Restarting...
+[23005] Puma starting in cluster mode...
+[23005] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23005] * Min threads: 1, max threads: 6
+[23005] * Environment: production
+[23005] * Process workers: 6
+[23005] * Preloading application
+[23005] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23005] * Daemonizing...
+=== puma startup: 2018-01-17 16:12:35 +0100 ===
+[23358] - Worker 0 (pid: 23362) booted, phase: 0
+[23358] - Worker 1 (pid: 23367) booted, phase: 0
+[23358] - Worker 2 (pid: 23376) booted, phase: 0
+[23358] - Worker 3 (pid: 23386) booted, phase: 0
+[23358] - Worker 4 (pid: 23399) booted, phase: 0
+[23358] - Worker 5 (pid: 23407) booted, phase: 0
+[23358] - Gracefully shutting down workers...
+[23358] * Restarting...
+[23358] Puma starting in cluster mode...
+[23358] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23358] * Min threads: 1, max threads: 6
+[23358] * Environment: production
+[23358] * Process workers: 6
+[23358] * Preloading application
+[23358] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23358] * Daemonizing...
+=== puma startup: 2018-01-17 16:13:07 +0100 ===
+[23476] - Worker 0 (pid: 23480) booted, phase: 0
+[23476] - Worker 1 (pid: 23485) booted, phase: 0
+[23476] - Worker 2 (pid: 23494) booted, phase: 0
+[23476] - Worker 3 (pid: 23504) booted, phase: 0
+[23476] - Worker 4 (pid: 23515) booted, phase: 0
+[23476] - Worker 5 (pid: 23524) booted, phase: 0
+[23476] - Gracefully shutting down workers...
+[23476] * Restarting...
+[23476] Puma starting in cluster mode...
+[23476] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23476] * Min threads: 1, max threads: 6
+[23476] * Environment: production
+[23476] * Process workers: 6
+[23476] * Preloading application
+[23476] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23476] * Daemonizing...
+=== puma startup: 2018-01-17 16:17:34 +0100 ===
+[23661] - Worker 0 (pid: 23665) booted, phase: 0
+[23661] - Worker 1 (pid: 23670) booted, phase: 0
+[23661] - Worker 2 (pid: 23680) booted, phase: 0
+[23661] - Worker 3 (pid: 23690) booted, phase: 0
+[23661] - Worker 4 (pid: 23704) booted, phase: 0
+[23661] - Worker 5 (pid: 23712) booted, phase: 0
+[23661] - Gracefully shutting down workers...
+[23661] * Restarting...
+[23661] Puma starting in cluster mode...
+[23661] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23661] * Min threads: 1, max threads: 6
+[23661] * Environment: production
+[23661] * Process workers: 6
+[23661] * Preloading application
+[23661] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23661] * Daemonizing...
+=== puma startup: 2018-01-17 16:20:22 +0100 ===
+[23921] - Worker 0 (pid: 23925) booted, phase: 0
+[23921] - Worker 1 (pid: 23930) booted, phase: 0
+[23921] - Worker 2 (pid: 23940) booted, phase: 0
+[23921] - Worker 3 (pid: 23950) booted, phase: 0
+[23921] - Worker 4 (pid: 23960) booted, phase: 0
+[23921] - Worker 5 (pid: 23970) booted, phase: 0
+[23921] - Gracefully shutting down workers...
+[23921] * Restarting...
+[23921] Puma starting in cluster mode...
+[23921] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[23921] * Min threads: 1, max threads: 6
+[23921] * Environment: production
+[23921] * Process workers: 6
+[23921] * Preloading application
+[23921] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[23921] * Daemonizing...
+=== puma startup: 2018-01-17 16:22:15 +0100 ===
+[24213] - Worker 0 (pid: 24217) booted, phase: 0
+[24213] - Worker 1 (pid: 24221) booted, phase: 0
+[24213] - Worker 2 (pid: 24233) booted, phase: 0
+[24213] - Worker 3 (pid: 24242) booted, phase: 0
+[24213] - Worker 4 (pid: 24252) booted, phase: 0
+[24213] - Worker 5 (pid: 24262) booted, phase: 0
+[24213] - Gracefully shutting down workers...
+[24213] * Restarting...
+[24213] Puma starting in cluster mode...
+[24213] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[24213] * Min threads: 1, max threads: 6
+[24213] * Environment: production
+[24213] * Process workers: 6
+[24213] * Preloading application
+[24213] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[24213] * Daemonizing...
+=== puma startup: 2018-01-18 14:41:18 +0100 ===
+[1873] - Worker 0 (pid: 1877) booted, phase: 0
+[1873] - Worker 1 (pid: 1881) booted, phase: 0
+[1873] - Worker 2 (pid: 1891) booted, phase: 0
+[1873] - Worker 3 (pid: 1902) booted, phase: 0
+[1873] - Worker 4 (pid: 1911) booted, phase: 0
+[1873] - Worker 5 (pid: 1922) booted, phase: 0
+[1873] - Gracefully shutting down workers...
+[1873] * Restarting...
+[1873] Puma starting in cluster mode...
+[1873] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[1873] * Min threads: 1, max threads: 6
+[1873] * Environment: production
+[1873] * Process workers: 6
+[1873] * Preloading application
+[1873] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[1873] * Daemonizing...
+=== puma startup: 2018-01-20 14:36:55 +0100 ===
+[15586] - Worker 0 (pid: 15590) booted, phase: 0
+[15586] - Worker 1 (pid: 15594) booted, phase: 0
+[15586] - Worker 2 (pid: 15604) booted, phase: 0
+[15586] - Worker 3 (pid: 15615) booted, phase: 0
+[15586] - Worker 4 (pid: 15626) booted, phase: 0
+[15586] - Worker 5 (pid: 15635) booted, phase: 0
+[15586] - Gracefully shutting down workers...
+[15586] * Restarting...
+[15586] Puma starting in cluster mode...
+[15586] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[15586] * Min threads: 1, max threads: 6
+[15586] * Environment: production
+[15586] * Process workers: 6
+[15586] * Preloading application
+[15586] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[15586] * Daemonizing...
+=== puma startup: 2018-01-20 14:38:48 +0100 ===
+[15781] - Worker 0 (pid: 15785) booted, phase: 0
+[15781] - Worker 1 (pid: 15790) booted, phase: 0
+[15781] - Worker 2 (pid: 15799) booted, phase: 0
+[15781] - Worker 3 (pid: 15810) booted, phase: 0
+[15781] - Worker 4 (pid: 15819) booted, phase: 0
+[15781] - Worker 5 (pid: 15830) booted, phase: 0
+[15781] - Gracefully shutting down workers...
+[15781] * Restarting...
+[15781] Puma starting in cluster mode...
+[15781] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[15781] * Min threads: 1, max threads: 6
+[15781] * Environment: production
+[15781] * Process workers: 6
+[15781] * Preloading application
+[15781] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[15781] * Daemonizing...
+=== puma startup: 2018-01-20 14:40:13 +0100 ===
+[15964] - Worker 0 (pid: 15968) booted, phase: 0
+[15964] - Worker 1 (pid: 15973) booted, phase: 0
+[15964] - Worker 2 (pid: 15983) booted, phase: 0
+[15964] - Worker 3 (pid: 15992) booted, phase: 0
+[15964] - Worker 4 (pid: 16004) booted, phase: 0
+[15964] - Worker 5 (pid: 16012) booted, phase: 0
+[15964] - Gracefully shutting down workers...
+[15964] * Restarting...
+[15964] Puma starting in cluster mode...
+[15964] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[15964] * Min threads: 1, max threads: 6
+[15964] * Environment: production
+[15964] * Process workers: 6
+[15964] * Preloading application
+[15964] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[15964] * Daemonizing...
+=== puma startup: 2018-01-20 14:40:29 +0100 ===
+[16073] - Worker 0 (pid: 16077) booted, phase: 0
+[16073] - Worker 1 (pid: 16082) booted, phase: 0
+[16073] - Worker 2 (pid: 16091) booted, phase: 0
+[16073] - Worker 3 (pid: 16101) booted, phase: 0
+[16073] - Worker 4 (pid: 16112) booted, phase: 0
+[16073] - Worker 5 (pid: 16121) booted, phase: 0
+[16073] - Gracefully shutting down workers...
+[16073] * Restarting...
+[16073] Puma starting in cluster mode...
+[16073] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16073] * Min threads: 1, max threads: 6
+[16073] * Environment: production
+[16073] * Process workers: 6
+[16073] * Preloading application
+[16073] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16073] * Daemonizing...
+=== puma startup: 2018-01-20 14:41:24 +0100 ===
+[16182] - Worker 0 (pid: 16186) booted, phase: 0
+[16182] - Worker 1 (pid: 16191) booted, phase: 0
+[16182] - Worker 2 (pid: 16204) booted, phase: 0
+[16182] - Worker 3 (pid: 16212) booted, phase: 0
+[16182] - Worker 4 (pid: 16220) booted, phase: 0
+[16182] - Worker 5 (pid: 16231) booted, phase: 0
+[16182] - Gracefully shutting down workers...
+[16182] * Restarting...
+[16182] Puma starting in cluster mode...
+[16182] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16182] * Min threads: 1, max threads: 6
+[16182] * Environment: production
+[16182] * Process workers: 6
+[16182] * Preloading application
+[16182] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16182] * Daemonizing...
+=== puma startup: 2018-01-20 14:43:35 +0100 ===
+[16318] - Worker 0 (pid: 16322) booted, phase: 0
+[16318] - Worker 1 (pid: 16327) booted, phase: 0
+[16318] - Worker 2 (pid: 16337) booted, phase: 0
+[16318] - Worker 3 (pid: 16347) booted, phase: 0
+[16318] - Worker 4 (pid: 16357) booted, phase: 0
+[16318] - Worker 5 (pid: 16366) booted, phase: 0
+[16318] - Gracefully shutting down workers...
+[16318] * Restarting...
+[16318] Puma starting in cluster mode...
+[16318] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[16318] * Min threads: 1, max threads: 6
+[16318] * Environment: production
+[16318] * Process workers: 6
+[16318] * Preloading application
+[16318] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[16318] * Daemonizing...
+=== puma startup: 2018-01-24 15:27:18 +0100 ===
+[3486] - Worker 0 (pid: 3490) booted, phase: 0
+[3486] - Worker 1 (pid: 3494) booted, phase: 0
+[3486] - Worker 2 (pid: 3505) booted, phase: 0
+[3486] - Worker 3 (pid: 3514) booted, phase: 0
+[3486] - Worker 4 (pid: 3524) booted, phase: 0
+[3486] - Worker 5 (pid: 3534) booted, phase: 0
+[3486] - Gracefully shutting down workers...
+[3486] * Restarting...
+[3486] Puma starting in cluster mode...
+[3486] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[3486] * Min threads: 1, max threads: 6
+[3486] * Environment: production
+[3486] * Process workers: 6
+[3486] * Preloading application
+[3486] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[3486] * Daemonizing...
+=== puma startup: 2018-01-24 15:31:49 +0100 ===
+[3703] - Worker 0 (pid: 3707) booted, phase: 0
+[3703] - Worker 1 (pid: 3711) booted, phase: 0
+[3703] - Worker 3 (pid: 3732) booted, phase: 0
+[3703] - Worker 2 (pid: 3721) booted, phase: 0
+[3703] - Worker 4 (pid: 3741) booted, phase: 0
+[3703] - Worker 5 (pid: 3752) booted, phase: 0
+[3703] - Gracefully shutting down workers...
+[3703] * Restarting...
+[3703] Puma starting in cluster mode...
+[3703] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[3703] * Min threads: 1, max threads: 6
+[3703] * Environment: production
+[3703] * Process workers: 6
+[3703] * Preloading application
+[3703] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[3703] * Daemonizing...
+=== puma startup: 2018-01-24 15:32:12 +0100 ===
+[3811] - Worker 0 (pid: 3815) booted, phase: 0
+[3811] - Worker 1 (pid: 3822) booted, phase: 0
+[3811] - Worker 2 (pid: 3830) booted, phase: 0
+[3811] - Worker 3 (pid: 3840) booted, phase: 0
+[3811] - Worker 4 (pid: 3849) booted, phase: 0
+[3811] - Worker 5 (pid: 3859) booted, phase: 0
+[3811] - Gracefully shutting down workers...
+[3811] * Restarting...
+[3811] Puma starting in cluster mode...
+[3811] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[3811] * Min threads: 1, max threads: 6
+[3811] * Environment: production
+[3811] * Process workers: 6
+[3811] * Preloading application
+[3811] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[3811] * Daemonizing...
+=== puma startup: 2018-01-24 15:32:36 +0100 ===
+[3919] - Worker 0 (pid: 3923) booted, phase: 0
+[3919] - Worker 1 (pid: 3928) booted, phase: 0
+[3919] - Worker 2 (pid: 3938) booted, phase: 0
+[3919] - Worker 3 (pid: 3947) booted, phase: 0
+[3919] - Worker 4 (pid: 3958) booted, phase: 0
+[3919] - Worker 5 (pid: 3967) booted, phase: 0
+[3919] - Gracefully shutting down workers...
+[3919] * Restarting...
+[3919] Puma starting in cluster mode...
+[3919] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[3919] * Min threads: 1, max threads: 6
+[3919] * Environment: production
+[3919] * Process workers: 6
+[3919] * Preloading application
+[3919] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[3919] * Daemonizing...
+=== puma startup: 2018-01-24 15:34:23 +0100 ===
+[4067] - Worker 0 (pid: 4071) booted, phase: 0
+[4067] - Worker 1 (pid: 4076) booted, phase: 0
+[4067] - Worker 2 (pid: 4085) booted, phase: 0
+[4067] - Worker 3 (pid: 4096) booted, phase: 0
+[4067] - Worker 4 (pid: 4105) booted, phase: 0
+[4067] - Worker 5 (pid: 4116) booted, phase: 0
+[4067] - Gracefully shutting down workers...
+[4067] * Restarting...
+[4067] Puma starting in cluster mode...
+[4067] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[4067] * Min threads: 1, max threads: 6
+[4067] * Environment: production
+[4067] * Process workers: 6
+[4067] * Preloading application
+[4067] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[4067] * Daemonizing...
+=== puma startup: 2018-01-24 15:35:34 +0100 ===
+[4240] - Worker 0 (pid: 4244) booted, phase: 0
+[4240] - Worker 1 (pid: 4249) booted, phase: 0
+[4240] - Worker 2 (pid: 4259) booted, phase: 0
+[4240] - Worker 3 (pid: 4268) booted, phase: 0
+[4240] - Worker 4 (pid: 4278) booted, phase: 0
+[4240] - Worker 5 (pid: 4289) booted, phase: 0
+[4240] - Gracefully shutting down workers...
+[4240] * Restarting...
+[4240] Puma starting in cluster mode...
+[4240] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[4240] * Min threads: 1, max threads: 6
+[4240] * Environment: production
+[4240] * Process workers: 6
+[4240] * Preloading application
+[4240] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[4240] * Daemonizing...
+=== puma startup: 2018-01-24 15:36:04 +0100 ===
+[4355] - Worker 0 (pid: 4359) booted, phase: 0
+[4355] - Worker 1 (pid: 4364) booted, phase: 0
+[4355] - Worker 2 (pid: 4374) booted, phase: 0
+[4355] - Worker 3 (pid: 4385) booted, phase: 0
+[4355] - Worker 4 (pid: 4393) booted, phase: 0
+[4355] - Worker 5 (pid: 4405) booted, phase: 0
+[4355] - Gracefully shutting down workers...
+[4355] * Restarting...
+[4355] Puma starting in cluster mode...
+[4355] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[4355] * Min threads: 1, max threads: 6
+[4355] * Environment: production
+[4355] * Process workers: 6
+[4355] * Preloading application
+[4355] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[4355] * Daemonizing...
+=== puma startup: 2018-01-25 14:42:05 +0100 ===
+[6732] - Worker 0 (pid: 6736) booted, phase: 0
+[6732] - Worker 1 (pid: 6740) booted, phase: 0
+[6732] - Worker 2 (pid: 6750) booted, phase: 0
+[6732] - Worker 3 (pid: 6761) booted, phase: 0
+[6732] - Worker 4 (pid: 6771) booted, phase: 0
+[6732] - Worker 5 (pid: 6781) booted, phase: 0
+[6732] - Gracefully shutting down workers...
+[6732] * Restarting...
+[6732] Puma starting in cluster mode...
+[6732] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[6732] * Min threads: 1, max threads: 6
+[6732] * Environment: production
+[6732] * Process workers: 6
+[6732] * Preloading application
+[6732] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[6732] * Daemonizing...
+=== puma startup: 2018-01-25 14:42:36 +0100 ===
+[6897] - Worker 0 (pid: 6901) booted, phase: 0
+[6897] - Worker 1 (pid: 6906) booted, phase: 0
+[6897] - Worker 2 (pid: 6916) booted, phase: 0
+[6897] - Worker 3 (pid: 6926) booted, phase: 0
+[6897] - Worker 4 (pid: 6936) booted, phase: 0
+[6897] - Worker 5 (pid: 6946) booted, phase: 0
+[6897] - Gracefully shutting down workers...
+[6897] * Restarting...
+[6897] Puma starting in cluster mode...
+[6897] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[6897] * Min threads: 1, max threads: 6
+[6897] * Environment: production
+[6897] * Process workers: 6
+[6897] * Preloading application
+[6897] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[6897] * Daemonizing...
+=== puma startup: 2018-01-25 14:46:11 +0100 ===
+[7067] - Worker 0 (pid: 7071) booted, phase: 0
+[7067] - Worker 1 (pid: 7076) booted, phase: 0
+[7067] - Worker 2 (pid: 7085) booted, phase: 0
+[7067] - Worker 3 (pid: 7095) booted, phase: 0
+[7067] - Worker 4 (pid: 7105) booted, phase: 0
+[7067] - Worker 5 (pid: 7115) booted, phase: 0
+[7067] - Gracefully shutting down workers...
+[7067] * Restarting...
+[7067] Puma starting in cluster mode...
+[7067] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[7067] * Min threads: 1, max threads: 6
+[7067] * Environment: production
+[7067] * Process workers: 6
+[7067] * Preloading application
+[7067] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[7067] * Daemonizing...
+=== puma startup: 2018-01-25 14:58:10 +0100 ===
+[7638] - Worker 0 (pid: 7642) booted, phase: 0
+[7638] - Worker 1 (pid: 7647) booted, phase: 0
+[7638] - Worker 2 (pid: 7662) booted, phase: 0
+[7638] - Worker 3 (pid: 7669) booted, phase: 0
+[7638] - Worker 4 (pid: 7678) booted, phase: 0
+[7638] - Worker 5 (pid: 7686) booted, phase: 0
+[7638] - Gracefully shutting down workers...
+[7638] * Restarting...
+[7638] Puma starting in cluster mode...
+[7638] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[7638] * Min threads: 1, max threads: 6
+[7638] * Environment: production
+[7638] * Process workers: 6
+[7638] * Preloading application
+[7638] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[7638] * Daemonizing...
+=== puma startup: 2018-01-25 15:03:05 +0100 ===
+[7895] - Worker 0 (pid: 7899) booted, phase: 0
+[7895] - Worker 1 (pid: 7904) booted, phase: 0
+[7895] - Worker 2 (pid: 7914) booted, phase: 0
+[7895] - Worker 3 (pid: 7925) booted, phase: 0
+[7895] - Worker 4 (pid: 7933) booted, phase: 0
+[7895] - Worker 5 (pid: 7943) booted, phase: 0
+[7895] - Gracefully shutting down workers...
+[7895] * Restarting...
+[7895] Puma starting in cluster mode...
+[7895] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[7895] * Min threads: 1, max threads: 6
+[7895] * Environment: production
+[7895] * Process workers: 6
+[7895] * Preloading application
+[7895] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[7895] * Daemonizing...
+=== puma startup: 2018-01-25 15:08:29 +0100 ===
+[8159] - Worker 0 (pid: 8163) booted, phase: 0
+[8159] - Worker 1 (pid: 8167) booted, phase: 0
+[8159] - Worker 2 (pid: 8177) booted, phase: 0
+[8159] - Worker 3 (pid: 8188) booted, phase: 0
+[8159] - Worker 4 (pid: 8197) booted, phase: 0
+[8159] - Worker 5 (pid: 8208) booted, phase: 0
+[8159] - Gracefully shutting down workers...
+[8159] * Restarting...
+[8159] Puma starting in cluster mode...
+[8159] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[8159] * Min threads: 1, max threads: 6
+[8159] * Environment: production
+[8159] * Process workers: 6
+[8159] * Preloading application
+[8159] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[8159] * Daemonizing...
+=== puma startup: 2018-01-25 15:16:58 +0100 ===
+[8769] - Worker 0 (pid: 8773) booted, phase: 0
+[8769] - Worker 1 (pid: 8778) booted, phase: 0
+[8769] - Worker 2 (pid: 8788) booted, phase: 0
+[8769] - Worker 3 (pid: 8799) booted, phase: 0
+[8769] - Worker 4 (pid: 8808) booted, phase: 0
+[8769] - Worker 5 (pid: 8821) booted, phase: 0
+[8769] - Gracefully shutting down workers...
+[8769] * Restarting...
+[8769] Puma starting in cluster mode...
+[8769] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[8769] * Min threads: 1, max threads: 6
+[8769] * Environment: production
+[8769] * Process workers: 6
+[8769] * Preloading application
+[8769] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[8769] * Daemonizing...
+=== puma startup: 2018-01-25 15:17:19 +0100 ===
+[8870] - Worker 0 (pid: 8874) booted, phase: 0
+[8870] - Worker 1 (pid: 8884) booted, phase: 0
+[8870] - Worker 2 (pid: 8894) booted, phase: 0
+[8870] - Worker 3 (pid: 8904) booted, phase: 0
+[8870] - Worker 4 (pid: 8914) booted, phase: 0
+[8870] - Worker 5 (pid: 8924) booted, phase: 0
+[8870] - Gracefully shutting down workers...
+[8870] * Restarting...
+[8870] Puma starting in cluster mode...
+[8870] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[8870] * Min threads: 1, max threads: 6
+[8870] * Environment: production
+[8870] * Process workers: 6
+[8870] * Preloading application
+[8870] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[8870] * Daemonizing...
+=== puma startup: 2018-01-25 15:28:58 +0100 ===
+[9430] - Worker 0 (pid: 9434) booted, phase: 0
+[9430] - Worker 1 (pid: 9438) booted, phase: 0
+[9430] - Worker 2 (pid: 9450) booted, phase: 0
+[9430] - Worker 3 (pid: 9458) booted, phase: 0
+[9430] - Worker 4 (pid: 9473) booted, phase: 0
+[9430] - Worker 5 (pid: 9480) booted, phase: 0
+[9430] - Gracefully shutting down workers...
+[9430] * Restarting...
+[9430] Puma starting in cluster mode...
+[9430] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[9430] * Min threads: 1, max threads: 6
+[9430] * Environment: production
+[9430] * Process workers: 6
+[9430] * Preloading application
+[9430] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[9430] * Daemonizing...
+=== puma startup: 2018-01-27 18:06:08 +0100 ===
+[19554] - Worker 0 (pid: 19558) booted, phase: 0
+[19554] - Worker 1 (pid: 19563) booted, phase: 0
+[19554] - Worker 2 (pid: 19573) booted, phase: 0
+[19554] - Worker 3 (pid: 19582) booted, phase: 0
+[19554] - Worker 4 (pid: 19593) booted, phase: 0
+[19554] - Worker 5 (pid: 19603) booted, phase: 0
+[19554] - Gracefully shutting down workers...
+[19554] * Restarting...
+[19554] Puma starting in cluster mode...
+[19554] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19554] * Min threads: 1, max threads: 6
+[19554] * Environment: production
+[19554] * Process workers: 6
+[19554] * Preloading application
+[19554] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19554] * Daemonizing...
+=== puma startup: 2018-01-27 18:07:19 +0100 ===
+[19673] - Worker 0 (pid: 19677) booted, phase: 0
+[19673] - Worker 1 (pid: 19681) booted, phase: 0
+[19673] - Worker 2 (pid: 19693) booted, phase: 0
+[19673] - Worker 3 (pid: 19701) booted, phase: 0
+[19673] - Worker 4 (pid: 19712) booted, phase: 0
+[19673] - Worker 5 (pid: 19724) booted, phase: 0
+[19673] - Gracefully shutting down workers...
+[19673] * Restarting...
+[19673] Puma starting in cluster mode...
+[19673] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[19673] * Min threads: 1, max threads: 6
+[19673] * Environment: production
+[19673] * Process workers: 6
+[19673] * Preloading application
+[19673] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[19673] * Daemonizing...
+=== puma startup: 2018-01-28 10:30:37 +0100 ===
+[3336] - Worker 0 (pid: 3340) booted, phase: 0
+[3336] - Worker 1 (pid: 3347) booted, phase: 0
+[3336] - Worker 2 (pid: 3355) booted, phase: 0
+[3336] - Worker 3 (pid: 3365) booted, phase: 0
+[3336] - Worker 4 (pid: 3374) booted, phase: 0
+[3336] - Worker 5 (pid: 3384) booted, phase: 0
+[3336] - Gracefully shutting down workers...
+[3336] * Restarting...
+[3336] Puma starting in cluster mode...
+[3336] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[3336] * Min threads: 1, max threads: 6
+[3336] * Environment: production
+[3336] * Process workers: 6
+[3336] * Preloading application
+[3336] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[3336] * Daemonizing...
+=== puma startup: 2018-02-08 11:29:15 +0100 ===
+[17268] - Worker 0 (pid: 17272) booted, phase: 0
+[17268] - Worker 1 (pid: 17276) booted, phase: 0
+[17268] - Worker 2 (pid: 17286) booted, phase: 0
+[17268] - Worker 3 (pid: 17296) booted, phase: 0
+[17268] - Worker 4 (pid: 17308) booted, phase: 0
+[17268] - Worker 5 (pid: 17322) booted, phase: 0
+[17268] - Gracefully shutting down workers...
+[17268] * Restarting...
+[17268] Puma starting in cluster mode...
+[17268] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[17268] * Min threads: 1, max threads: 6
+[17268] * Environment: production
+[17268] * Process workers: 6
+[17268] * Preloading application
+[17268] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[17268] * Daemonizing...
+=== puma startup: 2018-02-08 11:30:31 +0100 ===
+[17465] - Worker 0 (pid: 17469) booted, phase: 0
+[17465] - Worker 1 (pid: 17473) booted, phase: 0
+[17465] - Worker 2 (pid: 17485) booted, phase: 0
+[17465] - Worker 3 (pid: 17495) booted, phase: 0
+[17465] - Worker 4 (pid: 17504) booted, phase: 0
+[17465] - Worker 5 (pid: 17515) booted, phase: 0
+[17465] - Gracefully shutting down workers...
+[17465] * Restarting...
+[17465] Puma starting in cluster mode...
+[17465] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[17465] * Min threads: 1, max threads: 6
+[17465] * Environment: production
+[17465] * Process workers: 6
+[17465] * Preloading application
+[17465] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[17465] * Daemonizing...
+=== puma startup: 2018-02-08 11:31:26 +0100 ===
+[17628] - Worker 0 (pid: 17632) booted, phase: 0
+[17628] - Worker 1 (pid: 17636) booted, phase: 0
+[17628] - Worker 2 (pid: 17650) booted, phase: 0
+[17628] - Worker 3 (pid: 17665) booted, phase: 0
+[17628] - Worker 4 (pid: 17674) booted, phase: 0
+[17628] - Worker 5 (pid: 17683) booted, phase: 0
+[17628] - Gracefully shutting down workers...
+[17628] * Restarting...
+[17628] Puma starting in cluster mode...
+[17628] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[17628] * Min threads: 1, max threads: 6
+[17628] * Environment: production
+[17628] * Process workers: 6
+[17628] * Preloading application
+[17628] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[17628] * Daemonizing...
+=== puma startup: 2018-02-08 11:35:47 +0100 ===
+[17960] - Worker 0 (pid: 17964) booted, phase: 0
+[17960] - Worker 1 (pid: 17974) booted, phase: 0
+[17960] - Worker 2 (pid: 17984) booted, phase: 0
+[17960] - Worker 3 (pid: 17989) booted, phase: 0
+[17960] - Worker 4 (pid: 17998) booted, phase: 0
+[17960] - Worker 5 (pid: 18010) booted, phase: 0
+[17960] - Gracefully shutting down workers...
+[17960] * Restarting...
+[17960] Puma starting in cluster mode...
+[17960] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[17960] * Min threads: 1, max threads: 6
+[17960] * Environment: production
+[17960] * Process workers: 6
+[17960] * Preloading application
+[17960] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[17960] * Daemonizing...
+=== puma startup: 2018-02-08 11:43:28 +0100 ===
+[18329] - Worker 0 (pid: 18333) booted, phase: 0
+[18329] - Worker 1 (pid: 18339) booted, phase: 0
+[18329] - Worker 2 (pid: 18351) booted, phase: 0
+[18329] - Worker 3 (pid: 18363) booted, phase: 0
+[18329] - Worker 4 (pid: 18373) booted, phase: 0
+[18329] - Worker 5 (pid: 18383) booted, phase: 0
+[18329] - Gracefully shutting down workers...
+[18329] * Restarting...
+[18329] Puma starting in cluster mode...
+[18329] * Version 3.11.0 (ruby 2.4.1-p111), codename: Love Song
+[18329] * Min threads: 1, max threads: 6
+[18329] * Environment: production
+[18329] * Process workers: 6
+[18329] * Preloading application
+[18329] * Inherited unix:///var/www/cryptografs/shared/sockets/puma.sock
+[18329] * Daemonizing...
+=== puma startup: 2018-02-08 11:46:10 +0100 ===
+[18514] - Worker 0 (pid: 18518) booted, phase: 0
+[18514] - Worker 1 (pid: 18524) booted, phase: 0
+[18514] - Worker 2 (pid: 18532) booted, phase: 0
+[18514] - Worker 3 (pid: 18545) booted, phase: 0
+[18514] - Worker 4 (pid: 18552) booted, phase: 0
+[18514] - Worker 5 (pid: 18565) booted, phase: 0

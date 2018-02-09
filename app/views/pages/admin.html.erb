@@ -9,6 +9,8 @@
     <%= render 'new_group' %>
 <% elsif @model_management.present? %>
     <%= render 'miner_models' %>
-<% else %>
-
+<% elsif @products.present? %>
+    <%= render 'products_admin' %>
+<% elsif @edit_product.present? %>
+    <%= render 'edit_product' %>
 <% end %>

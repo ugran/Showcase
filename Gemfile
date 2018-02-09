@@ -40,6 +40,10 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
 gem 'pg'
+gem "recaptcha", require: "recaptcha/rails"
+gem 'rufus-scheduler'
+gem "redis", "~> 3.0"
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
