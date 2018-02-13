@@ -10,15 +10,18 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  database: miner_db
+  username: miner_db_admin # replace this with your own user name
+  password: Sh3m1shv1!#* # replace this with your own password
+  host: localhost
+  encoding: UTF8
+  pool: 5
+  timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: db/test.sqlite3
 
 production:
   adapter: postgresql

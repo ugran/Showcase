@@ -61,4 +61,8 @@ Rails.application.configure do
     password:             'Wag12628',
     authentication:       'plain',
     enable_starttls_auto: true  }
+
+    HttpLog.configure do |config|
+      config.log_headers = true
+    end
 end

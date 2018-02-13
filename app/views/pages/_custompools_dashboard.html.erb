@@ -17,6 +17,9 @@
             </a>
         </li>
     <% end %>
+    <li class='nav-item'>
+        Current Balance: BTC=<%= eval(@show)[:BTC] %>; LTC=<%= eval(@show)[:LTC] %>
+    </li>
 </ul>
 <div class="tab-content" id="myTabContent">
     <% if @btc.present? %>
@@ -38,6 +41,7 @@
                         <table class='table'>
                             <thead>
                                 <th>#</th>
+                                <th>Worker Name</th>
                                 <th>Hashrate</th>
                                 <th>Avg. Hashrate</th>
                                 <th>Temp.</th>
@@ -46,6 +50,7 @@
                                 <% @miners.where(algorithm: a.algorithm).each_with_index do |t,i| %>
                                     <tr>
                                         <td><%= i+1 %></td>
+                                        <td><%= t.worker_name.split('.')[1] %></td>
                                         <td><%= t.hashrate %></td>
                                         <td><%= t.avg_hashrate %></td>
                                         <td><%= t.temperature%>&deg;</td>

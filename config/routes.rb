@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   match '/contact' => 'pages#contact', as: 'contact', via: [:get,:post]
   match '/admin' => 'pages#admin', as: 'admin', via: [:get, :post, :patch]
   match '/products' => 'pages#products', as: 'products', via: [:get, :post]
+  match '/test' => 'tests#index', as: 'test', via: [:get, :post]
 
   mount ActionCable.server => '/cable'
 end

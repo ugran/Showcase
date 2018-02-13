@@ -10,6 +10,14 @@
             <%= f.text_field :name, value: @edit_user.name ,class: "form-control" %>
         </div>
         <div class="form-group">
+            <%= f.label :poloniex_key %><br />
+            <%= f.text_field :poloniex_key, value: @edit_user.poloniex_key, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :poloniex_secret %><br />
+            <%= f.text_field :poloniex_secret, value: @edit_user.poloniex_secret, class: "form-control" %>
+        </div>
+        <div class="form-group">
             <%= f.label :nicehash_wallet %><br />
             <%= f.text_field :nicehash_wallet, value: @edit_user.nicehash_wallet ,class: "form-control" %>
         </div>

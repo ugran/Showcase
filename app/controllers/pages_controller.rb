@@ -70,7 +70,7 @@ class PagesController < ApplicationController
                             user = User.find_by(nicehash_wallet: t[:wallet])
                             if user.present?
                                 user.miners.each do |t|
-                                    miner_info = miners_array.select{ |m| m[:worker] == t.worker_name}
+                                    miner_info = miners_array.select{ |m| m[:worker] == t.worker_name.gsub(' ', '')}
                                     if miner_info.present?
                                         t.update(hashrate: miner_info.first[:hashrate], avg_hashrate: miner_info.first[:avg_hashrate], temperature: miner_info.first[:temperature])
                                     end
@@ -102,6 +102,23 @@ class PagesController < ApplicationController
                         if current_user.slushpool_api_key.present?
                             @btc = JSON.parse(URI.parse('https://slushpool.com/accounts/profile/json/'+slush_api).read, :symbolize_names => true)
                         end
+                        if current_user.nounce.present?
+                            nounce = current_user.nounce+1
+                        else
+                            nounce = 0
+                        end
+                        current_user.update(nounce:nounce)
+                        private_key = current_user.poloniex_secret
+                        data = URI.encode_www_form({"command" => "returnBalances", "nonce" => nounce})
+                        digest = OpenSSL::Digest.new('sha512')
+                        signature = OpenSSL::HMAC.hexdigest(digest, private_key, data)
+                        uri = URI.parse('https://poloniex.com/tradingApi')
+                        https = Net::HTTP.new(uri.host,uri.port)
+                        https.use_ssl = true
+                        header = {"Sign": signature, "Key": current_user.poloniex_key, 
+                        'Content-Type': 'application/x-www-form-urlencoded'}
+                        req = https.post(uri.path, data, header)
+                        @show = req.body
                         respond_to do |format|
                             format.html
                             format.js
@@ -133,7 +150,7 @@ class PagesController < ApplicationController
             else
                 group_id = params[:group_id].to_i
             end
-            User.find(params[:edit_user_id].to_i).update(nicehash_wallet: params[:nicehash_wallet], api_id: params[:api_id], api_key: params[:api_key], percent_fee: params[:percent_fee], fixed_fee: params[:fixed_fee], btc_wallet: params[:btc_wallet], eth_wallet: params[:eth_wallet], ltc_wallet: params[:ltc_wallet], group_id: group_id, litecoinpool_api_key: params[:litecoinpool_api_key], slushpool_api_key: params[:slushpool_api_key], name: params[:name])
+            User.find(params[:edit_user_id].to_i).update(nicehash_wallet: params[:nicehash_wallet], api_id: params[:api_id], api_key: params[:api_key], percent_fee: params[:percent_fee], fixed_fee: params[:fixed_fee], btc_wallet: params[:btc_wallet], eth_wallet: params[:eth_wallet], ltc_wallet: params[:ltc_wallet], group_id: group_id, litecoinpool_api_key: params[:litecoinpool_api_key], slushpool_api_key: params[:slushpool_api_key], name: params[:name], poloniex_key: params[:poloniex_key], poloniex_secret: params[:poloniex_secret])
             redirect_back fallback_location: admin_path, notice: "User Updated."
         elsif params[:toggle_user_activation].present?
             @user_management = 1

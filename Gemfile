@@ -7,15 +7,13 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'rails', '5.2.0.rc1'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -32,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'bcrypt', platforms: :ruby
+gem 'bcrypt', platform: :ruby
 gem 'izitoast'
 gem 'socket.io-rails'
 
@@ -44,6 +42,8 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'rufus-scheduler'
 gem "redis", "~> 3.0"
 gem "paperclip", "~> 5.0.0"
+gem 'wamp_rails', platform: :ruby
+gem 'httplog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -68,6 +68,7 @@
         <thead class="thead-dark">
             <tr>
             <th scope="col">#</th>
+            <th scope="col">Worker Name</th>
             <th scope="col">Hash Rate</th>
             <th scope="col">Hash Rate 24h</th>
             <th scope="col">Valid Shares</th>
@@ -78,16 +79,19 @@
             </tr>
         </thead>
         <tbody>
-            <% @ltc[:workers].select{|k,v| current_user.miners.where(algorithm: 'Scrypt').map(&:worker_name).include? k.to_s}.values.each_with_index do |t,i| %>
+            <% index = 0 %>
+            <% @ltc[:workers].select{|k,v| current_user.miners.where(algorithm: 'Scrypt').map(&:worker_name).map {|s| s.gsub(' ', '')}.include? k.to_s}.each do |k,v| %>
                 <tr>
-                    <td><%= i+1 %></td>
-                    <td><%= t[:hash_rate].to_f/1000 %> MH/s</td>
-                    <td><%= t[:hash_rate_24h].to_f/1000 %> MH/s</td>
-                    <td><%= t[:valid_shares] %></td>
-                    <td><%= t[:stale_shares] %></td>
-                    <td><%= t[:invalid_shares] %></td>
-                    <td><%= (t[:rewards]-t[:rewards]*current_user.percent_fee.to_i/100).round(6) %></td>
-                    <td><%= (t[:rewards_24h]-t[:rewards_24h]*current_user.percent_fee.to_i/100).round(6) %></td>
+                    <td><%= index %></td>
+                    <% index += 1 %>
+                    <td><%= k.to_s.split('.')[1] %></td>
+                    <td><%= v[:hash_rate].to_f/1000 %> MH/s</td>
+                    <td><%= v[:hash_rate_24h].to_f/1000 %> MH/s</td>
+                    <td><%= v[:valid_shares] %></td>
+                    <td><%= v[:stale_shares] %></td>
+                    <td><%= v[:invalid_shares] %></td>
+                    <td><%= (v[:rewards]-v[:rewards]*current_user.percent_fee.to_i/100).round(6) %></td>
+                    <td><%= (v[:rewards_24h]-v[:rewards_24h]*current_user.percent_fee.to_i/100).round(6) %></td>
                 </tr>
             <% end %>
         </tbody>
