@@ -1,0 +1,61 @@
+<div class='container'>
+  <p style='margin-top:20px; font-weight:bold'>NEW PRODUCT</p>
+  <%= form_with(model: @product, url: admin_path, local: true) do |f| %>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :category %><br />
+        <%= f.select :category, options_for_select([["ASIC Miners", 1], ["GPU Miners", 2], ["Other Parts", 3], ["Software", 4]]), class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= f.label :description %><br />
+        <%= f.text_area :description, class: "form-control", id: "ck_description" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :specifications %><br />
+        <%= f.text_area :specifications, class: "form-control", id: "ck_specifications" %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= f.file_field :image, class: 'form-control' %>
+    </div>
+    <%= f.submit('Submit', class:'btn btn-dark') %>
+  <% end %>
+
+    <table class='table' style="margin-top:20px">
+      <thead>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody>
+        <% if @products_all.present? %>
+          <% @products_all.each do |t| %>
+            <tr>
+              <td><%= t.name %></td>
+              <td><% if t.category == 1 %>ASIC Miners <% elsif t.category == 2 %>GPU Miners<% else %>Other Parts<% end %></td>
+              <th><%= link_to 'Edit', admin_path(edit_product: t.id) %></th>
+              <td><%= link_to 'Delete', admin_path(delete_product: t.id), :"data-turbolinks" => false %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+<script>
+  $(document).ready(function(){
+    ClassicEditor.create( document.querySelector('#ck_description' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#ck_specifications' )).catch( error => {
+      console.error( error );
+    });
+  });
+</script>

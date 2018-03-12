@@ -1,0 +1,107 @@
+<div id='ltc-dashboard' style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
+    <div id='ltc-loaded' style='display:none;'>
+        <div class='row'>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1;'>Total Hashrate</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><span id='total-hashrate'></span> MH/s</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Total Rewards</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><span id='total-rewards'></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Paid Rewards</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><span id='paid-rewards'></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em'>Unpaid Rewards</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><span id='unpaid-rewards'></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style='margin-top:20px;'>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Expected 24h Reward</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><span id='expected-rewards'></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Past 24h rewards</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><span id='past-rewards'></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Estimated Electricity Cost</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'>$ <%= current_user.fixed_fee %></p>
+                    </div>
+                </div>
+            </div>
+            <% if @group.present? %>
+                <div class="col-sm-6 col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Current Balance</h4>
+                            <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'>$ <span id='cur-ltc'></span></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <table class="table table-bordered table-hover" style='margin-top:20px;'>
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Worker Name</th>
+                <th scope="col">Hash Rate</th>
+                <th scope="col">Hash Rate 24h</th>
+                <th scope="col">Valid Shares</th>
+                <th scope="col">Stale Shares</th>
+                <th scope="col">Invalid Shares</th>
+                <th scope="col">Rewards</th>
+                <th scope="col">Rewards 24h</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @miners.where(algorithm: 'Scrypt').each_with_index do |t,i| %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= t.worker_name %></td>
+                        <td><span id='worker-hashrate-<%= t.worker_name.gsub('.','') %>'></span><%#= BigDecimal.new((v[:hash_rate].to_f/1000).to_s).floor(2) %> MH/s</td>
+                        <td><span id='worker-hashrate-24-<%= t.worker_name.gsub('.','') %>'></span><%#= BigDecimal.new((v[:hash_rate_24h].to_f/1000).to_s).floor(2) %> MH/s</td>
+                        <td><span id='valid-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:valid_shares] %></td>
+                        <td><span id='stale-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:stale_shares] %></td>
+                        <td><span id='invalid-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:invalid_shares] %></td>
+                        <td><span id='rewards-<%= t.worker_name.gsub('.','') %>'></span><%#= (v[:rewards]-v[:rewards]*current_user.percent_fee.to_i/100).round(6) %></td>
+                        <td><span id='rewards-24-<%= t.worker_name.gsub('.','') %>'></span><%#= (v[:rewards_24h]-v[:rewards_24h]*current_user.percent_fee.to_i/100).round(6) %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <div id='ltc-loading' style='width:100%; text-align:center;'>
+        <%= image_tag 'loader.gif', style: 'width:640px; height:360px;' %>
+    </div>
+</div>

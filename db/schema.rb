@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_02_12_150040) do
+ActiveRecord::Schema.define(version: 2018_03_05_101326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "awesome_infos", force: :cascade do |t|
-    t.json "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "btc_histories", force: :cascade do |t|
     t.decimal "price"
@@ -46,6 +40,31 @@ ActiveRecord::Schema.define(version: 2018_02_12_150040) do
     t.string "api_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "nounce", default: 0, null: false
+    t.string "poloniex_key"
+    t.string "poloniex_secret"
+    t.decimal "accubtc", default: "0.0", null: false
+    t.decimal "accultc", default: "0.0", null: false
+    t.decimal "accueth", default: "0.0", null: false
+    t.decimal "accudash", default: "0.0", null: false
+    t.decimal "accusia", default: "0.0", null: false
+    t.json "unpaid_balances"
+  end
+
+  create_table "litecoinpoolstats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.decimal "total_hashrate", default: "0.0", null: false
+    t.decimal "total_rewards", default: "0.0", null: false
+    t.decimal "paid_rewards", default: "0.0", null: false
+    t.decimal "unpaid_rewards", default: "0.0", null: false
+    t.decimal "expected_rewards", default: "0.0", null: false
+    t.decimal "past_24_rewards", default: "0.0", null: false
+    t.json "hashrate_distribution"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_litecoinpoolstats_on_group_id"
+    t.index ["user_id"], name: "index_litecoinpoolstats_on_user_id"
   end
 
   create_table "ltc_histories", force: :cascade do |t|
@@ -80,6 +99,8 @@ ActiveRecord::Schema.define(version: 2018_02_12_150040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "minermodel_id"
+    t.decimal "accuhash", default: "0.0", null: false
+    t.decimal "prevhash", default: "0.0", null: false
     t.index ["minermodel_id"], name: "index_miners_on_minermodel_id"
     t.index ["user_id"], name: "index_miners_on_user_id"
   end
@@ -102,6 +123,37 @@ ActiveRecord::Schema.define(version: 2018_02_12_150040) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "slushpoolstats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.decimal "total_hashrate", default: "0.0", null: false
+    t.decimal "confirmed_reward", default: "0.0", null: false
+    t.decimal "unconfirmed_reward", default: "0.0", null: false
+    t.decimal "estimated_reward", default: "0.0", null: false
+    t.json "hashrate_distribution"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_slushpoolstats_on_group_id"
+    t.index ["user_id"], name: "index_slushpoolstats_on_user_id"
+  end
+
+  create_table "user_balances", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "paid_btc", default: "0.0", null: false
+    t.decimal "paid_ltc", default: "0.0", null: false
+    t.decimal "paid_eth", default: "0.0", null: false
+    t.decimal "paid_dash", default: "0.0", null: false
+    t.decimal "paid_sia", default: "0.0", null: false
+    t.decimal "cur_btc", default: "0.0", null: false
+    t.decimal "cur_ltc", default: "0.0", null: false
+    t.decimal "cur_eth", default: "0.0", null: false
+    t.decimal "cur_dash", default: "0.0", null: false
+    t.decimal "cur_sia", default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_balances_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,7 +187,17 @@ ActiveRecord::Schema.define(version: 2018_02_12_150040) do
     t.string "name"
     t.string "poloniex_key"
     t.string "poloniex_secret"
-    t.integer "nounce"
+    t.integer "nounce", default: 0, null: false
+    t.decimal "paid_btc", default: "0.0", null: false
+    t.decimal "paid_ltc", default: "0.0", null: false
+    t.decimal "paid_eth", default: "0.0", null: false
+    t.decimal "paid_dash", default: "0.0", null: false
+    t.decimal "paid_sia", default: "0.0", null: false
+    t.decimal "cur_btc", default: "0.0", null: false
+    t.decimal "cur_ltc", default: "0.0", null: false
+    t.decimal "cur_eth", default: "0.0", null: false
+    t.decimal "cur_dash", default: "0.0", null: false
+    t.decimal "cur_sia", default: "0.0", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

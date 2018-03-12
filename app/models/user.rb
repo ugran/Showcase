@@ -6,4 +6,5 @@ class User < ApplicationRecord
   
   has_many :miners
   belongs_to :group, optional: true
+  has_one :user_balance
 end

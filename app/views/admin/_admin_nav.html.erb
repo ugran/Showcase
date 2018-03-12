@@ -1,0 +1,36 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <% if @home == 1 %>
+            <%= link_to "Home", admin_path, class: 'nav-link active' %>
+        <% else %>
+            <%= link_to "Home", admin_path, class: 'nav-link' %>
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <% if @user_management == 1 %>
+            <%= link_to "User Management", admin_path(user_management: 1), class: 'nav-link active' %>
+        <% else %>
+            <%= link_to "User Management", admin_path(user_management: 1), class: 'nav-link' %>
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <% if @miner_models == 1 %>
+            <%= link_to "Miner Models", admin_path(miner_models: 1), class: 'nav-link active' %>
+        <% else %>
+            <%= link_to "Miner Models", admin_path(miner_models: 1), class: 'nav-link' %>
+        <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Products", admin_path(products: 1), class: 'nav-link' %>
+    </li>
+    <li class='nav-item'>
+        <%= link_to 'Restart Price', admin_path(restart_price_job: 1), data: {:confirm => 'Are you sure?'}, class: 'nav-link' %>
+    </li>
+    <li class='nav-item'>
+        <%= link_to 'Restart Pools', admin_path(restart_pools: 1), data: {:confirm => 'Are you sure?'}, class: 'nav-link' %>
+    </li>
+    <li class='nav-item'>
+        <a href='javascript:void(0)' onclick='$("#sidekiq-restart").show();' class='nav-link'>Awesome/Balances</a>
+        <%= link_to 'Restart Awesome/Balances', admin_path(restart_sidekiq: 1), class: 'btn btn-danger', id: 'sidekiq-restart' ,style: 'margin:20px; display:none;', data: {:confirm => 'Are you sure?'}, remote: true, onclick: '$("#sidekiq-restart").hide();' %>
+    </li>
+</ul>

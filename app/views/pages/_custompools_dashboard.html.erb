@@ -17,9 +17,6 @@
             </a>
         </li>
     <% end %>
-    <li class='nav-item'>
-        Current Balance: BTC=<%= eval(@show)[:BTC] %>; LTC=<%= eval(@show)[:LTC] %>
-    </li>
 </ul>
 <div class="tab-content" id="myTabContent">
     <% if @btc.present? %>
@@ -32,7 +29,7 @@
             <%= render 'litecoinpool_dashboard' %>
         </div>
     <% end %>
-    <% if @awesome.present? %>
+    <% if @miners.present? %>
         <div style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
             <div class='row'>
                 <% @miners.select(:algorithm).distinct.each do |a| %>

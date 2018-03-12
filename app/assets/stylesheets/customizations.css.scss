@@ -24,6 +24,14 @@ HTML, BODY {
   color:white;
 }
 
+#ltc-loading.inactive {
+  display: none;
+}
+
+#btc-loading.inactive {
+  display: none;
+}
+
 .selector-for-some-widget {
   box-sizing: content-box;
 }

@@ -39,10 +39,9 @@ gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
 gem 'pg'
 gem "recaptcha", require: "recaptcha/rails"
-gem 'rufus-scheduler'
+gem 'sidekiq'
 gem "redis", "~> 3.0"
 gem "paperclip", "~> 5.0.0"
-gem 'wamp_rails', platform: :ruby
 gem 'httplog'
 
 group :development, :test do

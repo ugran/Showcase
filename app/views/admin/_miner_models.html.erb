@@ -1,0 +1,107 @@
+<div class='container'>
+    <p style='margin-top:20px; font-weight:bold'>NEW MODEL</p>
+    <%= form_with( url: admin_path, local: true) do |f| %>
+        <div class="form-group">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :speed %><br />
+            <%= f.number_field :speed, class: "form-control", step: :any %>
+        </div>
+        <div class="form-group">
+            <%= f.label :unit %><br />
+            <%= f.select :unit, options_for_select(['H','KH','MH','GH','TH']), {} ,class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :algo %><br />
+            <%= f.select :algo, options_for_select(Nsalgo.pluck(:name)), {} ,class: 'form-control' %>
+        </div>
+        <%= f.submit('Submit', class:'btn btn-dark') %>
+    <% end %>
+    <p style='margin-top:20px; font-weight:bold'>NEW ALGO</p>
+    <%= form_with( url: admin_path, local: true) do |f| %>
+        <div class="form-group">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :number %><br />
+            <%= f.number_field :number, class: "form-control", step: :any %>
+        </div>
+        <%= f.submit('Submit', class:'btn btn-dark') %>
+    <% end %>
+    <div class='row' style='margin-top:30px;'>
+        <div class='col-md-8'>
+            <table class='table'>
+                <thead>
+                    <th>Name</th>
+                    <th>Speed</th>
+                    <th>Unit</th>
+                    <th>Algo</th>
+                </thead>
+                <tbody>
+                    <% @miner_models.each do |t| %>
+                        <tr>
+                            <td><%= t.name %></td>
+                            <th><%= t.speed %></th>
+                            <th><%= t.unit %></th>
+                            <th><%= t.algo %></th>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <div class='col-md-4'>
+            <table class='table'>
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                </thead>
+                <tbody>
+                    <% @nsalgos.order(:number).each do |t| %>
+                        <tr>
+                            <td><%= t.number %></td>
+                            <th><%= t.name %></th>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div style='margin-top:30px;'>
+0 = Scrypt<br>
+1 = SHA256<br>
+2 = ScryptNf<br>
+3 = X11<br>
+4 = X13<br>
+5 = Keccak<br>
+6 = X15<br>
+7 = Nist5<br>
+8 = NeoScrypt<br>
+9 = Lyra2RE<br>
+10 = WhirlpoolX<br>
+11 = Qubit<br>
+12 = Quark<br>
+13 = Axiom<br>
+14 = Lyra2REv2<br>
+15 = ScryptJaneNf16<br>
+16 = Blake256r8<br>
+17 = Blake256r14<br>
+18 = Blake256r8vnl<br>
+19 = Hodl<br>
+20 = DaggerHashimoto<br>
+21 = Decred<br>
+22 = CryptoNight<br>
+23 = Lbry<br>
+24 = Equihash<br>
+25 = Pascal<br>
+26 = X11Gost<br>
+27 = Sia<br>
+28 = Blake2s<br>
+29 = Skunk<br>
+</div>
+<br><br>
+If you need to start scheduler, go to /admin?start_scheduler=1

@@ -1,0 +1,16 @@
+<%= render 'admin_nav' %>
+<% if @user_management == 1 %>
+    <%= render 'user_management' %>
+<% elsif @show_user.present? %>
+    <%= render 'show_user' %>
+<% elsif @edit_user.present? %>
+    <%= render 'edit_user' %>
+<% elsif @group.present? %>
+    <%= render 'new_group' %>
+<% elsif @model_management.present? %>
+    <%= render 'miner_models' %>
+<% elsif @products.present? %>
+    <%= render 'products_admin' %>
+<% elsif @edit_product.present? %>
+    <%= render 'edit_product' %>
+<% end %>
