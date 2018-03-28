@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_05_101326) do
+ActiveRecord::Schema.define(version: 2018_03_12_172120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2018_03_05_101326) do
     t.decimal "prevhash", default: "0.0", null: false
     t.index ["minermodel_id"], name: "index_miners_on_minermodel_id"
     t.index ["user_id"], name: "index_miners_on_user_id"
+    t.index ["worker_name"], name: "index_miners_on_worker_name", unique: true
   end
 
   create_table "nsalgos", force: :cascade do |t|

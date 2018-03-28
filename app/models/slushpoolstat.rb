@@ -29,7 +29,10 @@ class Slushpoolstat < ApplicationRecord
                 broadcast[:user_confirmed_reward] = (self.confirmed_reward*t[:btc_hash]/total_hash).round(4)
                 broadcast[:user_unconfirmed_reward] = (self.unconfirmed_reward*t[:btc_hash]/total_hash).round(4)
                 broadcast[:user_estimated_reward] = (self.estimated_reward*t[:btc_hash]/total_hash).round(4)
-                broadcast[:hashrate_distribution] = JSON.parse(self.hashrate_distribution).select{|k,v| User.find(t[:user]).miners.where(algorithm: 'SHA256').map(&:worker_name).map {|s| s.gsub(' ', '')}.include? k.to_s}
+                broadcast[:user_cur_btc] = User.find(t[:user]).cur_btc
+                if self.hashrate_distribution.present?
+                    broadcast[:hashrate_distribution] = JSON.parse(self.hashrate_distribution).select{|k,v| User.find(t[:user]).miners.where(algorithm: 'SHA256').map(&:worker_name).map {|s| s.gsub(' ', '')}.include? k.to_s}
+                end
                 ActionCable.server.broadcast "slushpool_#{t[:user]}", bcast: broadcast
             end
         end

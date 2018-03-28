@@ -32,7 +32,9 @@ class Litecoinpoolstat < ApplicationRecord
                 broadcast[:user_expected_rewards] = (self.expected_rewards*t[:ltc_hash]/total_hash).round(4)
                 broadcast[:user_past_24_rewards] = (self.past_24_rewards*t[:ltc_hash]/total_hash).round(4)
                 broadcast[:user_cur_ltc] = User.find(t[:user]).cur_ltc
-                broadcast[:hashrate_distribution] = JSON.parse(self.hashrate_distribution).select{|k,v| User.find(t[:user]).miners.where(algorithm: 'Scrypt').map(&:worker_name).map {|s| s.gsub(' ', '')}.include? k.to_s}
+                if self.hashrate_distribution.present?
+                    broadcast[:hashrate_distribution] = JSON.parse(self.hashrate_distribution).select{|k,v| User.find(t[:user]).miners.where(algorithm: 'Scrypt').map(&:worker_name).map {|s| s.gsub(' ', '')}.include? k.to_s}
+                end
                 ActionCable.server.broadcast "litecoinpool_#{t[:user]}", bcast: broadcast
             end
         end
