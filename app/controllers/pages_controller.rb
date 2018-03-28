@@ -12,6 +12,10 @@ class PagesController < ApplicationController
     end
 
     def dashboard
+        if params[:personal_information].present?
+          PersonalInformation.create(first_name: params[:first_name], last_name: params[:last_name], phone_number: params[:phone_number], country: params[:country], address: params[:address], comment: params[:comment], user_id: current_user.id, status: true)
+          redirect_back fallback_location: root_path, notice: "Information saved"
+        end
         if user_signed_in?
             if current_user.active?
                 if current_user.group_id.blank? || current_user.group_id == 0

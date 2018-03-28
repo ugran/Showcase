@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_12_172120) do
+ActiveRecord::Schema.define(version: 2018_03_28_131828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,20 @@ ActiveRecord::Schema.define(version: 2018_03_12_172120) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "personal_informations", force: :cascade do |t|
+    t.text "first_name"
+    t.text "last_name"
+    t.text "address"
+    t.text "country"
+    t.text "phone_number"
+    t.text "comment"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "status"
+    t.index ["user_id"], name: "index_personal_informations_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.text "name"
     t.text "specifications"
@@ -182,23 +196,13 @@ ActiveRecord::Schema.define(version: 2018_03_12_172120) do
     t.string "slushpool_api_key"
     t.boolean "nicehash", default: false
     t.integer "group_id"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "api_id"
-    t.string "name"
-    t.string "poloniex_key"
-    t.string "poloniex_secret"
-    t.integer "nounce", default: 0, null: false
-    t.decimal "paid_btc", default: "0.0", null: false
-    t.decimal "paid_ltc", default: "0.0", null: false
-    t.decimal "paid_eth", default: "0.0", null: false
-    t.decimal "paid_dash", default: "0.0", null: false
-    t.decimal "paid_sia", default: "0.0", null: false
-    t.decimal "cur_btc", default: "0.0", null: false
-    t.decimal "cur_ltc", default: "0.0", null: false
-    t.decimal "cur_eth", default: "0.0", null: false
-    t.decimal "cur_dash", default: "0.0", null: false
-    t.decimal "cur_sia", default: "0.0", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
