@@ -60,9 +60,10 @@ Rails.application.configure do
     port:                 587,
     domain:               'cryptografs.com',
     user_name:            'admin@cryptografs.com',
-    password:             'Wag12628',
-    authentication:       'plain',
-    enable_starttls_auto: true  }
+    password:             'Kuj51864',
+    authentication:       :login,
+    enable_starttls_auto: true
+  }
 
     HttpLog.configure do |config|
       config.log_headers = true

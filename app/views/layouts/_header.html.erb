@@ -56,15 +56,63 @@
             </ul>
         <% end %>
         <% unless user_signed_in? %>
-            <%= form_for(:user, :url => session_path(:user), html: {class: 'form-inline my-2 my-lg-0', style: 'text-align:center;'}) do |f| %>
-                    <div class='form-group' style='margin-left:auto; margin-right:auto;'>
-                        <%= f.text_field :email, class: 'form-control mr-sm-2', placeholder: 'Email', style: 'width:200px;' %>
-                        <%= f.password_field :password, class: 'form-control mr-sm-2', placeholder: 'Password', style: 'width:200px;' %>
+            <div class="btn btn-outline-light" data-toggle="modal" data-target="#sign_in_modal" style='margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:10px; cursor:pointer; margin:0'>
+              Sign In
+            </div>
+            <div class="modal fade bd-example-modal-sm" id="sign_in_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color:black">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" style="margin:0; width:100%; text-align:center">Sign In</h5>
+                  </div>
+                  <%= form_for(:user, :url => session_path(:user), html: {style: 'text-align:center'}) do |f| %>
+                    <div class="modal-body">
+                      <div class='form-group' style='margin-left:auto; margin-right:auto;'>
+                        <%= f.text_field :email, class: 'form-control', placeholder: 'Email', style: 'width:100%;' %><br />
+                        <%= f.password_field :password, class: 'form-control', placeholder: 'Password', style: 'width:100%;' %>
+                      </div>
+                      <div class='form-group' style='margin-left:auto; margin-right:auto; margin-bottom:10px; padding-top:10px'>
+                          <%= f.submit 'Sign in', class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer' %>
+                      </div>
                     </div>
-                <div class='form-group' style='margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:10px;'>
-                    <%= f.submit 'Sign in', class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer;' %>
+                  <% end %>
                 </div>
-            <% end %>
+              </div>
+            </div>
+            <div class="btn btn-outline-light" data-toggle="modal" data-target="#sign_up_modal" style='margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:10px; cursor:pointer; margin-right:0; margin-left:15px'>
+              Sign Up
+            </div>
+            <div class="modal fade bd-example-modal-sm" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color:black">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" style="margin:0; width:100%; text-align:center">Sign Up</h5>
+                  </div>
+                  <div class="modal-body" style="text-align:center">
+                    <%= form_for(:user, :url => registration_path(:user)) do |f| %>
+                      <div class="form-group">
+                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'Email' %>
+                      </div>
+
+                      <div class="form-group">
+                        <% if @minimum_password_length %>
+                        <em>(<%= @minimum_password_length %> characters minimum)</em>
+                        <% end %>
+                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: 'Password' %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: 'Password Confirmation' %>
+                      </div>
+
+                      <div class='form-group' style='margin-left:auto; margin-right:auto; margin-bottom:10px; padding-top:10px'>
+                          <%= f.submit 'Sign up', class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer' %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
         <% end %>
     </div>
 </nav>
