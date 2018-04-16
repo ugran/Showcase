@@ -133,7 +133,7 @@ class AdminController < ApplicationController
             AwesomeWorker.perform_in(10.seconds)
             Group.all.each do |g|
                 if g.poloniex_key.present? && g.poloniex_secret.present?
-                    PoloniexWorker.perform_in(10.seconds, g.id)
+                    PoloniexWorker.perform_in(30.minutes, g.id)
                 end
             end
         elsif params[:restart_pools].present?

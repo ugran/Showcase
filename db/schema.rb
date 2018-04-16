@@ -202,6 +202,21 @@ ActiveRecord::Schema.define(version: 2018_03_28_131828) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "api_id"
+    t.string "name"
+    t.string "poloniex_key"
+    t.string "poloniex_secret"
+    t.integer "nounce", default: 0, null: false
+    t.decimal "paid_btc", default: "0.0", null: false
+    t.decimal "paid_ltc", default: "0.0", null: false
+    t.decimal "paid_eth", default: "0.0", null: false
+    t.decimal "paid_dash", default: "0.0", null: false
+    t.decimal "paid_sia", default: "0.0", null: false
+    t.decimal "cur_btc", default: "0.0", null: false
+    t.decimal "cur_ltc", default: "0.0", null: false
+    t.decimal "cur_eth", default: "0.0", null: false
+    t.decimal "cur_dash", default: "0.0", null: false
+    t.decimal "cur_sia", default: "0.0", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"

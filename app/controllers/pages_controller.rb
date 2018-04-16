@@ -110,11 +110,11 @@ class PagesController < ApplicationController
                     end
                     @miners = current_user.miners
                 end
-            end
-        else
-            if params[:personal_information].present?
-              PersonalInformation.create(first_name: params[:first_name], last_name: params[:last_name], phone_number: params[:phone_number], country: params[:country], address: params[:address], comment: params[:comment], user_id: current_user.id, status: true)
-              redirect_back fallback_location: root_path, notice: "Information saved"
+            else
+                if params[:personal_information].present?
+                PersonalInformation.create(first_name: params[:first_name], last_name: params[:last_name], phone_number: params[:phone_number], country: params[:country], address: params[:address], comment: params[:comment], user_id: current_user.id, status: true)
+                redirect_back fallback_location: root_path, notice: "Information saved"
+                end
             end
         end
     end

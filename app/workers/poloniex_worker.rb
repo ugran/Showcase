@@ -27,10 +27,10 @@ class PoloniexWorker
         'Content-Type': 'application/x-www-form-urlencoded'}
         req = https.post(uri.path, data, header)
         poloniex_resp = req.body
-        if JSON.parse(poloniex_resp, symbolize_names: true).has_key?(:error)
-          new_nounce = JSON.parse(poloniex_resp, symbolize_names: true)[:error].split('.')[0].to_i
+        if JSON.parse(poloniex_resp).has_key?("error")
+          new_nounce = JSON.parse(poloniex_resp)["error"].split('.')[0].scan(/\d/).join('').to_i
           group.update(nounce: new_nounce)
-          PoloniexWorker.perform_in(30.seconds, group_id)
+          PoloniexWorker.perform_in(10.seconds, group_id)
         else
           btc_balance = JSON.parse(poloniex_resp, symbolize_names: true)[:BTC].to_f
           ltc_balance = JSON.parse(poloniex_resp, symbolize_names: true)[:LTC].to_f
@@ -65,7 +65,7 @@ class PoloniexWorker
           array.each do |t|
             user = User.find(t[:user])
             if user.user_balance.present?
-              usr_cur_btc = user.cur_btc
+              usr_cur_btc = user.user_balance.cur_btc
             else
               usr_cur_btc = 0
             end
@@ -78,25 +78,23 @@ class PoloniexWorker
             user_ltc_hash = t[:ltc_hash]
             if btc_balance > accu_btc && total_btc_hash > 0
               btc_amount = BigDecimal.new(((BigDecimal.new(btc_balance.to_s)-BigDecimal.new(accu_btc.to_s))*user_btc_hash/total_btc_hash).to_s).floor(6)
-              new_btc = BigDecimal.new(usr_cur_btc.to_s)+btc_amount
-              new_group_btc = BigDecimal.new(accu_btc.to_s)+btc_amount
+              new_btc = BigDecimal.new(usr_cur_btc.to_s)+BigDecimal(btc_amount.to_s)
               if user.user_balance.present?
-                user.user_balance.update(cur_btc: new_btc)
+                user.user_balance.update(cur_btc: new_btc.to_s.to_f)
               else
-                UserBalance.create(cur_btc: new_btc, user_id: user.id)
+                UserBalance.create(cur_btc: new_btc.to_s.to_f, user_id: user.id)
               end
-              group.update(accubtc: new_group_btc)
+              group.update(accubtc: btc_balance)
             end
             if ltc_balance > accu_ltc && total_ltc_hash > 0
               ltc_amount = BigDecimal.new(((BigDecimal.new(ltc_balance.to_s)-BigDecimal.new(accu_ltc.to_s))*user_ltc_hash/total_ltc_hash).to_s).floor(6)
-              new_ltc = BigDecimal.new(usr_cur_ltc.to_s)+ltc_amount
-              new_group_ltc = BigDecimal.new(accu_ltc.to_s)+ltc_amount
+              new_ltc = BigDecimal.new(usr_cur_ltc.to_s)+BigDecimal(ltc_amount.to_s)
               if user.user_balance.present?
-                user.user_balance.update(cur_ltc: new_ltc)
+                user.user_balance.update(cur_ltc: new_ltc.to_s.to_f)
               else
-                UserBalance.create(cur_ltc: new_ltc, user_id: user.id)
+                UserBalance.create(cur_ltc: new_ltc.to_s.to_f, user_id: user.id)
               end
-              group.update(accultc: new_group_ltc)
+              group.update(accultc: ltc_balance.to_s.to_f)
             end
           end
           PoloniexWorker.perform_in(5.minutes, group_id)
