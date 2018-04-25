@@ -40,6 +40,18 @@ class PoloniexWorker
           array = []
           total_btc_hash = 0
           total_ltc_hash = 0
+          if btc_balance > accu_btc
+            btc_before = accu_btc
+            btc_after = btc_balance
+            total_btc_payout = (BigDecimal.new(btc_balance.to_s)-BigDecimal.new(accu_btc.to_s)).to_s.to_f
+            group.update(accubtc: btc_balance)
+          end
+          if ltc_balance > accu_ltc
+            ltc_before = accu_ltc
+            ltc_after = ltc_balance
+            total_ltc_payout = (BigDecimal.new(ltc_balance.to_s)-BigDecimal.new(accu_ltc.to_s)).to_s.to_f
+            group.update(accultc: ltc_balance.to_s.to_f)
+          end
           users.each do |t|
             ltc_hash = 0
             btc_hash = 0
@@ -62,6 +74,7 @@ class PoloniexWorker
             total_btc_hash = BigDecimal.new(total_btc_hash.to_s)+BigDecimal.new(btc_hash.to_s)
             array.push({user: t.id, ltc_hash: ltc_hash, btc_hash: btc_hash})
           end
+          payouts = []
           array.each do |t|
             user = User.find(t[:user])
             if user.user_balance.present?
@@ -84,7 +97,7 @@ class PoloniexWorker
               else
                 UserBalance.create(cur_btc: new_btc.to_s.to_f, user_id: user.id)
               end
-              group.update(accubtc: btc_balance)
+              btc_payout = btc_amount.to_s.to_f
             end
             if ltc_balance > accu_ltc && total_ltc_hash > 0
               ltc_amount = BigDecimal.new(((BigDecimal.new(ltc_balance.to_s)-BigDecimal.new(accu_ltc.to_s))*user_ltc_hash/total_ltc_hash).to_s).floor(6)
@@ -94,9 +107,11 @@ class PoloniexWorker
               else
                 UserBalance.create(cur_ltc: new_ltc.to_s.to_f, user_id: user.id)
               end
-              group.update(accultc: ltc_balance.to_s.to_f)
+              ltc_payout = ltc_amount.to_s.to_f
             end
+            payouts.push({user: user.id, btc_payout: btc_payout, ltc_payout: ltc_payout})
           end
+          GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, payouts: payouts)
           PoloniexWorker.perform_in(5.minutes, group_id)
         end
       end

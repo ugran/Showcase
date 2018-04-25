@@ -1,0 +1,3 @@
+class GroupPayoutHistory < ApplicationRecord
+    belongs_to :group
+end

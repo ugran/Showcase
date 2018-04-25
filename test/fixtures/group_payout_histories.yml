@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_id: 1
+  balance_before: 9.99
+  balance_after: 9.99
+  total_payout: 9.99
+  payouts: 
+
+two:
+  group_id: 1
+  balance_before: 9.99
+  balance_after: 9.99
+  total_payout: 9.99
+  payouts: 

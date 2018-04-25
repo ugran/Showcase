@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_28_131828) do
+ActiveRecord::Schema.define(version: 2018_04_20_130416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 2018_03_28_131828) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "group_payout_histories", force: :cascade do |t|
+    t.integer "group_id"
+    t.decimal "btc_before"
+    t.decimal "btc_after"
+    t.decimal "ltc_before"
+    t.decimal "ltc_after"
+    t.decimal "btc_total_payout"
+    t.decimal "ltc_total_payout"
+    t.json "payouts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_payout_histories_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|
