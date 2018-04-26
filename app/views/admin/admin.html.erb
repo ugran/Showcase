@@ -13,4 +13,8 @@
     <%= render 'products_admin' %>
 <% elsif @edit_product.present? %>
     <%= render 'edit_product' %>
+<% elsif @services.present? %>
+    <%= render 'services_admin' %>
+<% elsif @edit_service.present? %>
+    <%= render 'edit_service' %>
 <% end %>

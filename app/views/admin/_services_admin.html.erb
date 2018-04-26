@@ -1,0 +1,69 @@
+<div class="container">
+  <p style='margin-top:20px; font-weight:bold'>NEW SERVICE</p>
+  <%= form_with(model: @service, url: admin_path, local: true) do |f| %>
+    <div class="row">
+      <div class="col-md-2 form-group">
+        <%= f.label :number %><br />
+        <%= f.number_field :number, class: "form-control" %>
+      </div>
+      <div class="col-md-5 form-group">
+        <%= f.label :menu_name %><br />
+        <%= f.text_field :dropdown_header, class: "form-control" %>
+      </div>
+      <div class="col-md-5 form-group">
+        <%= f.label :header %><br />
+        <%= f.text_field :header, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, class: "form-control", id: "ck_service_description" %>
+    </div>
+    <div class="row">
+      <div class="col-md-3 form-group">
+        <%= f.label :background_color %><br />
+        <%= f.text_field :background_color, class: "form-control" %>
+      </div>
+      <div class="col-md-3 form-group">
+        <%= f.label :text_color %><br />
+        <%= f.text_field :text_color, class: "form-control" %>
+      </div>
+    </div>
+    <%= f.submit('Submit', class:'btn btn-dark') %>
+  <% end %>
+
+  <table class='table' style="margin-top:20px">
+    <thead>
+      <th>#</th>
+      <th>Header</th>
+      <th>Menu Name</th>
+      <th>Background Color</th>
+      <th>Text Color</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      <% if @services_all.present? %>
+        <% @services_all.order(:number).each do |t| %>
+          <tr>
+            <td><%= t.number %></td>
+            <td><%= t.header %></td>
+            <td><%= t.dropdown_header %></td>
+            <td><%= t.background_color %></td>
+            <td><%= t.text_color %></td>
+            <th><%= link_to 'Edit', admin_path(edit_service: t.id) %></th>
+            <td><%= link_to 'Delete', admin_path(delete_service: t.id), :"data-turbolinks" => false %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function(){
+    ClassicEditor.create( document.querySelector('#ck_service_description' )).catch( error => {
+      console.error( error );
+    });
+  });
+</script>

@@ -123,6 +123,19 @@ class PagesController < ApplicationController
 
     end
 
+    def locale
+        begin
+            if params[:locale] == 'en'
+            cookies.permanent[:locale] = 'en'
+            elsif params[:locale] == 'ge'
+            cookies.permanent[:locale] = 'ge'
+            end
+            redirect_to request.referer
+        rescue
+            redirect_to :root
+        end
+    end
+
 private
 
     def resource_name

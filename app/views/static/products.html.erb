@@ -14,11 +14,13 @@
 </ul>
 
 <% if @asic_miners == 1 %>
-    <%= render 'asic_miners' %>
+  <%= render 'asic_miners' %>
 <% elsif @gpu_miners.present? %>
-    <%= render 'gpu_miners' %>
+  <%= render 'gpu_miners' %>
 <% elsif @parts_and_accessories.present? %>
-    <%= render 'parts_and_accessories' %>
+  <%= render 'parts_and_accessories' %>
 <% elsif @software.present? %>
-    <%= render 'software' %>
+  <%= render 'software' %>
+<% elsif @this_product.present? %>
+  <%= render 'view_product' %>
 <% end %>

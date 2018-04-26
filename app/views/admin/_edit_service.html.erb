@@ -1,0 +1,43 @@
+<div class="container" style="margin-bottom: 30px">
+  <p style='margin-top:20px; font-weight:bold'>EDIT SERVICE</p>
+  <%= form_with( url: admin_path, local: true) do |f| %>
+    <%= f.hidden_field :edit_service_submit, :value => @edit_service.id %>
+    <div class="row">
+      <div class="col-md-2 form-group">
+        <%= f.label :number %><br />
+        <%= f.number_field :edit_number, class: "form-control", value: @edit_service.number  %>
+      </div>
+      <div class="col-md-5 form-group">
+        <%= f.label :header %><br />
+        <%= f.text_field :edit_header, class: "form-control", value: @edit_service.header  %>
+      </div>
+      <div class="col-md-5 form-group">
+        <%= f.label :menu_name %><br />
+        <%= f.text_field :edit_dropdown_header, class: "form-control", value: @edit_service.dropdown_header %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %><br />
+      <%= f.text_area :edit_description, class: "form-control", id: "edit_ck_service_description", value: @edit_service.description %>
+    </div>
+    <div class="row">
+      <div class="col-md-3 form-group">
+        <%= f.label :background_color %><br />
+        <%= f.text_field :edit_background_color, class: "form-control", value: @edit_service.background_color %>
+      </div>
+      <div class="col-md-3 form-group">
+        <%= f.label :text_color %><br />
+        <%= f.text_field :edit_text_color, class: "form-control", value: @edit_service.text_color %>
+      </div>
+    </div>
+    <%= f.submit('Submit', class:'btn btn-dark') %>
+  <% end %>
+</div>
+
+<script>
+  $(document).ready(function(){
+    ClassicEditor.create( document.querySelector('#edit_ck_service_description' )).catch( error => {
+      console.error( error );
+    });
+  });
+</script>

@@ -9,8 +9,16 @@ class StaticController < ApplicationController
             @parts_and_accessories = 1
         elsif params[:software].present?
             @software = 1
+        elsif params[:product_id].present?
+            @this_product = Product.find(params[:product_id].to_i)
+        elsif params[:send_enquiry].present?
+          EnquiryMailer.send_enquiry(params[:product_name_final], params[:product_quantity_final], params[:product_price_final], params[:optional_product_name_final], params[:optional_product_price_final], params[:email], params[:comment]).deliver_later
         end
         @products_all = Product.all
+    end
+
+    def services
+        @services_all = Service.all
     end
 
     def about_us

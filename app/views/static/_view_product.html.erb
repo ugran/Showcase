@@ -1,0 +1,183 @@
+<div class="modal fade" id="sendEnquiryModal" tabindex="-1" role="dialog" aria-labelledby="sendEnquiryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sendEnquiryModalLabel">Send Enquiry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with( url: products_path, local: true) do |f| %>
+        <%= f.hidden_field :send_enquiry, :value => 1 %>
+        <%= f.hidden_field :product_name_final, id: :product_name_final %>
+        <%= f.hidden_field :product_quantity_final, id: :product_quantity_final %>
+        <%= f.hidden_field :product_price_final, id: :product_price_final %>
+        <%= f.hidden_field :optional_product_name_final, id: :optional_product_name_final %>
+        <%= f.hidden_field :optional_product_price_final, id: :optional_product_price_final %>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" style="font-weight: normal;"><%= Product.find_by(id: @this_product).name %></th>
+                <td id="product_quantity_enquiry"></td>
+                <td><%= Product.find_by(id: @this_product).weight %> kg.</td>
+                <td><%= Product.find_by(id: @this_product).price.to_i %> USD</td>
+              </tr>
+              <tr>
+                <td id="optional_parts_name"></td>
+                <td id="optional_parts_quantity"></td>
+                <td id="optional_parts_weight"></td>
+                <td id="optional_parts_price"></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="" style="font-weight: bold; margin-bottom: 20px; text-align: center;">
+            Total Price: <span id="total_price"></span> USD
+          </div>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label :comment %><br />
+            <%= f.text_area :comment, class: "form-control" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit('Submit', class:'btn btn-dark') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container" style="margin-top: 70px;">
+  <div class="row">
+    <div class="col-md-6" style="text-align: center;">
+      <%= image_tag 'http://cryptomining-blog.com/wp-content/uploads/2018/04/bitmain-antminer-ethash-e3.jpg', style: "height:300px;" %>
+    </div>
+    <div class="col-md-6">
+      <h4><%= Product.find_by(id: @this_product).name %></h4>
+      <div style="color: #888; font-size: 14px;"><%= Product.find_by(id: @this_product).short_description.html_safe %></div>
+      <p class="price" style="color:#529bd7; font-size:30px; margin-top: 30px; margin-bottom: 30px;"><%= Product.find_by(id: @this_product).price.to_i %> USD</p>
+      <div>
+        <div class="row" style="margin-bottom: 20px">
+          <div class="col-md-4">Weight</div>
+          <div class="col-md-4"><%= Product.find_by(id: @this_product).weight %> kg.</div>
+        </div>
+        <div class="row"  style="margin-bottom: 20px">
+          <div class="col-md-4">Quantity</div>
+          <div class="col-md-4">
+            <form id='myform' method='POST' action='#' style="line-height: normal;">
+              <input type='button' value='-' class='qtyminus' field='quantity' style="width:25px; height:25px; cursor: pointer;" />
+              <input id="product_quantity" type='text' name='quantity' value='1' class='qty' style=" width: 40px; height: 25px; text-align: center;" />
+              <input type='button' value='+' class='qtyplus' field='quantity' style="width:25px; height:25px; cursor: pointer;" />
+            </form>
+          </div>
+        </div>
+        <div class="row" style="">
+          <div class="col-md-4" style="margin:auto;">Optional Parts</div>
+          <div class="col-md-8">
+            <% if Product.find_by(id: @this_product).related_product_id.present? %>
+              <div id="related_product" style="border:1px solid #e7e7e7; cursor: pointer; padding-top: 10px; padding-bottom: 10px;">
+                <%= image_tag 'http://cryptomining-blog.com/wp-content/uploads/2018/04/bitmain-antminer-ethash-e3.jpg', style: "height:50px;" %><%= Product.find_by(id: @this_product.related_product_id).name %> &nbsp&nbsp&nbsp<span style="color:#529bd7;"><%= Product.find_by(id: @this_product.related_product_id).price.to_i %> USD</span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-md-6 offset-md-6">
+      <button id="send_enquiry_button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#sendEnquiryModal" style="background: linear-gradient(#8acbed,#529bd7); color: white; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #8acbed; width: 180px; height: 50px;">Send Enquiry</button>
+    </div>
+  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 100px;">
+    <li class="nav-item">
+      <a class="nav-link active" id="field_1-tab" data-toggle="tab" href="#field_1" role="tab" aria-controls="field_1" aria-selected="true">Notes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="field_2-tab" data-toggle="tab" href="#field_2" role="tab" aria-controls="field_2" aria-selected="false">Payment</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="field_3-tab" data-toggle="tab" href="#field_3" role="tab" aria-controls="field_3" aria-selected="false">Warranty</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="field_4-tab" data-toggle="tab" href="#field_4" role="tab" aria-controls="field_4" aria-selected="false">Discount</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent" style="margin-top: 20px; margin-bottom: 100px;">
+    <div class="tab-pane fade show active" id="field_1" role="tabpanel" aria-labelledby="field_1-tab"><%= Product.find_by(id: @this_product).description.html_safe %></div>
+    <div class="tab-pane fade" id="field_2" role="tabpanel" aria-labelledby="field_2-tab"><%= Product.find_by(id: @this_product).specifications.html_safe %></div>
+    <div class="tab-pane fade" id="field_3" role="tabpanel" aria-labelledby="field_3-tab"><%= Product.find_by(id: @this_product).field_3.html_safe %></div>
+    <div class="tab-pane fade" id="field_4" role="tabpanel" aria-labelledby="field_4-tab"><%= Product.find_by(id: @this_product).field_4.html_safe %></div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#send_enquiry_button').on('click', function(){
+      $('#product_quantity_enquiry').html($('#product_quantity').val());
+      if ($('#related_product').hasClass("marked")) {
+        $('#optional_parts_name').html('<%= Product.find_by(id: @this_product.related_product_id).name %>');
+        $('#optional_parts_quantity').html('1');
+        $('#optional_parts_weight').html('<%= Product.find_by(id: @this_product.related_product_id).weight %> kg.');
+        $('#optional_parts_price').html('<%= Product.find_by(id: @this_product.related_product_id).price.to_i %> USD');
+        $('#total_price').html($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %> + <%= Product.find_by(id: @this_product.related_product_id).price.to_i %>);
+        $('#product_name_final').val('<%= Product.find_by(id: @this_product).name %>');
+        $('#product_quantity_final').val($('#product_quantity').val());
+        $('#product_price_final').val($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %>);
+        $('#optional_product_name_final').val('<%= Product.find_by(id: @this_product.related_product_id).name %>');
+        $('#optional_product_price_final').val('<%= Product.find_by(id: @this_product.related_product_id).price.to_i %>');
+      } else {
+        $('#optional_parts_name').html('');
+        $('#optional_parts_quantity').html('');
+        $('#optional_parts_weight').html('');
+        $('#optional_parts_price').html('');
+        $('#product_name_final').val('<%= Product.find_by(id: @this_product).name %>');
+        $('#product_quantity_final').val($('#product_quantity').val());
+        $('#product_price_final').val($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %>);
+        $('#total_price').html($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %>);
+      };
+    });
+    $('#related_product').click(function(){
+      if ($(this).hasClass("marked")) {
+        $(this).css('border', '1px solid #e7e7e7');
+        $(this).css('background', 'none');
+        $(this).removeClass('marked');
+      } else {
+        $(this).css('border', '2px solid #529bd7');
+        $(this).css('background', 'url(data:image/png;base64,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) no-repeat right 32px');
+        $(this).addClass('marked');
+      }
+    });
+    $('.qtyplus').click(function(e){
+      e.preventDefault();
+      fieldName = $(this).attr('field');
+      var currentVal = parseInt($('input[name='+fieldName+']').val());
+      if (!isNaN(currentVal)) {
+        $('input[name='+fieldName+']').val(currentVal + 1);
+      } else {
+        $('input[name='+fieldName+']').val(1);
+      }
+    });
+    $(".qtyminus").click(function(e) {
+      e.preventDefault();
+      fieldName = $(this).attr('field');
+      var currentVal = parseInt($('input[name='+fieldName+']').val());
+      if (!isNaN(currentVal) && currentVal > 1) {
+        $('input[name='+fieldName+']').val(currentVal - 1);
+      } else {
+        $('input[name='+fieldName+']').val(1);
+      }
+    });
+  });
+</script>

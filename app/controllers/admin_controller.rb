@@ -116,10 +116,27 @@ class AdminController < ApplicationController
         elsif params[:edit_product].present?
             @edit_product = Product.find(params[:edit_product].to_i)
         elsif params[:edit_product_submit].present?
-            Product.find_by(id: params[:edit_product_submit]).update(name: params[:edit_name], description: params[:edit_description], specifications: params[:edit_specifications])
+            Product.find_by(id: params[:edit_product_submit]).update(name: params[:edit_name], description: params[:edit_description], specifications: params[:edit_specifications], price: params[:edit_price], weight: params[:edit_weight], short_description: params[:short_description], field_3: params[:field_3], field_4: params[:field_4])
         elsif params[:delete_product].present?
             Product.find(params[:delete_product].to_i).destroy
             redirect_back fallback_location: admin_path, notice: "Product deleted."
+        elsif params[:services].present?
+            @services = 1
+            @services_all = Service.all
+            @service = Service.new
+        elsif service_params.present?
+            @services = 1
+            Service.create(service_params)
+            @services_all = Service.all
+            @service = Service.new
+            redirect_back fallback_location: admin_path, notice: "Service created."
+        elsif params[:edit_service].present?
+            @edit_service = Service.find(params[:edit_service].to_i)
+        elsif params[:edit_service_submit].present?
+            Service.find_by(id: params[:edit_service_submit]).update(number: params[:edit_number], header: params[:edit_header], dropdown_header: params[:edit_dropdown_header], description: params[:edit_description], background_color: params[:edit_background_color], text_color: params[:edit_text_color])
+        elsif params[:delete_service].present?
+            Service.find(params[:delete_service].to_i).destroy
+            redirect_back fallback_location: admin_path, notice: "Service deleted."
         elsif params[:restart_price_job].present?
             ss = Sidekiq::ScheduledSet.new
                 jobs = ss.select {|retri| retri.klass == 'PriceWorker' }
@@ -164,7 +181,13 @@ private
 
     def product_params
         if params[:product].present?
-            params[:product].permit(:name, :description, :specifications, :category, :image)
+            params[:product].permit(:name, :description, :specifications, :category, :image, :short_description, :price, :weight, :field_3, :field_4, :related_product_id)
+        end
+    end
+
+    def service_params
+        if params[:service].present?
+            params[:service].permit(:number, :header, :dropdown_header, :description, :background_color, :text_color)
         end
     end
 

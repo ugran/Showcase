@@ -6,21 +6,55 @@
         <%= f.label :name %><br />
         <%= f.text_field :name, class: "form-control" %>
       </div>
-      <div class="col-md-6 form-group">
+      <div class="col-md-2 form-group">
+        <%= f.label :price %><br />
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+      <div class="col-md-2 form-group">
+        <%= f.label :weight %><br />
+        <%= f.text_field :weight, class: "form-control" %>
+      </div>
+      <div class="col-md-2 form-group">
         <%= f.label :category %><br />
         <%= f.select :category, options_for_select([["ASIC Miners", 1], ["GPU Miners", 2], ["Other Parts", 3], ["Software", 4]]), class: "form-control" %>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.label :short_description %><br />
+      <%= f.text_area :short_description, class: "form-control", id: "ck_short_description" %>
+    </div>
     <div class="row">
       <div class="col-md-6 form-group">
-        <%= f.label :description %><br />
+        <%= f.label :field_1 %><br />
         <%= f.text_area :description, class: "form-control", id: "ck_description" %>
       </div>
       <div class="col-md-6 form-group">
-        <%= f.label :specifications %><br />
+        <%= f.label :field_2 %><br />
         <%= f.text_area :specifications, class: "form-control", id: "ck_specifications" %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= f.label :field_3 %><br />
+        <%= f.text_area :field_3, class: "form-control", id: "ck_field_3" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :field_4 %><br />
+        <%= f.text_area :field_4, class: "form-control", id: "ck_field_4" %>
+      </div>
+    </div>
+    <% if @products_all.present? %>
+      <div class="form-group">
+        <%= f.label :optional_parts %><br />
+        <% product_names = [] %>
+        <% product_ids = [] %>
+        <% @products_all.each do |t| %>
+          <% product_names.push(t.name) %>
+          <% product_ids.push(t.id) %>
+        <% end %>
+        <%= f.select :related_product_id, options_from_collection_for_select(@products_all, 'id', 'name'), :include_blank => true, class: "form-control" %>
+      </div>
+    <% end %>
     <div class='form-group'>
       <%= f.file_field :image, class: 'form-control' %>
     </div>
@@ -29,8 +63,12 @@
 
     <table class='table' style="margin-top:20px">
       <thead>
+        <th>ID</th>
         <th>Name</th>
+        <th>Short Description</th>
+        <th>Price</th>
         <th>Category</th>
+        <th>Optional Parts</th>
         <th>Edit</th>
         <th>Delete</th>
       </thead>
@@ -38,8 +76,12 @@
         <% if @products_all.present? %>
           <% @products_all.each do |t| %>
             <tr>
+              <td><%= t.id %></td>
               <td><%= t.name %></td>
+              <td><%= t.short_description.html_safe %></td>
+              <td><%= t.price.to_i %></td>
               <td><% if t.category == 1 %>ASIC Miners <% elsif t.category == 2 %>GPU Miners<% else %>Other Parts<% end %></td>
+              <td><% if t.related_product_id.present? %><%= Product.find_by(id: t.related_product_id).name %><% end %></td>
               <th><%= link_to 'Edit', admin_path(edit_product: t.id) %></th>
               <td><%= link_to 'Delete', admin_path(delete_product: t.id), :"data-turbolinks" => false %></td>
             </tr>
@@ -55,6 +97,15 @@
       console.error( error );
     });
     ClassicEditor.create( document.querySelector('#ck_specifications' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#ck_field_3' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#ck_field_4' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#ck_short_description' )).catch( error => {
       console.error( error );
     });
   });

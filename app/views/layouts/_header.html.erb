@@ -12,21 +12,23 @@
                 <% end %>
             </li>
             <li class="nav-item">
-                <%= link_to 'ABOUT US', about_us_path, class: 'nav-link', style:'color:white' %>
+                <%= link_to t('about_us'), about_us_path, class: 'nav-link', style:'color:white' %>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='color:white;'>
-                SERVICES
+                    <%= t('services') %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Colocation Hosting</a>
-                <a class="dropdown-item" href="#">Turnkey Mining</a>
-                <a class="dropdown-item" href="#">Our Facility</a>
+                    <% if Service.all.present? %>
+                        <% Service.all.order(:number).each do |t| %>
+                            <a class="dropdown-item" href="/services"><%= t.dropdown_header %></a>
+                        <% end %>
+                    <% end %>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='color:white;'>
-                PRODUCTS
+                    <%= t('products') %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <div class="dropdown-item"><%= link_to "ASIC Miners", products_path(asic_miners: 1), class: 'nav-link', style: "color:black" %></div>
@@ -36,11 +38,11 @@
                 </div>
             </li>
             <li class="nav-item">
-                <%= link_to 'CONTACT', contact_path, class: 'nav-link', style:'color:white' %>
+                <%= link_to t('contact'), contact_path, class: 'nav-link', style:'color:white' %>
             </li>
         </ul>
         <% if user_signed_in? %>
-            <ul class='navbar-nav flex-row ml-md-auto d-none d-md-flex'>
+            <ul class='navbar-nav flex-row ml-md-auto d-none d-md-flex' style="margin-left: 10px !important;">
                 <li class="nav-item dropdown">
                     <a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='color:white'>
                         <i class='material-icons'>settings</i>
@@ -114,8 +116,27 @@
               </div>
             </div>
         <% end %>
+        <ul class='navbar-nav flex-row ml-md-auto d-none d-md-flex' style="margin-left: 0px !important;">
+          <li class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="display:table; background-color:black; border:none; box-shadow:none; color:white; cursor:pointer">
+              <% if I18n.locale == :en %><i class="material-icons" style="display:table-cell; vertical-align:middle">language</i><span style="margin-left:5px; font-family: Arial;">EN</span><% elsif I18n.locale == :ge %><i class="material-icons" style="display:table-cell; vertical-align:middle">language</i><span style="margin-left:5px; font-family: Arial;">GE</span><% end %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="text-align:center">
+              <%= link_to 'EN', locale_path(locale: 'en'), :"data-turbolinks" => false, style: 'color:black; font-size:20px', class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'GE', locale_path(locale: 'ge'), :"data-turbolinks" => false, style: 'color:black; font-size:20px', class: 'dropdown-item' %>
+            </div>
+          </li>
+        </ul>
     </div>
 </nav>
+
+<script>
+  $(document).ready(function(){
+    $('.dropdown-toggle').dropdown()
+  });
+</script>
+
 <% if notice.present? %>
     <script>
         $(document).ready(function(){

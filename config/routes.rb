@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   match '/contact' => 'static#contact', as: 'contact', via: [:get,:post]
   match '/admin' => 'admin#admin', as: 'admin', via: [:get, :post, :patch]
   match '/products' => 'static#products', as: 'products', via: [:get, :post]
+  match '/services' => 'static#services', as: 'services', via: [:get, :post]
   match '/test' => 'tests#index', as: 'test', via: [:get, :post]
+  match '/locale' => 'pages#locale', as: 'locale', via: [:get, :post]
 
   mount ActionCable.server => '/cable'
   require 'sidekiq/web'
