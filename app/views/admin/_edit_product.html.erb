@@ -1,43 +1,46 @@
 <div class="container" style="margin-bottom: 30px">
   <p style='margin-top:20px; font-weight:bold'>EDIT PRODUCT</p>
-  <%= form_with( url: admin_path, local: true) do |f| %>
+  <%= form_with(@edit_product, url: admin_path, local: true) do |f| %>
     <%= f.hidden_field :edit_product_submit, :value => @edit_product.id %>
     <div class="row">
       <div class="col-md-6 form-group">
         <%= f.label :name %><br />
-        <%= f.text_field :edit_name, class: "form-control", value: @edit_product.name  %>
+        <%= f.text_field :name, class: "form-control" %>
       </div>
       <div class="col-md-3 form-group">
         <%= f.label :price %><br />
-        <%= f.text_field :edit_price, class: "form-control", value: @edit_product.price  %>
+        <%= f.text_field :price, class: "form-control" %>
       </div>
       <div class="col-md-3 form-group">
         <%= f.label :weight %><br />
-        <%= f.text_field :edit_weight, class: "form-control", value: @edit_product.weight  %>
+        <%= f.text_field :weight, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :short_description %><br />
-      <%= f.text_area :edit_short_description, class: "form-control", id: "edit_ck_short_description", value: @edit_product.short_description %>
+      <%= f.text_area :short_description, class: "form-control", id: "edit_ck_short_description" %>
     </div>
     <div class="row">
       <div class="col-md-6 form-group">
         <%= f.label :field_1 %><br />
-        <%= f.text_area :edit_description, class: "form-control", id: "edit_ck_description", value: @edit_product.description %>
+        <%= f.text_area :description, class: "form-control", id: "edit_ck_description" %>
       </div>
       <div class="col-md-6 form-group">
         <%= f.label :field_2 %><br />
-        <%= f.text_area :edit_specifications, class: "form-control", id: "edit_ck_specifications", value: @edit_product.specifications %>
+        <%= f.text_area :specifications, class: "form-control", id: "edit_ck_specifications" %>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 form-group">
         <%= f.label :field_3 %><br />
-        <%= f.text_area :edit_field_3, class: "form-control", id: "edit_ck_field_3", value: @edit_product.field_3 %>
+        <%= f.text_area :field_3, class: "form-control", id: "edit_ck_field_3" %>
       </div>
       <div class="col-md-6 form-group">
         <%= f.label :field_4 %><br />
-        <%= f.text_area :edit_field_4, class: "form-control", id: "edit_ck_field_4", value: @edit_product.field_4 %>
+        <%= f.text_area :field_4, class: "form-control", id: "edit_ck_field_4" %>
+      </div>
+      <div class='form-group'>
+        <%= f.file_field :image, class: 'form-control' %>
       </div>
     </div>
     <%= f.submit('Submit', class:'btn btn-dark') %>

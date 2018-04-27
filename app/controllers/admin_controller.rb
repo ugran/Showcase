@@ -108,15 +108,19 @@ class AdminController < ApplicationController
             @products_all = Product.all
             @product = Product.new
         elsif product_params.present?
-            @products = 1
-            Product.create(product_params)
-            @products_all = Product.all
-            @product = Product.new
-            redirect_back fallback_location: admin_path, notice: "Product created."
+            unless params[:product][:edit_product_submit].present?
+                @products = 1
+                Product.create(product_params)
+                @products_all = Product.all
+                @product = Product.new
+                redirect_back fallback_location: admin_path, notice: "Product created."
+            else
+                Product.find(params[:product][:edit_product_submit]).update(product_params)
+                @products = 1
+                redirect_to admin_path , notice: "Product updated."
+            end
         elsif params[:edit_product].present?
             @edit_product = Product.find(params[:edit_product].to_i)
-        elsif params[:edit_product_submit].present?
-            Product.find_by(id: params[:edit_product_submit]).update(name: params[:edit_name], description: params[:edit_description], specifications: params[:edit_specifications], price: params[:edit_price], weight: params[:edit_weight], short_description: params[:short_description], field_3: params[:field_3], field_4: params[:field_4])
         elsif params[:delete_product].present?
             Product.find(params[:delete_product].to_i).destroy
             redirect_back fallback_location: admin_path, notice: "Product deleted."
@@ -125,15 +129,19 @@ class AdminController < ApplicationController
             @services_all = Service.all
             @service = Service.new
         elsif service_params.present?
-            @services = 1
-            Service.create(service_params)
-            @services_all = Service.all
-            @service = Service.new
-            redirect_back fallback_location: admin_path, notice: "Service created."
+            unless params[:service][:edit_service_submit].present?
+                Service.create(service_params)
+                @services = 1
+                @services_all = Service.all
+                @service = Service.new
+                redirect_back fallback_location: admin_path, notice: "Service created."
+            else
+                Service.find(params[:service][:edit_service_submit]).update(service_params)
+                @services = 1
+                redirect_to admin_path , notice: "Service updated."
+            end
         elsif params[:edit_service].present?
             @edit_service = Service.find(params[:edit_service].to_i)
-        elsif params[:edit_service_submit].present?
-            Service.find_by(id: params[:edit_service_submit]).update(number: params[:edit_number], header: params[:edit_header], dropdown_header: params[:edit_dropdown_header], description: params[:edit_description], background_color: params[:edit_background_color], text_color: params[:edit_text_color])
         elsif params[:delete_service].present?
             Service.find(params[:delete_service].to_i).destroy
             redirect_back fallback_location: admin_path, notice: "Service deleted."
@@ -187,7 +195,7 @@ private
 
     def service_params
         if params[:service].present?
-            params[:service].permit(:number, :header, :dropdown_header, :description, :background_color, :text_color)
+            params[:service].permit(:number, :header, :dropdown_header, :description, :background_color, :text_color, :image)
         end
     end
 

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   match '/dashboard' => 'pages#dashboard', as: 'dashboard', via: [:get,:post]
   match '/about_us' => 'static#about_us', as: 'about_us', via: [:get,:post]
   match '/contact' => 'static#contact', as: 'contact', via: [:get,:post]
-  match '/admin' => 'admin#admin', as: 'admin', via: [:get, :post, :patch]
+  match '/admin' => 'admin#admin', as: 'admin', via: [:get, :post, :patch, :put]
   match '/products' => 'static#products', as: 'products', via: [:get, :post]
   match '/services' => 'static#services', as: 'services', via: [:get, :post]
   match '/test' => 'tests#index', as: 'test', via: [:get, :post]

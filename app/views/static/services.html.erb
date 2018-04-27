@@ -2,10 +2,10 @@
   <% if @services_all.present? %>
     <% @services_all.order(:number).each do |t| %>
       <% if t.number.odd? %>
-        <div style="background-color: <%= t.background_color %>; color: <%= t.text_color %>;">
+        <div id='service-<%=t.id%>' style="background-color: <%= t.background_color %>; color: <%= t.text_color %>;">
           <div class="container" style="padding-top:50px; padding-bottom:50px;">
             <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
-              <div class="col-md-4 col-sm-12" style="vertical-align: middle; text-align: center; background-image:url('http://www.rajgovt.org/wp-content/uploads/2017/11/colocation-hosting-providers.jpg'); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height: 180px;">
+              <div class="col-md-4 col-sm-12" style="vertical-align: middle; text-align: center; background-image:url('<%= image_url t.image(:medium) %>'); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height: 180px;">
               </div>
               <div class="col-md-8 col-sm-12" style="text-align: right; padding-left: 20px;">
                 <div style="font-weight: bold; font-size: 28px; margin-bottom: 20px;"><%= t.header %></div>
@@ -16,14 +16,14 @@
 
         </div>
       <% else %>
-        <div style="background-color: <%= t.background_color %>; color: <%= t.text_color %>;">
+        <div id='service-<%=t.id%>' style="background-color: <%= t.background_color %>; color: <%= t.text_color %>;">
           <div class="container" style="padding-top:50px; padding-bottom:50px;">
             <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
               <div class="col-md-8 col-sm-12" style="padding-right: 20px;">
                 <div style="font-weight: bold; font-size: 28px; margin-bottom: 20px;"><%= t.header %></div>
                 <div style=""><%= t.description.html_safe %></div>
               </div>
-              <div class="col-md-4 col-sm-12" style="background-image:url('https://www.techpowerup.com/img/SnZPjMYiK5PEz7aj.jpg'); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height: 180px;">
+              <div class="col-md-4 col-sm-12" style="background-image:url('<%= image_url t.image(:medium) %>'); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height: 180px;">
               </div>
             </div>
           </div>

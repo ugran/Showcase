@@ -41,7 +41,7 @@ gem 'pg'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'sidekiq'
 gem "redis", "~> 3.0"
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 6.0.0"
 gem 'httplog'
 
 group :development, :test do
