@@ -21,6 +21,10 @@ class StaticController < ApplicationController
         @services_all = Service.all
     end
 
+    def our_facility
+        @facility_carousels = FacilityCarousel.all
+    end
+
     def about_us
 
     end

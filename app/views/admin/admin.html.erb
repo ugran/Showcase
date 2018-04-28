@@ -17,4 +17,10 @@
     <%= render 'services_admin' %>
 <% elsif @edit_service.present? %>
     <%= render 'edit_service' %>
+<% elsif @group_payout_history.present? %>
+    <%= render 'group_payout_history' %>
+<% elsif @payouts.present? %>
+    <%= render 'payouts' %>
+<% elsif @facility_carousels.present? %>
+    <%= render 'facility_carousels_admin' %>
 <% end %>

@@ -1,0 +1,29 @@
+<h4>Group: <%=  @group.name %> </h4>
+<table class='table' style="margin-top:20px">
+    <thead>
+        <th>Date</th>
+        <th>#</th>
+        <th>BTC Before</th>
+        <th>BTC After</th>
+        <th>BTC Payout</th>
+        <th>LTC Before</th>
+        <th>LTC After</th>
+        <th>LTC Payout</th>
+        <th>Show Payouts</th>
+    </thead>
+    <tbody>
+        <% @group_payouts.each do |t| %>
+            <tr>
+                <td><%= t.created_at %></td>
+                <td><%= t.id %></td>
+                <td><%= t.btc_before %></td>
+                <td><%= t.btc_after %></td>
+                <td><%= t.btc_total_payout %></td>
+                <td><%= t.ltc_before %></td>
+                <td><%= t.ltc_after %></td>
+                <td><%= t.ltc_total_payout%></td>
+                <td><%= link_to 'Show', admin_path(show_payouts: t.id), target: "_blank" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

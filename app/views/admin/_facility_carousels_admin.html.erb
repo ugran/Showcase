@@ -1,0 +1,49 @@
+<div class="container">
+  <p style='margin-top:20px; font-weight:bold'>New Facility Carousel image</p>
+  <%= form_with(model: @facility_carousel, url: admin_path, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, class: "form-control", id: "ck_service_description" %>
+    </div>
+    <div class="row">
+      <div class="col-md-2 form-group">
+        <%= f.label :is_video %><br />
+        <%= f.select :is_video, options_for_select([['No',0],['Yes',1]]), class: "form-control" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :youtube_link %><br />
+        <%= f.text_field :youtube_link, class: "form-control" %>
+      </div>
+      <div class='col-md-4 form-group'>
+        <%= f.label :image %><br />
+        <%= f.file_field :image, class: 'form-control' %>
+      </div>
+    </div>
+    <%= f.submit('Submit', class:'btn btn-dark') %>
+  <% end %>
+
+  <table class='table' style="margin-top:20px">
+    <thead>
+      <th>#</th>
+      <th>Image</th>
+      <th>description</th>
+      <th>Is video?</th>
+      <th>Youtube Link</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      <% if @facility_carousels_all.present? %>
+        <% @facility_carousels_all.each do |t| %>
+          <tr>
+            <td>#</td>
+            <td><%= image_tag t.image(:thumb) %></td>
+            <td><%= t.description %></td>
+            <td><% if t.is_video == true %>Yes<% else %>No<% end %></td>
+            <td><%= t.youtube_link %></td>
+            <td><%= link_to 'Delete', admin_path(delete_facility_carousel: t.id), :"data-turbolinks" => false %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

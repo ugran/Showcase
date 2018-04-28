@@ -1,0 +1,39 @@
+<div style='background-color:black;'>
+    <div id='slick'>
+        <% @facility_carousels.each do |t| %>
+            <div style='width:100%; height:500px; background-position:center center; background-size:contain; background-repeat:no-repeat; background-image:url("<%= image_url t.image(:medium) %>");"'></div>
+        <% end %>
+    </div>
+    <div clas='row' style='margin-top:30px; padding-bottom:30px;'>
+        <div class='col-md-6 offset-md-3'>
+            <div id='slick-nav'>
+                <% @facility_carousels.each do |t| %>
+                    <div style='margin-left:5px; margin-right:5px; width:100px; height:100px; background-position:center center; background-size:contain; background-repeat:no-repeat; background-image:url("<%= image_url t.image(:thumb) %>");"'></div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#slick').slick({
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            centerMode: true,
+            asNavFor: '#slick-nav'
+        });
+        $('#slick-nav').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '#slick',
+            centerMode: true,
+            focusOnSelect: true,
+            variableWidth: true
+        });
+    });
+</script>

@@ -55,7 +55,8 @@
         <%= f.select :related_product_id, options_from_collection_for_select(@products_all, 'id', 'name'), :include_blank => true, class: "form-control" %>
       </div>
     <% end %>
-    <div class='form-group'>
+    <div class='col-md-4 form-group'>
+        <%= f.label :image %><br />
       <%= f.file_field :image, class: 'form-control' %>
     </div>
     <%= f.submit('Submit', class:'btn btn-dark') %>

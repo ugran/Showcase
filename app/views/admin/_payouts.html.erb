@@ -1,0 +1,19 @@
+<h4>Group: <%= @group_payout.group.name %> </h4>
+<p>Date: <%= @group_payout.created_at %></p>
+
+<table class='table'>
+    <thead>
+        <th>User</th>
+        <th>BTC Payout</th>
+        <th>LTC Payout</th>
+    </thead>
+    <tbody>
+        <% JSON.parse(@payouts).each do |t| %>
+            <tr>
+                <td><%= User.find(t[:user]).email %></td>
+                <td><%= t[:btc_payout] %></td>
+                <td><%= t[:ltc_payout] %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

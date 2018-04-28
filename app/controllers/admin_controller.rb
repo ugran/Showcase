@@ -83,6 +83,12 @@ class AdminController < ApplicationController
             @inactive_users = User.where(active: false)
             @groups = Group.all
             redirect_back fallback_location: admin_path, notice: "Group deleted."
+        elsif params[:group_payout_history].present?
+            @group = Group.find(params[:group_payout_history].to_i)
+            @group_payouts = GroupPayoutHistory.where(group_id: @group.id)
+        elsif params[:show_payouts].present?
+            @payouts = GroupPayoutHistory.find(params[:show_payouts].to_i).payouts
+            @group_payout = GroupPayoutHistory.find(params[:show_payouts].to_i)
         elsif params[:delete_miner].present?
             miner = Miner.find(params[:delete_miner].to_i)
             @edit_user = miner.user
@@ -145,6 +151,19 @@ class AdminController < ApplicationController
         elsif params[:delete_service].present?
             Service.find(params[:delete_service].to_i).destroy
             redirect_back fallback_location: admin_path, notice: "Service deleted."
+        elsif params[:facility_carousels].present?
+            @facility_carousels = 1
+            @facility_carousel = FacilityCarousel.new
+            @facility_carousels_all = FacilityCarousel.all
+        elsif facility_carousel_params.present?
+            FacilityCarousel.create(facility_carousel_params)
+            @facility_carousels = 1
+            @facility_carousels_all = FacilityCarousel.all
+            @facility_carousel = FacilityCarousel.new
+            redirect_back fallback_location: admin_path, notice: "Facility Carousel created."
+        elsif params[:delete_facility_carousel].present?
+            FacilityCarousel.find(params[:delete_facility_carousel].to_i).destroy
+            redirect_back fallback_location: admin_path, notice: "Facility_carousel deleted."
         elsif params[:restart_price_job].present?
             ss = Sidekiq::ScheduledSet.new
                 jobs = ss.select {|retri| retri.klass == 'PriceWorker' }
@@ -190,6 +209,12 @@ private
     def product_params
         if params[:product].present?
             params[:product].permit(:name, :description, :specifications, :category, :image, :short_description, :price, :weight, :field_3, :field_4, :related_product_id)
+        end
+    end
+
+    def facility_carousel_params
+        if params[:facility_carousel].present?
+            params[:facility_carousel].permit(:description, :is_video, :description, :youtube_link, :image)
         end
     end
 
