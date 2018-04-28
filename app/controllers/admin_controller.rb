@@ -84,8 +84,8 @@ class AdminController < ApplicationController
             @groups = Group.all
             redirect_back fallback_location: admin_path, notice: "Group deleted."
         elsif params[:group_payout_history].present?
-            @group = Group.find(params[:group_payout_history].to_i)
-            @group_payouts = GroupPayoutHistory.where(group_id: @group.id)
+            @payout_group = Group.find(params[:group_payout_history].to_i)
+            @group_payouts = GroupPayoutHistory.where(group_id: @payout_group.id)
         elsif params[:show_payouts].present?
             @payouts = GroupPayoutHistory.find(params[:show_payouts].to_i).payouts
             @group_payout = GroupPayoutHistory.find(params[:show_payouts].to_i)
