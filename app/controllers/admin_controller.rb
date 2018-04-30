@@ -173,7 +173,7 @@ class AdminController < ApplicationController
             ss = Sidekiq::ScheduledSet.new
             jobs = ss.select {|retri| retri.klass == 'PoloniexWorker' || retri.klass == 'AwesomeWorker' }
             jobs.each(&:delete)
-            
+
             AwesomeWorker.perform_in(10.seconds)
             Group.all.each do |g|
                 if g.poloniex_key.present? && g.poloniex_secret.present?
@@ -186,7 +186,7 @@ class AdminController < ApplicationController
             jobs.each(&:delete)
 
             Group.all.each do |g|
-                if g.litecoinpool_api_key.present? 
+                if g.litecoinpool_api_key.present?
                     LitecoinpoolWorker.perform_in(10.seconds, g.id)
                 end
                 if g.slushpool_api_key.present?

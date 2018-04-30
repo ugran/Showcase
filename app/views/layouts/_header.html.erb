@@ -21,7 +21,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <% if Service.all.present? %>
                         <% Service.all.order(:number).each do |t| %>
-                            <a class="dropdown-item" href="/services#service-<%=t.id%>"><%= t.dropdown_header %></a>
+                            <a class="dropdown-item" href="/services#service-<%=t.id%>"><% if I18n.locale == :en %><%= t.dropdown_header %><% else %><%= t.dropdown_header_geo %><% end %></a>
                         <% end %>
                     <% end %>
                 </div>
