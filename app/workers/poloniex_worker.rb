@@ -111,8 +111,10 @@ class PoloniexWorker
             end
             payouts.push({user: user.id, btc_payout: btc_payout, ltc_payout: ltc_payout})
           end
-          GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, payouts: payouts)
-          PoloniexWorker.perform_in(5.minutes, group_id)
+          if total_ltc_payout > 0 || total_btc_payout > 0
+            GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, payouts: payouts)
+            PoloniexWorker.perform_in(5.minutes, group_id)
+          end
         end
       end
     rescue

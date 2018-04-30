@@ -208,7 +208,7 @@ private
 
     def product_params
         if params[:product].present?
-            params[:product].permit(:name, :description, :specifications, :category, :image, :short_description, :price, :weight, :field_3, :field_4, :related_product_id)
+            params[:product].permit(:name, :description, :specifications, :category, :image, :short_description, :price, :weight, :field_3, :field_4, :related_product_id, :name_geo, :specifications_geo, :description_geo, :short_description_geo, :field_3_geo, :field_4_geo)
         end
     end
 
@@ -220,7 +220,7 @@ private
 
     def service_params
         if params[:service].present?
-            params[:service].permit(:number, :header, :dropdown_header, :description, :background_color, :text_color, :image)
+            params[:service].permit(:number, :header, :dropdown_header, :description, :background_color, :text_color, :image, :header_geo, :description_geo, :dropdown_header_geo)
         end
     end
 
