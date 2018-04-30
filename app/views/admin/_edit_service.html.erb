@@ -12,13 +12,29 @@
         <%= f.text_field :header, class: "form-control"%>
       </div>
       <div class="col-md-5 form-group">
+        <%= f.label :header_geo %><br />
+        <%= f.text_field :header_geo, class: "form-control"%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
         <%= f.label :menu_name %><br />
         <%= f.text_field :dropdown_header, class: "form-control" %>
       </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :menu_name_geo %><br />
+        <%= f.text_field :dropdown_header_geo, class: "form-control" %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :description %><br />
-      <%= f.text_area :description, class: "form-control", id: "edit_ck_service_description" %>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= f.label :description %><br />
+        <%= f.text_area :description, class: "form-control", id: "edit_ck_service_description" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :description_geo %><br />
+        <%= f.text_area :description_geo, class: "form-control", id: "edit_ck_service_description_geo" %>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-4 form-group">
@@ -41,6 +57,9 @@
 <script>
   $(document).ready(function(){
     ClassicEditor.create( document.querySelector('#edit_ck_service_description' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#edit_ck_service_description_geo' )).catch( error => {
       console.error( error );
     });
   });

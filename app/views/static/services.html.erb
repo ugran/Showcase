@@ -1,5 +1,52 @@
+<div class="modal fade" id="sendServiceEnquiryModal" tabindex="-1" role="dialog" aria-labelledby="sendServiceEnquiryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sendServiceEnquiryModalLabel">Send Enquiry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with( url: products_path, local: true) do |f| %>
+        <%= f.hidden_field :send_service_enquiry, :value => 1 %>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <%= f.label :first_name %><br />
+              <%= f.text_field :first_name_service, class: "form-control", required: true %>
+            </div>
+            <div class="col-md-6 form-group">
+              <%= f.label :last_name %><br />
+              <%= f.text_field :last_name_service, class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <%= f.label :phone_number %><br />
+              <%= f.text_field :phone_number_service, class: "form-control", required: true %>
+            </div>
+            <div class="col-md-6 form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email_service, class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :comment %><br />
+            <%= f.text_area :comment_service, class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit('Submit', class:'btn btn-dark') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <div>
   <% if @services_all.present? %>
+    <div class="container" style="text-align: right; margin-top: 30px;">
+      <button id="send_enquiry_button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#sendServiceEnquiryModal" style="background: linear-gradient(#3a464c,#091621); color: white; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid black; width: 180px; height: 50px;">Send Enquiry</button>
+    </div>
     <% @services_all.order(:number).each do |t| %>
       <% if t.number.odd? %>
         <div id='service-<%=t.id%>' style="background-color: <%= t.background_color %>; color: <%= t.text_color %>;">
@@ -8,8 +55,8 @@
               <div class="col-md-4 col-sm-12" style="vertical-align: middle; text-align: center; background-image:url('<%= image_url t.image(:medium) %>'); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height: 180px;">
               </div>
               <div class="col-md-8 col-sm-12" style="text-align: right; padding-left: 20px;">
-                <div style="font-weight: bold; font-size: 28px; margin-bottom: 20px;"><%= t.header %></div>
-                <div style=""><%= t.description.html_safe %></div>
+                <div style="font-weight: bold; font-size: 28px; margin-bottom: 20px;"><% if I18n.locale == :en %><%= t.header %><% else %><%= t.header_geo %><% end %></div>
+                <div style=""><% if I18n.locale == :en %><%= t.description.html_safe %><% else %><%= t.description_geo.html_safe %><% end %></div>
               </div>
             </div>
           </div>
