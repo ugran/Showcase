@@ -34,6 +34,12 @@
             <%= f.label :comment %><br />
             <%= f.text_area :comment_service, class: "form-control", required: true %>
           </div>
+          <% if @services_all.present? %>
+            <div class="form-group">
+              <%= f.label :select_service %><br />
+              <%= f.select :select_service, options_from_collection_for_select(@services_all, 'header', 'header'), class: "form-control" %>
+            </div>
+          <% end %>
         </div>
         <div class="modal-footer">
           <%= f.submit('Submit', class:'btn btn-dark') %>

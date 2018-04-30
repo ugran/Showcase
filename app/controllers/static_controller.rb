@@ -14,7 +14,7 @@ class StaticController < ApplicationController
         elsif params[:send_enquiry].present?
           EnquiryMailer.send_enquiry(params[:product_name_final], params[:product_quantity_final], params[:product_price_final], params[:optional_product_name_final], params[:optional_product_price_final], params[:email], params[:comment]).deliver_later
         elsif params[:send_service_enquiry].present?
-          ServiceEnquiryMailer.send_enquiry(params[:first_name_service], params[:last_name_service], params[:phone_number_service], params[:email_service], params[:comment_service]).deliver_later
+          ServiceEnquiryMailer.send_enquiry(params[:first_name_service], params[:last_name_service], params[:phone_number_service], params[:email_service], params[:comment_service], params[:select_service]).deliver_later
         end
         @products_all = Product.all
     end
