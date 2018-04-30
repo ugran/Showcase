@@ -1,11 +1,15 @@
 <div class="container" style="margin-bottom: 30px">
   <p style='margin-top:20px; font-weight:bold'>EDIT PRODUCT</p>
-  <%= form_with(@edit_product, url: admin_path, local: true) do |f| %>
+  <%= form_for(@edit_product, url: admin_path, local: true) do |f| %>
     <%= f.hidden_field :edit_product_submit, :value => @edit_product.id %>
     <div class="row">
-      <div class="col-md-6 form-group">
+      <div class="col-md-3 form-group">
         <%= f.label :name %><br />
         <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="col-md-3 form-group">
+        <%= f.label :name_geo %><br />
+        <%= f.text_field :name_geo, class: "form-control" %>
       </div>
       <div class="col-md-3 form-group">
         <%= f.label :price %><br />
@@ -16,9 +20,15 @@
         <%= f.text_field :weight, class: "form-control" %>
       </div>
     </div>
-    <div class="form-group">
-      <%= f.label :short_description %><br />
-      <%= f.text_area :short_description, class: "form-control", id: "edit_ck_short_description" %>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= f.label :short_description %><br />
+        <%= f.text_area :short_description, class: "form-control", id: "edit_ck_short_description" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :short_description_geo %><br />
+        <%= f.text_area :short_description_geo, class: "form-control", id: "edit_ck_short_description_geo" %>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-6 form-group">
@@ -26,8 +36,18 @@
         <%= f.text_area :description, class: "form-control", id: "edit_ck_description" %>
       </div>
       <div class="col-md-6 form-group">
+        <%= f.label :field_1_geo %><br />
+        <%= f.text_area :description_geo, class: "form-control", id: "edit_ck_description_geo" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
         <%= f.label :field_2 %><br />
         <%= f.text_area :specifications, class: "form-control", id: "edit_ck_specifications" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :field_2_geo %><br />
+        <%= f.text_area :specifications_geo, class: "form-control", id: "edit_ck_specifications_geo" %>
       </div>
     </div>
     <div class="row">
@@ -36,8 +56,18 @@
         <%= f.text_area :field_3, class: "form-control", id: "edit_ck_field_3" %>
       </div>
       <div class="col-md-6 form-group">
+        <%= f.label :field_3_geo %><br />
+        <%= f.text_area :field_3_geo, class: "form-control", id: "edit_ck_field_3_geo" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
         <%= f.label :field_4 %><br />
         <%= f.text_area :field_4, class: "form-control", id: "edit_ck_field_4" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :field_4_geo %><br />
+        <%= f.text_area :field_4_geo, class: "form-control", id: "edit_ck_field_4_geo" %>
       </div>
       <div class='col-md-4 form-group'>
         <%= f.label :image %><br />
@@ -53,16 +83,31 @@
     ClassicEditor.create( document.querySelector('#edit_ck_description' )).catch( error => {
       console.error( error );
     });
+    ClassicEditor.create( document.querySelector('#edit_ck_description_geo' )).catch( error => {
+      console.error( error );
+    });
     ClassicEditor.create( document.querySelector('#edit_ck_specifications')).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#edit_ck_specifications_geo')).catch( error => {
       console.error( error );
     });
     ClassicEditor.create( document.querySelector('#edit_ck_short_description' )).catch( error => {
       console.error( error );
     });
+    ClassicEditor.create( document.querySelector('#edit_ck_short_description_geo' )).catch( error => {
+      console.error( error );
+    });
     ClassicEditor.create( document.querySelector('#edit_ck_field_3' )).catch( error => {
       console.error( error );
     });
+    ClassicEditor.create( document.querySelector('#edit_ck_field_3_geo' )).catch( error => {
+      console.error( error );
+    });
     ClassicEditor.create( document.querySelector('#edit_ck_field_4' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#edit_ck_field_4_geo' )).catch( error => {
       console.error( error );
     });
   });
