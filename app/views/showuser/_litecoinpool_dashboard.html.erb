@@ -1,0 +1,5 @@
+<% unless @group.present? %>
+    <%= render 'ltc_user'%>
+<% else %>
+    <%= render 'ltc_group'%>
+<% end %>

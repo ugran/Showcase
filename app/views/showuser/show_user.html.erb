@@ -1,7 +1,7 @@
 <% if current_user.admin? %>
     <% if @user.active? %>
         <div id='dashboard'>
-            <%= render 'dashboard' %>
+            <%= render 'show_user_dashboard' %>
         </div>
         <% unless @user.group_id.present? %>
             <script>
@@ -9,7 +9,7 @@
                     function() {
                     setInterval(function() {
                         $.ajax({
-                            url: '/dashboard.js',
+                            url: '/show_user.js',
                             method: 'POST',
                             cache: false,
                             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
@@ -18,7 +18,5 @@
                 });
             </script>
         <% end %>
-    <% else %>
-      <%= render 'personal_information' %>
     <% end %>
 <% end %>

@@ -1,0 +1,109 @@
+<div id='ltc-dashboard' style='padding-left:2.5%; padding-right:2.5%; margin-top:20px;'>
+    <div class='row'>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1;'>Total Hashrate</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= number_with_delimiter(@ltc[:user][:hash_rate]/1000, :delimiter => ',') %> MH/s</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Total Rewards</h4>
+                    <% total = @ltc[:user][:total_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (total-total*@user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Paid Rewards</h4>
+                    <% paid = @ltc[:user][:paid_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (paid-paid*@user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em'>Unpaid Rewards</h4>
+                    <% unpaid = @ltc[:user][:unpaid_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (unpaid-unpaid*@user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style='margin-top:20px;'>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Expected 24h Reward</h4>
+                    <% expected = @ltc[:user][:expected_24h_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (expected-expected*@user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Past 24h rewards</h4>
+                    <% past = @ltc[:user][:past_24h_rewards] %>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'><%= (past-past*@user.percent_fee.to_i/100).round(6) %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Estimated Electricity Cost</h4>
+                    <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'>$ <%= @user.fixed_fee %></p>
+                </div>
+            </div>
+        </div>
+        <% if @group.present? %>
+            <div class="col-sm-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style='width:100%; text-align:center; font-weight:bold; font-size:1em;'>Current Balance</h4>
+                        <p class="card-text" style='width:100%; text-align:center; font-weight:bold; font-size:2em;'>$ <%= @user.user_balance.cur_ltc %></p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <table class="table table-bordered table-hover" style='margin-top:20px;'>
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Worker Name</th>
+            <th scope="col">Hash Rate</th>
+            <th scope="col">Hash Rate 24h</th>
+            <th scope="col">Valid Shares</th>
+            <th scope="col">Stale Shares</th>
+            <th scope="col">Invalid Shares</th>
+            <th scope="col">Rewards</th>
+            <th scope="col">Rewards 24h</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% index = 0 %>
+            <% @ltc[:workers].select{|k,v| @user.miners.where(algorithm: 'Scrypt').map(&:worker_name).map {|s| s.gsub(' ', '')}.include? k.to_s}.each do |k,v| %>
+                <tr>
+                    <td><%= index %></td>
+                    <% index += 1 %>
+                    <td><%= k.to_s.split('.')[1] %></td>
+                    <td><%= BigDecimal.new((v[:hash_rate].to_f/1000).to_s).floor(2) %> MH/s</td>
+                    <td><%= BigDecimal.new((v[:hash_rate_24h].to_f/1000).to_s).floor(2) %> MH/s</td>
+                    <td><%= v[:valid_shares] %></td>
+                    <td><%= v[:stale_shares] %></td>
+                    <td><%= v[:invalid_shares] %></td>
+                    <td><%= (v[:rewards]-v[:rewards]*@user.percent_fee.to_i/100).round(6) %></td>
+                    <td><%= (v[:rewards_24h]-v[:rewards_24h]*@user.percent_fee.to_i/100).round(6) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,5 @@
+<% unless @group.present? %>
+    <%= render 'slush_user'%>
+<% else %>
+    <%= render 'slush_group'%>
+<% end %>

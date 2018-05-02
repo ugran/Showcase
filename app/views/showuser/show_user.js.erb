@@ -1,0 +1,6 @@
+<% if @ltc.present? %>
+    $('#ltc-dashboard').replaceWith('<%= j render("litecoinpool_dashboard") %>');
+<% end %>
+<% if @btc.present? %>
+    $('#btc-dashboard').replaceWith('<%= j render("slushpool_dashboard") %>');
+<% end %>
