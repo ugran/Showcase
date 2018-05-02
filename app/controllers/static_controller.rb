@@ -13,14 +13,17 @@ class StaticController < ApplicationController
             @this_product = Product.find(params[:product_id].to_i)
         elsif params[:send_enquiry].present?
           EnquiryMailer.send_enquiry(params[:product_name_final], params[:product_quantity_final], params[:product_price_final], params[:optional_product_name_final], params[:optional_product_price_final], params[:email], params[:comment]).deliver_later
-        elsif params[:send_service_enquiry].present?
-          ServiceEnquiryMailer.send_enquiry(params[:first_name_service], params[:last_name_service], params[:phone_number_service], params[:email_service], params[:comment_service], params[:select_service]).deliver_later
         end
         @products_all = Product.all
     end
 
     def services
         @services_all = Service.all
+        if params[:service_id].present?
+          @this_service = Service.find(params[:service_id].to_i)
+        elsif params[:send_service_enquiry].present?
+          ServiceEnquiryMailer.send_enquiry(params[:this_service_header], params[:first_name_service], params[:last_name_service], params[:phone_number_service], params[:email_service], params[:comment_service]).deliver_later
+        end
     end
 
     def our_facility

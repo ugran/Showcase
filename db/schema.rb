@@ -194,6 +194,10 @@ ActiveRecord::Schema.define(version: 2018_04_30_084810) do
     t.text "header_geo"
     t.text "description_geo"
     t.text "dropdown_header_geo"
+    t.text "field_1"
+    t.text "field_1_geo"
+    t.text "field_2"
+    t.text "field_2_geo"
   end
 
   create_table "slushpoolstats", force: :cascade do |t|
