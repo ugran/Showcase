@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_02_102531) do
+ActiveRecord::Schema.define(version: 2018_05_02_151402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2018_05_02_102531) do
     t.json "payouts"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "total_btc_hash"
+    t.decimal "total_ltc_hash"
     t.index ["group_id"], name: "index_group_payout_histories_on_group_id"
   end
 

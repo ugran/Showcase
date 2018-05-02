@@ -13,7 +13,9 @@
                 <div class="col-md-8 col-sm-12" style="text-align: right; padding-left: 20px;">
                   <div style="font-weight: bold; font-size: 28px; margin-bottom: 20px;"><%= link_to services_path(service_id: t.id), style: 'color: black; text-decoration: none;' do %><% if I18n.locale == :en %><%= t.header %><% else %><%= t.header_geo %><% end %><% end %></div>
                   <div style=""><% if I18n.locale == :en %><%= t.description.html_safe %><% else %><%= t.description_geo.html_safe %><% end %></div>
-                  <button style="background-color: white; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #9b9b9b; cursor: pointer;"><%= link_to 'Learn More', services_path(service_id: t.id), style: 'color: #9b9b9b;text-decoration:none;' %></button>
+                  <%= link_to services_path(service_id: t.id) do %>
+                    <div class='btn btn-primary'>Learn More</div>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -25,7 +27,9 @@
                 <div class="col-md-8 col-sm-12" style="padding-right: 20px;">
                   <div style="font-weight: bold; font-size: 28px; margin-bottom: 20px;"><%= link_to services_path(service_id: t.id), style: 'color: black; text-decoration: none;' do %><% if I18n.locale == :en %><%= t.header %><% else %><%= t.header_geo %><% end %><% end %></div>
                   <div style=""><% if I18n.locale == :en %><%= t.description.html_safe %><% else %><%= t.description_geo.html_safe %><% end %></div>
-                  <button style="background-color: white; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #9b9b9b; cursor: pointer;"><%= link_to 'Learn More', services_path(service_id: t.id), style: 'color: #9b9b9b;text-decoration:none;' %></button>
+                  <%= link_to services_path(service_id: t.id) do %>
+                    <div class='btn btn-primary'>Learn More</div>
+                  <% end %>
                 </div>
                 <div class="col-md-4 col-sm-12" style="background-image:url('<%= image_url t.image(:medium) %>'); background-size:cover; background-repeat: no-repeat; background-position: center center; min-height: 180px;">
                 </div>
