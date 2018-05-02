@@ -1,5 +1,6 @@
 <% if current_user.admin? %>
     <% if @user.active? %>
+        <div class='showuser' id='<%= @user.id %>'>
         <div id='dashboard'>
             <%= render 'show_user_dashboard' %>
         </div>
