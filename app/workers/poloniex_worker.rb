@@ -109,10 +109,10 @@ class PoloniexWorker
               end
               ltc_payout = ltc_amount.to_s.to_f
             end
-            payouts.push({user: user.id, btc_payout: btc_payout, ltc_payout: ltc_payout})
+            payouts.push({user: user.id, btc_payout: btc_payout, ltc_payout: ltc_payout, btc_hash: user_btc_hash, ltc_hash: user_ltc_hash})
           end
           if total_ltc_payout > 0 || total_btc_payout > 0
-            GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, payouts: payouts)
+            GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, total_btc_hash: total_btc_hash, total_ltc_hash: total_ltc_hash, payouts: payouts)
             PoloniexWorker.perform_in(5.minutes, group_id)
           end
         end

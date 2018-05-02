@@ -1,11 +1,15 @@
 <h4>Group: <%= @group_payout.group.name %> </h4>
 <p>Date: <%= @group_payout.created_at %></p>
+<p>Total BTC Hash: <%= @group_payout.total_btc_hash %></p>
+<p>Total LTC Hash: <%= @group_payout.total_ltc_hash %></p>
 
 <table class='table'>
     <thead>
         <th>User</th>
         <th>BTC Payout</th>
         <th>LTC Payout</th>
+        <th>BTC Hash</th>
+        <th>LTC Hash</th>
     </thead>
     <tbody>
         <% @payouts.each do |t| %>
@@ -13,6 +17,8 @@
                 <td><%= User.find(t["user"]).email %></td>
                 <td><%= t["btc_payout"] %></td>
                 <td><%= t["ltc_payout"] %></td>
+                <td><%= t["btc_hash"] %></td>
+                <td><%= t["ltc_hash"] %></td>
             </tr>
         <% end %>
     </tbody>

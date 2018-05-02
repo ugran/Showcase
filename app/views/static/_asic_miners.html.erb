@@ -4,20 +4,21 @@
     <% if @products_all.present? %>
       <% @products_all.where(category: 1).each do |t| %>
         <div class="col-md-3" style="text-align:center; padding-left:0px; padding-right:0px; height:400px">
-          <a style="text-decoration:none; color : #000;" href="<%= products_path(product_id: t.id) %>">
-            <div class="product" style="border: 1px solid hsla(0,0%,92%,.5); cursor:pointer; height:400px; padding-top: 26px; padding-bottom:26px; padding-left:21px; padding-right:21px">
-              <div style="background-image:url('<%= image_url t.image(:medium) %>'); background-size:contain; background-repeat: no-repeat; background-position: center center; height: 150px; margin-bottom: 48px;"></div>
-              <h1 style="margin-top:21px; font-size:14px; font-weight:bold"><% if I18n.locale == :en %><%= t.name %><% else %><%= t.name_geo %><% end %></h1>
-              <h2 style="margin-top:20px; margin-bottom: 52px; font-size:12px;"><% if I18n.locale == :en %><%= t.short_description.html_safe %><% else %><%= t.short_description_geo.html_safe %><% end %></h2>
+            <div class="product" style="border: 1px solid hsla(0,0%,92%,.5); height:400px; padding-top: 26px; padding-bottom:26px; padding-left:21px; padding-right:21px">
+              <%= link_to products_path(product_id: t.id), style:'text-decoration:none; color: #000;' do %>
+                <div style="background-image:url('<%= image_url t.image(:medium) %>'); background-size:contain; background-repeat: no-repeat; background-position: center center; height: 150px; margin-bottom: 48px;"></div>
+                <h1 style="margin-top:21px; font-size:14px; font-weight:bold"><% if I18n.locale == :en %><%= t.name %><% else %><%= t.name_geo %><% end %></h1>
+                <h2 style="margin-top:20px; margin-bottom: 52px; font-size:12px;"><% if I18n.locale == :en %><%= t.short_description.html_safe %><% else %><%= t.short_description_geo.html_safe %><% end %></h2>
+              <% end %>
               <p class="price" style="color:#529bd7; font-size:22px; font-weight:700; font-family:Arial"><%= t.price.to_i %> USD</p>
               <div class="row buttons" style="display: none;">
                 <div class="col-md-12" style="position:absolute; bottom: 35px; left:0;">
-                  <button style="background-color: white; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #9b9b9b; cursor: pointer;"><%= link_to 'Learn More', products_path(product_id: t.id), style: 'color: #9b9b9b;text-decoration:none;' %></button>
-                  <button style="background: linear-gradient(#8acbed,#529bd7); color: white; border: none; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #8acbed;">Send Enquiry</button>
+                  <%= link_to products_path(product_id: t.id) do %>
+                    <div class='btn btn-primary'>Learn More</div>
+                  <% end %>
                 </div>
               </div>
             </div>
-          </a>
         </div>
       <% end %>
     <% end %>
