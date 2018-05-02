@@ -220,7 +220,7 @@ private
 
     def service_params
         if params[:service].present?
-            params[:service].permit(:number, :header, :dropdown_header, :description, :background_color, :text_color, :image, :header_geo, :description_geo, :dropdown_header_geo)
+            params[:service].permit(:number, :header, :dropdown_header, :description, :background_color, :text_color, :image, :header_geo, :description_geo, :dropdown_header_geo, :field_1, :field_1_geo, :field_2, :field_2_geo)
         end
     end
 

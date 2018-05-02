@@ -28,12 +28,32 @@
     </div>
     <div class="row">
       <div class="col-md-6 form-group">
-        <%= f.label :description %><br />
+        <%= f.label :field_1 %><br />
         <%= f.text_area :description, class: "form-control", id: "edit_ck_service_description" %>
       </div>
       <div class="col-md-6 form-group">
-        <%= f.label :description_geo %><br />
+        <%= f.label :field_1_geo %><br />
         <%= f.text_area :description_geo, class: "form-control", id: "edit_ck_service_description_geo" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= f.label :field_2 %><br />
+        <%= f.text_area :field_1, class: "form-control", id: "edit_ck_service_field_1" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :field_2_geo %><br />
+        <%= f.text_area :field_1_geo, class: "form-control", id: "edit_ck_service_field_1_geo" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <%= f.label :field_3 %><br />
+        <%= f.text_area :field_2, class: "form-control", id: "edit_ck_service_field_2" %>
+      </div>
+      <div class="col-md-6 form-group">
+        <%= f.label :field_3_geo %><br />
+        <%= f.text_area :field_2_geo, class: "form-control", id: "edit_ck_service_field_2_geo" %>
       </div>
     </div>
     <div class="row">
@@ -60,6 +80,18 @@
       console.error( error );
     });
     ClassicEditor.create( document.querySelector('#edit_ck_service_description_geo' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#edit_ck_service_field_1' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#edit_ck_service_field_1_geo' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#edit_ck_service_field_2' )).catch( error => {
+      console.error( error );
+    });
+    ClassicEditor.create( document.querySelector('#edit_ck_service_field_2_geo' )).catch( error => {
       console.error( error );
     });
   });

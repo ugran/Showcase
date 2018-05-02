@@ -1,0 +1,27 @@
+<div class="container" style="margin-top: 100px; text-align: center;">
+  <% if !current_user.otp_required_for_login %>
+    <%= button_to "Enable 2FA", static_enable_otp_path, class: 'btn btn-primary', style: 'background: linear-gradient(#132935,#020d16); color: white; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid black; width: 180px; height: 50px;', :method => :post %>
+  <% end %>
+
+  <% if current_user.otp_required_for_login %>
+    <button id="disable_2fa_button" type="button" class="btn btn-primary" onclick="$('#disable_2fa_div').toggle();" style="background: linear-gradient(#132935,#020d16); color: white; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid black; width: 180px; height: 50px; margin-bottom: 10px;">Disable 2FA</button>
+    <div id="disable_2fa_div" class="" style="display: none;">
+      <%= form_with( url: static_disable_otp_path, local: true) do |f| %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 offset-md-4">
+              <%= f.label :authentication_key %><br />
+              <%= f.text_field :disable_2fa, class: "form-control", required: true %>
+            </div>
+          </div>
+        </div>
+        <div>
+          <%= f.submit('Submit', class:'btn btn-dark', :method => :post) %>
+        </div>
+      <% end %>
+    </div>
+    <br />
+    <h4 style="margin-bottom: 20px;">Your QR Code:</h4>
+    <%= raw RQRCode::render_qrcode(current_user.otp_provisioning_uri(current_user.email, issuer: "cryptografs"), :svg, :level => :l, :unit => 2) %>
+  <% end %>
+</div>

@@ -97,6 +97,7 @@ class PagesController < ApplicationController
                         end
                         respond_to do |format|
                             format.html
+                            format.svg  { render :qrcode => request.url, :level => :l, :unit => 10 }
                             format.js
                         end
                     end
