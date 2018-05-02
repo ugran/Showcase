@@ -1,5 +1,26 @@
 class StaticController < ApplicationController
 
+    def disable_otp
+      if params[:disable_2fa].present? && params[:disable_2fa] == current_user.current_otp
+        current_user.otp_required_for_login = false
+        current_user.save!
+        redirect_back fallback_location: two_factor_authentication_path, notice: "2FA Disabled"
+      else
+        redirect_back fallback_location: two_factor_authentication_path, notice: "Incorrect authentication key"
+      end
+    end
+
+    def enable_otp
+      current_user.otp_secret = User.generate_otp_secret
+      current_user.otp_required_for_login = true
+      current_user.save!
+      redirect_back fallback_location: two_factor_authentication_path, notice: "2FA Enabled"
+    end
+
+    def two_factor_authentication
+
+    end
+
     def products
         if params[:asic_miners].present?
             @asic_miners = 1

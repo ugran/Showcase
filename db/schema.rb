@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_30_084810) do
+ActiveRecord::Schema.define(version: 2018_05_02_102531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -277,6 +277,11 @@ ActiveRecord::Schema.define(version: 2018_04_30_084810) do
     t.decimal "cur_eth", default: "0.0", null: false
     t.decimal "cur_dash", default: "0.0", null: false
     t.decimal "cur_sia", default: "0.0", null: false
+    t.string "encrypted_otp_secret"
+    t.string "encrypted_otp_secret_iv"
+    t.string "encrypted_otp_secret_salt"
+    t.integer "consumed_timestep"
+    t.boolean "otp_required_for_login"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"
