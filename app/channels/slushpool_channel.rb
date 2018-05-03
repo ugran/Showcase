@@ -1,7 +1,9 @@
 class SlushpoolChannel < ApplicationCable::Channel
   def subscribed
     unless params[:user].present?
-      stream_from "litecoinpool_#{current_user.id}"
+      if user_signed_in?
+        stream_from "litecoinpool_#{current_user.id}"
+      end
     else
       user = params[:user]
       stream_from "litecoinpool_#{user}"

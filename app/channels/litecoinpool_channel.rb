@@ -4,7 +4,9 @@ class LitecoinpoolChannel < ApplicationCable::Channel
       stream_from "litecoinpool_#{current_user.id}"
     else
       user = params[:user]
-      stream_from "litecoinpool_#{user}"
+      if user.present?
+        stream_from "litecoinpool_#{user}"
+      end
     end
   end
 

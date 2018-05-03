@@ -20,7 +20,7 @@ $(document).on 'turbolinks:load', -> # use page:change if your on turbolinks < 5
           if !$('#ltc-loading').hasClass('inactive')
             $('#ltc-loading').addClass('inactive')
             $('#ltc-loaded').slideDown()
-  else if document.getElementsByClassName("showuser")
+  if document.getElementById("showuser")?
     App.litecoinpool = App.cable.subscriptions.create { channel: "LitecoinpoolChannel", user: parseInt(document.getElementsByClassName("showuser").id)},
       received: (data) ->
         $('#total-hashrate').html data.bcast.user_total_hashrate

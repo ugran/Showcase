@@ -14,7 +14,7 @@ $(document).on 'turbolinks:load', -> # use page:change if your on turbolinks < 5
           if !$('#btc-loading').hasClass('inactive')
             $('#btc-loading').addClass('inactive')
             $('#btc-loaded').slideDown()
-  else if document.getElementsByClassName("showuser")
+  if document.getElementById("showuser")?
     App.slushpool = App.cable.subscriptions.create { channel: "SlushpoolChannel", user: parseInt(document.getElementsByClassName("showuser").id)},
       received: (data) ->
         console.log(data)
