@@ -23,5 +23,9 @@
     <br />
     <h4 style="margin-bottom: 20px;">Your QR Code:</h4>
     <%= raw RQRCode::render_qrcode(current_user.otp_provisioning_uri(current_user.email, issuer: "cryptografs"), :svg, :level => :l, :unit => 2) %>
+    <br/><br/>
+    Backup Codes:<br/> 
+    <%= @codes.first %><br/>
+    <%= @codes.second %>
   <% end %>
 </div>

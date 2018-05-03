@@ -14,8 +14,8 @@ $(document).on 'turbolinks:load', -> # use page:change if your on turbolinks < 5
           if !$('#btc-loading').hasClass('inactive')
             $('#btc-loading').addClass('inactive')
             $('#btc-loaded').slideDown()
-  if document.getElementById("showuser")?
-    App.slushpool = App.cable.subscriptions.create { channel: "SlushpoolChannel", user: parseInt(document.getElementsByClassName("showuser").id)},
+  if document.getElementsByClassName("showuser")[0]?
+    App.slushpool = App.cable.subscriptions.create { channel: "SlushpoolChannel", user: parseInt(document.getElementsByClassName("showuser")[0].id)},
       received: (data) ->
         console.log(data)
         $('#btc-total-hashrate').html data.bcast.user_total_hashrate
