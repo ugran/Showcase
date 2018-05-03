@@ -1,13 +1,28 @@
 class StaticController < ApplicationController
 
     def disable_otp
-      if params[:disable_2fa].present? && params[:disable_2fa] == current_user.current_otp
-        current_user.otp_required_for_login = false
-        current_user.save!
-        redirect_back fallback_location: two_factor_authentication_path, notice: "2FA Disabled"
-      else
-        redirect_back fallback_location: two_factor_authentication_path, notice: "Incorrect authentication key"
-      end
+        if user_signed_in?
+            if params[:disable_2fa].present? && params[:disable_2fa] == current_user.current_otp
+                current_user.otp_required_for_login = false
+                current_user.save!
+                redirect_back fallback_location: two_factor_authentication_path, notice: "2FA Disabled"
+            elsif params[:disable_2fa].present? && current_user.otp_backup_codes.include?(params[:disable_2fa])
+                current_user.otp_required_for_login = false
+                current_user.save!
+                redirect_back fallback_location: two_factor_authentication_path, notice: "2FA Disabled"
+            else
+                redirect_back fallback_location: two_factor_authentication_path, notice: "Incorrect authentication key"
+            end
+        elsif params[:email].present?
+            user = User.find_by(email: params[:email])
+            if user.present?
+                if params[:disable_2fa].present? && user.otp_backup_codes.include?(params[:disable_2fa])
+                    user.otp_required_for_login = false
+                    user.save!
+                    redirect_back fallback_location: root_path, notice: "2FA Disabled"
+                end
+            end
+        end
     end
 
     def enable_otp
@@ -25,8 +40,6 @@ class StaticController < ApplicationController
     def two_factor_authentication
         if user_signed_in?
             @codes = current_user.otp_backup_codes
-        else
-            redirect_back fallback_location: root_path, notice: "Please log into your account."
         end
     end
 
