@@ -11,15 +11,23 @@ class StaticController < ApplicationController
     end
 
     def enable_otp
-      current_user.otp_secret = User.generate_otp_secret
-      current_user.otp_required_for_login = true
-      @codes = current_user.generate_otp_backup_codes!
-      current_user.save!
-      redirect_back fallback_location: two_factor_authentication_path, notice: "2FA Enabled"
+        if user_signed_in?
+            current_user.otp_secret = User.generate_otp_secret
+            current_user.otp_required_for_login = true
+            @codes = current_user.generate_otp_backup_codes!
+            current_user.save!
+            redirect_back fallback_location: two_factor_authentication_path, notice: "2FA Enabled"
+        else
+            redirect_back fallback_location: root_path, notice: "Please log into your account."
+        end
     end
 
     def two_factor_authentication
-        @codes = current_user.otp_backup_codes
+        if user_signed_in?
+            @codes = current_user.otp_backup_codes
+        else
+            redirect_back fallback_location: root_path, notice: "Please log into your account."
+        end
     end
 
     def products

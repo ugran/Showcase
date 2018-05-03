@@ -24,8 +24,9 @@
     <h4 style="margin-bottom: 20px;">Your QR Code:</h4>
     <%= raw RQRCode::render_qrcode(current_user.otp_provisioning_uri(current_user.email, issuer: "cryptografs"), :svg, :level => :l, :unit => 2) %>
     <br/><br/>
-    Backup Codes:<br/> 
+    Backup Codes:<br/><br/>
     <%= @codes.first %><br/>
-    <%= @codes.second %>
+    <%= @codes.second %><br/><br/>
+    <b>If you have used your codes, please disable and re-enable 2FA to get new ones.</b>
   <% end %>
 </div>
