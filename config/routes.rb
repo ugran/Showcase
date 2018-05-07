@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   match '/our_facility' => 'static#our_facility', as: 'our_facility', via: [:get, :post]
   match '/test' => 'tests#index', as: 'test', via: [:get, :post]
   match '/locale' => 'pages#locale', as: 'locale', via: [:get, :post]
+  match '/user_history' => 'pages#user_history', as: 'user_history', via: [:get, :post]
   match '/two_factor_authentication' => 'static#two_factor_authentication', as: 'two_factor_authentication', via: [:get,:post]
 
   mount ActionCable.server => '/cable'

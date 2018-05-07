@@ -120,8 +120,12 @@ class PagesController < ApplicationController
         end
     end
 
-    def show_user
-
+    def user_history
+        if params[:group].present?
+            @group = Group
+        else
+            redirect_to :root
+        end
     end
 
     def locale

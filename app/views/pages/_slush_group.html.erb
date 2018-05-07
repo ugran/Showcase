@@ -54,26 +54,6 @@
                 </div>
             <% end %>
         </div>
-        <table class="table table-bordered table-hover" style='margin-top:20px;'>
-            <thead class="thead-dark">
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Worker Name</th>
-                <th scope="col">Hash Rate</th>
-                <th scope="col">Shares</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @miners.where(algorithm: 'SHA256').each_with_index do |t,i| %>
-                    <tr>
-                        <td><%= i+1 %></td>
-                        <td><%= t.worker_name %></td>
-                        <td><span id='worker-hashrate-<%= t.worker_name.gsub('.','') %>'></span> TH/s</td>
-                        <td><span id='worker-shares-<%= t.worker_name.gsub('.','') %>'></span></td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
     </div>
     <div id='btc-loading' style='width:100%; text-align:center;'>
         <%= image_tag 'loader.gif', style: 'width:640px; height:360px;' %>
