@@ -35,3 +35,59 @@ en:
   products: PRODUCTS
   contact: CONTACT
   our_facility: OUR FACILITY
+  price: Price
+  who_we_are: Who We Are
+  why_us_what_we_offer: Why Us & What We Offer
+  our_objective: Our Objective
+  security: Security
+  insurance: Insurance
+  transparency: Transparency
+  service: Service
+  mining_colocation: Mining Colocation
+  learn_more: Learn More
+  address: Address
+  email: Email
+  phone: Phone
+  address_value: Jiuli Shartava Str.18, 0160, Tbilisi, Georgia
+  name: Name
+  phone_number: Phone Number
+  message: Message
+  submit: Submit
+  feel_free_to_contact_us: Please Feel Free to Contact Us
+  sign_in: Sign In
+  sign_up: Sign Up
+  password: Password
+  password_confirmation: Password Confirmation
+  log_out: Log Out
+  first_name: First Name
+  last_name: Last Name
+  country: Country
+  disabled: Disabled
+  enabled: Enabled
+  two_factor_authentication: Two Factor Authentication
+  admin_settings: Admin Settings
+  comment: Comment
+  optional: Optional
+  please_fill_in_form: Please, fill in the following form!
+  user_profile: User Profile
+  enable_2fa: Enable 2FA
+  disable_2fa: Disable 2FA
+  your_qr_code: Your QR Code
+  dashboard: Dashboard
+  send_enquiry: Send Enquiry
+  miners: Miners
+  parts_and_accessories: Parts & Accessories
+  software: Software
+  weight: Weight
+  quantity: Quantity
+  optional_parts: Optional Parts
+  notes: Notes
+  payment: Payment
+  warranty: Warranty
+  discount: Discount
+  product: Product
+  price: Price
+  total_price: Total Price
+  kg: kg.
+  all_rights_reserved: All Rights Reserved.
+  developed_by_qbit: Developed By Qbit.

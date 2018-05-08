@@ -1,36 +1,78 @@
 <% if current_user.personal_information.present? %>
   <% if current_user.personal_information.status == true %>
-    <div class="container" style="margin-top:50px; text-align:center">
-      <h4>Your account information is saved. We will contact you soon.</h4>
+    <div class="container" style="margin-top:50px; margin-bottom: 100px;">
+      <h4 style="margin-bottom: 20px; font-weight: bold;"><%= t('user_profile') %></h4>
+      <div class="row" id="personal_info">
+        <div class="col-md-6" style="font-size:18px; letter-spacing: 1px; border-right: 1px solid #babbbc;">
+          <table>
+            <tbody>
+              <tr style="margin-bottom: 10px;">
+                <td><span><%= t('first_name') %>:</span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).first_name %></span></td>
+              </tr>
+              <tr style="margin-bottom: 10px;">
+                <td><span><%= t('last_name') %>:</span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).last_name %></span></td>
+              </tr>
+              <tr style="margin-bottom: 10px;">
+                <td><span><%= t('address') %>:</span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).address %></span></td>
+              </tr>
+              <tr style="margin-bottom: 10px;">
+                <td><span><%= t('country') %>:</span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).country %></span></td>
+              </tr>
+              <tr style="margin-bottom: 10px;">
+                <td><span><%= t('email') %>:</span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= current_user.email %></span></td>
+              </tr>
+              <tr style="margin-bottom: 10px;">
+                <td><span><%= t('phone_number') %>:</span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).phone_number %></span></td>
+              </tr>
+              <tr style="margin-bottom: 10px;">
+                <td><span>
+                  <div><%= t('two_factor_authentication') %>: &nbsp</div>
+                </span></td>
+                <td>
+                  <%= link_to two_factor_authentication_path, :method => :post do %>
+                    <% if current_user.otp_required_for_login == true %><%= t('enabled') %><% else %><%= t('disabled') %><% end %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   <% end %>
 <% else %>
   <div class="container" style="margin-top:20px; padding-left:350px; padding-right:350px">
-    <h4 style="margin-bottom:10px">Please, fill in the following form!</h4>
+    <h4 style="margin-bottom:10px"><%= t('please_fill_in_form') %></h4>
     <%= form_with(url: dashboard_path, local: true) do |f| %>
       <%= hidden_field_tag :personal_information, 1 %>
       <div class="form-group">
-        <%= f.text_field :first_name, class: "form-control", placeholder: 'First Name', required: true %>
+        <%= f.text_field :first_name, class: "form-control", placeholder: t('first_name'), required: true %>
       </div>
       <div class="form-group">
-        <%= f.text_field :last_name, class: "form-control", placeholder: 'Last Name', required: true %>
+        <%= f.text_field :last_name, class: "form-control", placeholder: t('last_name'), required: true %>
       </div>
       <div class="form-group">
-        <%= f.text_field :phone_number, class: "form-control", placeholder: 'Phone Number', required: true %>
+        <%= f.text_field :phone_number, class: "form-control", placeholder: t('phone_number'), required: true %>
       </div>
       <div class="form-group">
-        <%= f.text_field :address, class: "form-control", placeholder: 'Address', required: true %>
+        <%= f.text_field :address, class: "form-control", placeholder: t('address'), required: true %>
       </div>
       <div class="form-group">
-        <%= f.text_field :country, class: "form-control", placeholder: 'Country', required: true %>
+        <%= f.text_field :country, class: "form-control", placeholder: t('country'), required: true %>
       </div>
       <div class="form-group">
         <div style="margin-bottom:5px">
-          Comment (Optional)
+          <%= t('comment') %> (<%= t('optional') %>)
         </div>
-        <%= f.text_area :comment, class: "form-control", placeholder: 'Comment', id: 'ck_comment' %>
+        <%= f.text_area :comment, class: "form-control", placeholder: t('comment'), id: 'ck_comment' %>
       </div>
-      <%= f.submit('Submit', class:'btn btn-dark') %>
+      <%= f.submit(t('submit'), class:'btn btn-dark') %>
     <% end %>
   </div>
 <% end %>

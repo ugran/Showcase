@@ -4,3 +4,59 @@ ge:
   products: პროდუქტი
   contact: კონტაქტი
   our_facility: დატა-ცენტრი
+  price: ფასი
+  who_we_are: ვინ ვართ ჩვენ
+  why_us_what_we_offer: რატომ ჩვენ და რას გთავაზობთ
+  our_objective: ჩვენი მიზანი
+  security: უსაფრთხოება
+  insurance: დაზღვევა
+  transparency: გამჭვირვალობა
+  service: მომსახურება
+  mining_colocation: მაინერების განთავსება
+  learn_more: მეტის ნახვა
+  address: მისამართი
+  email: ელ. ფოსტა
+  phone: მობ. ნომერი
+  address_value: ჟიული შარტავას 18, 0160, თბილისი, საქართველო
+  name: სახელი
+  phone_number: მობილურის ნომერი
+  message: კომენტარი
+  submit: გაგზავნა
+  feel_free_to_contact_us: დაგვიკავშირდით
+  sign_in: შესვლა
+  sign_up: რეგისტრაცია
+  password: პაროლი
+  password_confirmation: გაიმეორეთ პაროლი
+  log_out: გამოსვლა
+  first_name: სახელი
+  last_name: გვარი
+  country: ქვეყანა
+  disabled: გამორთული
+  enabled: ჩართული
+  two_factor_authentication: ორმაგი დადასტურება
+  admin_settings: ადმინის პარამეტრები
+  comment: კომენტარი
+  optional: არასავალდებულო
+  please_fill_in_form: გთხოვთ შეავსოთ ფორმა
+  user_profile: მომხმარებლის პროფილი
+  enable_2fa: ორმაგი დადასტურების ჩართვა
+  disable_2fa: ორმაგი დადასტურების გამორთვა
+  your_qr_code: თქვენი QR კოდი
+  dashboard: მაინერების ინფორმაცია
+  send_enquiry: შეტყობინების გაგზავნა
+  miners: მაინერები
+  parts_and_accessories: ნაწილები და აქსესუარები
+  software: პროგრამული უზრუნველყოფა
+  weight: წონა
+  quantity: რაოდენობა
+  optional_parts: დამატებითი ნაწილები
+  notes: ინფორმაცია
+  payment: გადახდა
+  warranty: გარანტია
+  discount: ფასდაკლება
+  product: პროდუქტი
+  price: ფასი
+  total_price: ჯამური ფასი
+  kg: კგ.
+  all_rights_reserved: ყველა უფლება დაცულია
+  developed_by_qbit: შექმნილია Qbit-ის მიერ

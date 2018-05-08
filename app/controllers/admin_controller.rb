@@ -148,6 +148,9 @@ class AdminController < ApplicationController
             end
         elsif params[:edit_service].present?
             @edit_service = Service.find(params[:edit_service].to_i)
+        elsif params[:add_service_options].present?
+            service_options = JSON.parse(params[:add_service_options])
+            ServiceOption.create(options: service_options, service_id: params[:edit_service_id].to_i)
         elsif params[:delete_service].present?
             Service.find(params[:delete_service].to_i).destroy
             redirect_back fallback_location: admin_path, notice: "Service deleted."

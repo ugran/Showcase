@@ -8,7 +8,7 @@
           <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'btc.png', style: 'height:16px; width:16px; margin-left:5px;' %> BTC Price:
+                <%= image_tag 'btc.png', style: 'height:16px; width:16px; margin-left:5px;' %> BTC <%= t('price') %>:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
                 $ <span id="btc_usd" style='margin-right:5px;'><%= @btc_last_100.last %></span>
@@ -21,7 +21,7 @@
           <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'eth.png', style: 'height:16px; width:16px; margin-left:5px;' %> ETH Price:
+                <%= image_tag 'eth.png', style: 'height:16px; width:16px; margin-left:5px;' %> ETH <%= t('price') %>:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
                 $ <span id="eth_usd" style='margin-right:5px;'><%= @eth_last_100.last %></span>
@@ -34,7 +34,7 @@
           <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'xrp.png', style: 'height:16px; width:16px; margin-left:5px;' %> XRP Price:
+                <%= image_tag 'xrp.png', style: 'height:16px; width:16px; margin-left:5px;' %> XRP <%= t('price') %>:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
                 $ <span id="xrp_usd" style='margin-right:5px;'><%= @xrp_last_100.last %></span>
@@ -47,7 +47,7 @@
           <div class='col-lg-6 col-md-6 col-sm-12' style='height:250px; padding:5px; padding:0; border:1px solid black;'>
             <div class='row' style='margin-bottom:0;'>
               <div class='col-lg-6 col-md-6 col-sm-12' style='font-weight:bold;'>
-                <%= image_tag 'ltc.png', style: 'height:16px; width:16px; margin-left:5px;' %> LTC Price:
+                <%= image_tag 'ltc.png', style: 'height:16px; width:16px; margin-left:5px;' %> LTC <%= t('price') %>:
               </div>
               <div class='col-lg-6 col-md-6 col-sm-12' style='text-align:right; font-weight:bold;'>
                 $ <span id="ltc_usd" style='margin-right:5px;'><%= @ltc_last_100.last %></span>
@@ -63,25 +63,29 @@
     <div class='col-lg-4 col-md-4 col-sm-12' style='padding:0;'>
         <div style='width:100%; height:250px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
           <div class='menu-item-wrapper' style='position:absolute; top:0; left:0; z-index:1;'>
-            <%= link_to about_us_path, class: 'nav-link', style:'color:white; color:inherit; height:100%; width:100%;' do %><span>ABOUT US</span><% end %>
+            <%= link_to about_us_path, class: 'nav-link', style:'color:white; color:inherit; height:100%; width:100%;' do %><span><%= t('about_us') %></span><% end %>
           </div>
         </div>
         <div style='width:100%; height:250px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
-          <div class='menu-item-wrapper'>
-            <span>OUR SERVICES</span>
+          <a href="/services" style="text-decoration: none;">
+            <div class='menu-item-wrapper'>
+              <span><%= t('services') %></span>
+            </div>
           </div>
-        </div>
+        </a>
     </div>
   </div>
   <div class='row'>
     <div class='col-lg-6 col-md-6 col-sm-12' style='padding:0;'>
-      <div class='menu-item-wrapper' style='-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
-        <span>PRODUCTS</span>
-      </div>
+      <%= link_to  products_path(asic_miners: 1), style: 'text-decoration: none;' do %>
+        <div class='menu-item-wrapper' style='-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
+          <span><%= t('products') %></span>
+        </div>
+      <% end %>
     </div>
     <div class='col-lg-6 col-md-6 col-sm-12' style='padding:0;'>
       <div class='menu-item-wrapper' style='-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); box-shadow: 01px 1px 5px 0px rgba(0,0,0,0.2);'>
-        <%= link_to contact_path, class: 'nav-link', style:'color:white; color:inherit; height:100%; width:100%;' do %>CONTACT</span><% end %>
+        <%= link_to contact_path, class: 'nav-link', style:'color:white; color:inherit; height:100%; width:100%;' do %><%= t('contact') %></span><% end %>
       </div>
     </div>
   </div>
@@ -95,7 +99,7 @@
   ctx_eth = document.getElementById('ethChart').getContext('2d');
   ctx_xrp = document.getElementById('xrpChart').getContext('2d');
   ctx_ltc = document.getElementById('ltcChart').getContext('2d');
-  
+
 
   chart_labels_btc = [];
   for (i = 0; i <= 100; i++) {
@@ -128,7 +132,7 @@
         }
       }
   });
-  
+
   chart_labels_eth = [];
   for (i = 0; i <= 100; i++) {
     chart_labels_eth[i] = i;
@@ -160,7 +164,7 @@
         }
       }
   });
-  
+
   chart_labels_xrp = [];
   for (i = 0; i <= 100; i++) {
     chart_labels_xrp[i] = i;
@@ -192,7 +196,7 @@
         }
       }
   });
-  
+
   chart_labels_ltc = [];
   for (i = 0; i <= 100; i++) {
     chart_labels_ltc[i] = i;

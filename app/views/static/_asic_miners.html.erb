@@ -1,5 +1,5 @@
 <div class="container">
-  <div style="margin-top:30px; margin-bottom: 30px; letter-spacing:3px; font-size:24px; width:100%; text-align:center">ASIC Miners</div>
+  <div style="margin-top:30px; margin-bottom: 30px; letter-spacing:3px; font-size:24px; width:100%; text-align:center">ASIC <%= t('miners') %></div>
   <div class="row" style="margin-bottom:80px">
     <% if @products_all.present? %>
       <% @products_all.where(category: 1).each do |t| %>

@@ -8,7 +8,7 @@
         <ul class="navbar-nav mr-auto">
             <li class='nav-item'>
                 <% if user_signed_in? %>
-                    <%= link_to 'Dashboard', dashboard_path, class:'nav-link', style:'color:white;' %>
+                    <%= link_to t('dashboard'), dashboard_path, class:'nav-link', style:'color:white;' %>
                 <% end %>
             </li>
             <li class="nav-item">
@@ -31,11 +31,11 @@
                     <%= t('products') %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <div class="dropdown-item"><%= link_to "ASIC Miners", products_path(asic_miners: 1), class: 'nav-link', style: "color:black" %></div>
-                <div class="dropdown-item"><%= link_to "GPU Miners", products_path(gpu_miners: 1), class: 'nav-link', style: "color:black" %></div>
-                <div class="dropdown-item"><%= link_to "Parts & Accessories", products_path(parts_and_accessories: 1), class: 'nav-link', style: "color:black" %></div>
-                <div class="dropdown-item"><%= link_to "Software", products_path(software: 1), class: 'nav-link', style: "color:black" %></div>
-                </div>
+                <div class="dropdown-item"><%= link_to "ASIC" + ' ' + t('miners'), products_path(asic_miners: 1), class: 'nav-link', style: "color:black" %></div>
+                <div class="dropdown-item"><%= link_to "GPU" + ' ' + t('miners'), products_path(gpu_miners: 1), class: 'nav-link', style: "color:black" %></div>
+                <div class="dropdown-item"><%= link_to t('parts_and_accessories'), products_path(parts_and_accessories: 1), class: 'nav-link', style: "color:black" %></div>
+                <div class="dropdown-item"><%= link_to t('software'), products_path(software: 1), class: 'nav-link', style: "color:black" %></div>
+
             </li>
             <li class="nav-item">
                 <%= link_to t('our_facility'), our_facility_path, class: 'nav-link', style:'color:white' %>
@@ -51,13 +51,13 @@
                         <i class='material-icons'>settings</i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <%= link_to "Two Factor Authentication", two_factor_authentication_path, class: 'dropdown-item', :method => :post %>
+                        <%= link_to t('two_factor_authentication'), two_factor_authentication_path, class: 'dropdown-item', :method => :post %>
                         <div class="dropdown-divider"></div>
                         <% if current_user.admin? %>
-                            <%= link_to admin_path, class: 'dropdown-item' do %>Admin Settings<% end %>
+                            <%= link_to admin_path, class: 'dropdown-item' do %><%= t('admin_settings') %><% end %>
                             <div class="dropdown-divider"></div>
                         <% end %>
-                        <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %><i class='material-icons' style='vertical-align:middle'>power_settings_new</i> Logout <% end %>
+                        <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %><i class='material-icons' style='vertical-align:middle'>power_settings_new</i> <%= t('log_out') %> <% end %>
                     </div>
                 </li>
             </ul>
@@ -70,18 +70,18 @@
               <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" style="margin:0; width:100%; text-align:center">Sign In</h5>
+                    <h5 class="modal-title" style="margin:0; width:100%; text-align:center"><%= t('sign_in') %></h5>
                   </div>
                   <%= form_for(:user, :url => session_path(:user), html: {style: 'text-align:center'}) do |f| %>
                     <div class="modal-body">
                       <div class='form-group' style='margin-left:auto; margin-right:auto;'>
-                        <%= f.text_field :email, class: 'form-control', placeholder: 'Email', style: 'width:100%;' %><br />
-                        <%= f.password_field :password, class: 'form-control', placeholder: 'Password', style: 'width:100%;' %><br />
+                        <%= f.text_field :email, class: 'form-control', placeholder: t('email'), style: 'width:100%;' %>
+                        <%= f.password_field :password, class: 'form-control', placeholder: t('password'), style: 'width:100%;' %><br />
                         <%= f.text_field :otp_attempt, class: 'form-control', placeholder: '2FA Key', style: 'width:100%;' %>
                       </div>
                       <%= link_to 'Disable 2FA With Backup Key', two_factor_authentication_path, style: 'color:inherit;' %>
                       <div class='form-group' style='margin-left:auto; margin-right:auto; margin-bottom:10px; padding-top:10px'>
-                          <%= f.submit 'Sign in', class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer' %>
+                          <%= f.submit t('sign_in'), class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer' %>
                       </div>
                     </div>
                   <% end %>
@@ -89,33 +89,33 @@
               </div>
             </div>
             <div class="btn btn-outline-light" data-toggle="modal" data-target="#sign_up_modal" style='margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:10px; cursor:pointer; margin-right:0; margin-left:15px'>
-              Sign Up
+              <%= t('sign_up') %>
             </div>
             <div class="modal fade bd-example-modal-sm" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color:black">
               <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" style="margin:0; width:100%; text-align:center">Sign Up</h5>
+                    <h5 class="modal-title" style="margin:0; width:100%; text-align:center"><%= t('sign_up') %></h5>
                   </div>
                   <div class="modal-body" style="text-align:center">
                     <%= form_for(:user, :url => registration_path(:user)) do |f| %>
                       <div class="form-group">
-                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'Email' %>
+                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: t('email') %>
                       </div>
 
                       <div class="form-group">
                         <% if @minimum_password_length %>
                         <em>(<%= @minimum_password_length %> characters minimum)</em>
                         <% end %>
-                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: 'Password' %>
+                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: t('password') %>
                       </div>
 
                       <div class="form-group">
-                        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: 'Password Confirmation' %>
+                        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: t('password_confirmation') %>
                       </div>
 
                       <div class='form-group' style='margin-left:auto; margin-right:auto; margin-bottom:10px; padding-top:10px'>
-                          <%= f.submit 'Sign up', class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer' %>
+                          <%= f.submit t('sign_up'), class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer' %>
                       </div>
                     <% end %>
                   </div>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  options: 
+  service_id: 1
+
+two:
+  options: 
+  service_id: 1

@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="sendEnquiryModalLabel">Send Enquiry</h5>
+        <h5 class="modal-title" id="sendEnquiryModalLabel"><%= t('send_enquiry') %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -18,17 +18,17 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Price</th>
+                <th scope="col"><%= t('product') %></th>
+                <th scope="col"><%= t('quantity') %></th>
+                <th scope="col"><%= t('weight') %></th>
+                <th scope="col"><%= t('price') %></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row" style="font-weight: normal;"><%= Product.find_by(id: @this_product).name %></th>
                 <td id="product_quantity_enquiry"></td>
-                <td><%= Product.find_by(id: @this_product).weight %> kg.</td>
+                <td><%= Product.find_by(id: @this_product).weight %> <%= t('kg') %></td>
                 <td><%= Product.find_by(id: @this_product).price.to_i %> USD</td>
               </tr>
               <tr>
@@ -40,19 +40,19 @@
             </tbody>
           </table>
           <div class="" style="font-weight: bold; margin-bottom: 20px; text-align: center;">
-            Total Price: <span id="total_price"></span> USD
+            <%= t('total_price') %>: <span id="total_price"></span> USD
           </div>
           <div class="form-group">
-            <%= f.label :email %><br />
+            <%= f.label t('email') %><br />
             <%= f.email_field :email, class: "form-control", required: true %>
           </div>
           <div class="form-group">
-            <%= f.label :comment %><br />
+            <%= f.label t('comment') %><br />
             <%= f.text_area :comment, class: "form-control" %>
           </div>
         </div>
         <div class="modal-footer">
-          <%= f.submit('Submit', class:'btn btn-dark') %>
+          <%= f.submit(t('submit'), class:'btn btn-dark') %>
         </div>
       <% end %>
     </div>
@@ -67,11 +67,11 @@
       <p class="price" style="color:#529bd7; font-size:30px; margin-top: 30px; margin-bottom: 30px;"><%= Product.find_by(id: @this_product).price.to_i %> USD</p>
       <div>
         <div class="row" style="margin-bottom: 20px">
-          <div class="col-md-4">Weight</div>
-          <div class="col-md-4"><%= Product.find_by(id: @this_product).weight %> kg.</div>
+          <div class="col-md-4"><%= t('weight') %></div>
+          <div class="col-md-4"><%= Product.find_by(id: @this_product).weight %> <%= t('kg') %></div>
         </div>
         <div class="row"  style="margin-bottom: 20px">
-          <div class="col-md-4">Quantity</div>
+          <div class="col-md-4"><%= t('quantity') %></div>
           <div class="col-md-4">
             <form id='myform' method='POST' action='#' style="line-height: normal;">
               <input type='button' value='-' class='qtyminus' field='quantity' style="width:25px; height:25px; cursor: pointer;" />
@@ -81,11 +81,11 @@
           </div>
         </div>
         <div class="row" style="">
-          <div class="col-md-4" style="margin:auto;">Optional Parts</div>
+           <div class="col-md-4" style="margin:auto;"><%= t('optional_parts') %></div>
           <div class="col-md-8">
             <% if Product.find_by(id: @this_product).related_product_id.present? %>
               <div id="related_product" style="border:1px solid #e7e7e7; cursor: pointer; padding-top: 10px; padding-bottom: 10px;">
-                <%= image_tag 'http://cryptomining-blog.com/wp-content/uploads/2018/04/bitmain-antminer-ethash-e3.jpg', style: "height:50px;" %><%= Product.find_by(id: @this_product.related_product_id).name %> &nbsp&nbsp&nbsp<span style="color:#529bd7;"><%= Product.find_by(id: @this_product.related_product_id).price.to_i %> USD</span>
+                <%= image_tag Product.find_by(id: @this_product.related_product_id).image(:thumb), style: "height:50px;" %><%= Product.find_by(id: @this_product.related_product_id).name %> &nbsp&nbsp&nbsp<span style="color:#529bd7;"><%= Product.find_by(id: @this_product.related_product_id).price.to_i %> USD</span>
               </div>
             <% end %>
           </div>
@@ -95,21 +95,21 @@
   </div>
   <div class="row" style="margin-top: 20px;">
     <div class="col-md-6 offset-md-6">
-      <button id="send_enquiry_button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#sendEnquiryModal" style="background: linear-gradient(#8acbed,#529bd7); color: white; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #8acbed; width: 180px; height: 50px;">Send Enquiry</button>
+      <button id="send_enquiry_button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#sendEnquiryModal" style="background: linear-gradient(#8acbed,#529bd7); color: white; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #8acbed; height: 50px;"><%= t('send_enquiry') %></button>
     </div>
   </div>
   <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 100px;">
     <li class="nav-item">
-      <a class="nav-link active" id="field_1-tab" data-toggle="tab" href="#field_1" role="tab" aria-controls="field_1" aria-selected="true">Notes</a>
+      <a class="nav-link active" id="field_1-tab" data-toggle="tab" href="#field_1" role="tab" aria-controls="field_1" aria-selected="true"><%= t('notes') %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="field_2-tab" data-toggle="tab" href="#field_2" role="tab" aria-controls="field_2" aria-selected="false">Payment</a>
+      <a class="nav-link" id="field_2-tab" data-toggle="tab" href="#field_2" role="tab" aria-controls="field_2" aria-selected="false"><%= t('payment') %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="field_3-tab" data-toggle="tab" href="#field_3" role="tab" aria-controls="field_3" aria-selected="false">Warranty</a>
+      <a class="nav-link" id="field_3-tab" data-toggle="tab" href="#field_3" role="tab" aria-controls="field_3" aria-selected="false"><%= t('warranty') %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="field_4-tab" data-toggle="tab" href="#field_4" role="tab" aria-controls="field_4" aria-selected="false">Discount</a>
+      <a class="nav-link" id="field_4-tab" data-toggle="tab" href="#field_4" role="tab" aria-controls="field_4" aria-selected="false"><%= t('discount') %></a
     </li>
   </ul>
   <div class="tab-content" id="myTabContent" style="margin-top: 20px; margin-bottom: 100px;">

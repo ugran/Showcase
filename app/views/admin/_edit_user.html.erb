@@ -6,10 +6,6 @@
     <%= form_with url: admin_path, html: {style: 'margin-top:20px;'}, local: true do |f| %>
         <%= f.hidden_field :edit_user_id, value: @edit_user.id %>
         <div class="form-group">
-            <%= f.label :name %><br />
-            <%= f.text_field :name, value: @edit_user.name ,class: "form-control" %>
-        </div>
-        <div class="form-group">
             <%= f.label :poloniex_key %><br />
             <%= f.text_field :poloniex_key, value: @edit_user.poloniex_key, class: "form-control" %>
         </div>

@@ -1,14 +1,30 @@
 <div style='background-color:black;'>
     <div id='slick'>
         <% @facility_carousels.each do |t| %>
-            <div style='width:100%; height:500px; background-position:center center; background-size:contain; background-repeat:no-repeat; background-image:url("<%= image_url t.image(:medium) %>");"'></div>
+            <% if t.is_video == true && t.youtube_link.present? %>
+              <div style="width: 100%; height: 500px; text-align: center; padding-top: 100px;">
+                <iframe width="560" height="315" src="<%='https://www.youtube.com/embed/'+t.youtube_link.sub('https://youtu.be/', '') %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+            <% else %>
+              <div style='width:100%; height:500px; background-position:center center; background-size:contain; background-repeat:no-repeat; background-image:url("<%= image_url t.image(:medium) %>");'></div>
+            <% end %>
         <% end %>
     </div>
     <div clas='row' style='margin-top:30px; padding-bottom:30px;'>
         <div class='col-md-6 offset-md-3'>
             <div id='slick-nav'>
                 <% @facility_carousels.each do |t| %>
-                    <div style='margin-left:5px; margin-right:5px; width:100px; height:100px; background-position:center center; background-size:contain; background-repeat:no-repeat; background-image:url("<%= image_url t.image(:thumb) %>");"'></div>
+                    <% if t.is_video == true && t.youtube_link.present? %>
+                      <div style="width: 100px; height: 100px;">
+                        <div style='position:absolute; z-index:1; width:100px; height:100px;'>
+                        </div>
+                        <div style='position:absolute; z-index:-1; width:100px; height:100px;'>
+                          <iframe width="100" height="100" src="<%='https://www.youtube.com/embed/'+t.youtube_link.sub('https://youtu.be/', '') %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    <% else %>
+                      <div style='margin-left:5px; margin-right:5px; width:100px; height:100px; background-position:center center; background-size:contain; background-repeat:no-repeat; background-image:url("<%= image_url t.image(:thumb) %>");"'></div>
+                    <% end %>
                 <% end %>
             </div>
         </div>

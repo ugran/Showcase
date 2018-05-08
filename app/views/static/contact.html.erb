@@ -5,35 +5,35 @@
                 <i class="fa fa-envelope fa-5x" aria-hidden="true"></i>
                 <table style='width:100%; margin-top:30px;'>
                     <tr>
-                        <td style='padding-bottom:10px;'><b>ADDRESS:</b></td><td style='padding-bottom:10px;'>Jiuli Shartava Str.18, 0160, Tbilisi, Georgia</td>
+                        <td style='padding-bottom:10px;'><b><%= t('address') %>:</b></td><td style='padding-bottom:10px;'><%= t('address_value') %></td>
                     </td>
                     <tr>
-                        <td style='padding-bottom:10px;'><b>Email:</b></td><td style='padding-bottom:10px;'>info@cryptografs.com</td>
+                        <td style='padding-bottom:10px;'><b><%= t('email') %>:</b></td><td style='padding-bottom:10px;'>info@cryptografs.com</td>
                     </td>
                     <tr>
-                        <td style='padding-bottom:10px;'><b>Phone:</b></td><td style='padding-bottom:10px;'>(+995) 577 730 130, (+995) 599 240 340</td>
+                        <td style='padding-bottom:10px;'><b><%= t('phone') %>:</b></td><td style='padding-bottom:10px;'>(+995) 577 730 130, (+995) 599 240 340</td>
                     </td>
                 </table>
             </div>
         </div>
         <div class='col-lg-6 col-md-6 col-sm-12'>
-            <h4 style='margin-top:40px; margin-left:20px;'>Please Feel Free to Contact Us:</h4>
+            <h4 style='margin-top:40px; margin-left:20px;'><%= t('feel_free_to_contact_us') %>:</h4>
             <%= form_with(url: contact_path, html: {style: 'padding:20px; padding-bottom:50px;'}, local: true) do |f| %>
                 <div class='form-group'>
                     <div class='row'>
                         <div class='col-lg-6 col-md-6 col-sm-12'>
-                            <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+                            <%= f.text_field :name, class: 'form-control', placeholder: t('name') %>
                         </div>
                         <div class='col-lg-6 col-md-6 col-sm-12'>
-                            <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+                            <%= f.email_field :email, class: 'form-control', placeholder: t('email') %>
                         </div>
                     </div>
                 </div>
                 <div class='form-group'>
-                    <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number' %>
+                    <%= f.text_field :phone, class: 'form-control', placeholder: t('phone_number') %>
                 </div>
                 <div class='form-group'>
-                    <%= f.text_area :message, class: 'form-control', placeholder: 'Message' %>
+                    <%= f.text_area :message, class: 'form-control', placeholder: t('message') %>
                 </div>
                 <div class='row'>
                     <div class='col-lg-6 col-md-6 col-sm-12'>
@@ -42,7 +42,7 @@
                     <div class='col-lg-6 col-md-6 col-sm-12'>
                         <div style='height:100%; display:table; vertical-align:middle;'>
                             <div style='display:table-cell; vertical-align:middle;'>
-                                <%= submit_tag('Submit', class: 'btn btn-dark') %>
+                                <%= submit_tag(t('submit'), class: 'btn btn-dark') %>
                             </div>
                         </div>
                     </div>
