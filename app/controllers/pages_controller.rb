@@ -122,7 +122,11 @@ class PagesController < ApplicationController
 
     def user_history
         if params[:group].present?
-            @group = Group
+            @group_payouts = GroupPayoutHistory.where(group_id: params[:group].to_i)
+            @payouts = []
+            @group_payouts.each do |t|
+                @payouts.push(t.payouts)
+            end
         else
             redirect_to :root
         end
