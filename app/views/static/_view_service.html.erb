@@ -10,6 +10,8 @@
       <%= form_with( url: services_path, local: true) do |f| %>
         <%= f.hidden_field :send_service_enquiry, :value => 1 %>
         <%= f.hidden_field :this_service_header, id: :this_service_header %>
+        <%= f.hidden_field :this_service_options_name, id: :this_service_options_name %>
+        <%= f.hidden_field :this_service_options_list_selected, id: :this_service_options_list_selected %>
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6 form-group">
@@ -48,6 +50,21 @@
     <div class="col-md-6" style="background-image:url('<%= image_url Service.find_by(id: @this_service).image(:medium) %>'); background-size:contain; background-repeat: no-repeat; background-position: center center; height: 300px;"></div>
     <div class="col-md-6">
       <h3 style="margin-bottom: 50px;"><% if I18n.locale == :en %><%= Service.find_by(id: @this_service).header %><% else %><%= Service.find_by(id: @this_service).header_geo %><% end %></h3>
+      <% if ServiceOption.find_by(service_id: @this_service).present? %>
+        <% ServiceOption.where(service_id: @this_service).each do |a| %>
+          <div style="margin-bottom: 20px;">
+            <span id="service_options_name" style="font-weight: bold; font-size: 18px;"><%= a.options["name"] %></span><span style="font-weight: bold;">:</span>
+            <span>
+              <select id="service_options_list" name="service_options_list">
+                <option value=""></option>
+                <% a.options["list_items"].each do |r| %>
+                  <option value="<%= r %>"><%= r %></option>
+                <% end %>
+              </select>
+            </span>
+          </div>
+        <% end %>
+      <% end %>
       <button id="send_service_enquiry_button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#sendServiceEnquiryModal" style="background: linear-gradient(#8acbed,#529bd7); color: white; cursor: pointer; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border: 1px solid #8acbed; height: 50px;"><%= t('send_enquiry') %></button>
     </div>
   </div>
@@ -72,7 +89,11 @@
 <script>
   $(document).ready(function() {
     $('#send_service_enquiry_button').click(function() {
+      var e = document.getElementById("service_options_list");
+      var service_options_list_value = e.options[e.selectedIndex].value;
       $('#this_service_header').val('<%= Service.find_by(id: @this_service).header %>');
+      $('#this_service_options_name').val($('#service_options_name').html());
+      $('#this_service_options_list_selected').val(service_options_list_value);
     });
   });
 </script>

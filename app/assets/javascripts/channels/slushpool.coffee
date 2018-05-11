@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', -> # use page:change if your on turbolinks < 5
+$ ->
   if document.getElementById("btc-dashboard")
     App.slushpool = App.cable.subscriptions.create "SlushpoolChannel",
       received: (data) ->
@@ -12,9 +12,9 @@ $(document).on 'turbolinks:load', -> # use page:change if your on turbolinks < 5
           $('#worker-hashrate-'+key.split('.').join("");).html data.bcast.hashrate_distribution[key].hashrate/1000000
           $('#worker-shares-'+key.split('.').join("");).html data.bcast.hashrate_distribution[key].shares
         data.bcast.user_miners.forEach (element) ->
-          $("#"+element["worker_name"].split('.').join("");+'hashrate').html element["hashrate"]
-          $("#"+element["worker_name"].split('.').join("");+'avghashrate').html element["avg_hashrate"]
-          $("#"+element["worker_name"].split('.').join("");+'temperature').html element["temperature"]
+          $("#"+element["worker_name"].split('.').join("")+'-hashrate').html element["hashrate"]
+          $("#"+element["worker_name"].split('.').join("")+'-avghashrate').html element["avg_hashrate"]
+          $("#"+element["worker_name"].split('.').join("")+'-temperature').html element["temperature"]
         if !$('#btc-loading').hasClass('inactive')
           $('#btc-loading').addClass('inactive')
           $('#btc-loaded').slideDown()
@@ -30,9 +30,9 @@ $(document).on 'turbolinks:load', -> # use page:change if your on turbolinks < 5
         for key of data.bcast.hashrate_distribution
           $('#worker-shares-'+key.split('.').join("");).html data.bcast.hashrate_distribution[key].shares
         data.bcast.user_miners.forEach (element) ->
-          $("#"+element["worker_name"].split('.').join("");+'hashrate').html element["hashrate"]
-          $("#"+element["worker_name"].split('.').join("");+'avghashrate').html element["avg_hashrate"]
-          $("#"+element["worker_name"].split('.').join("");+'temperature').html element["temperature"]
+          $("#"+element["worker_name"].split('.').join("")+'-hashrate').html element["hashrate"]
+          $("#"+element["worker_name"].split('.').join("")+'-avghashrate').html element["avg_hashrate"]
+          $("#"+element["worker_name"].split('.').join("")+'-temperature').html element["temperature"]
         if !$('#btc-loading').hasClass('inactive')
           $('#btc-loading').addClass('inactive')
           $('#btc-loaded').slideDown()

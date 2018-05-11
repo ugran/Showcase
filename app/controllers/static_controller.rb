@@ -65,7 +65,7 @@ class StaticController < ApplicationController
         if params[:service_id].present?
           @this_service = Service.find(params[:service_id].to_i)
         elsif params[:send_service_enquiry].present?
-          ServiceEnquiryMailer.send_enquiry(params[:this_service_header], params[:first_name_service], params[:last_name_service], params[:phone_number_service], params[:email_service], params[:comment_service]).deliver_later
+            ServiceEnquiryMailer.send_enquiry(params[:this_service_header], params[:first_name_service], params[:last_name_service], params[:phone_number_service], params[:email_service], params[:comment_service], params[:this_service_options_name], params[:this_service_options_list_selected]).deliver_later
         end
     end
 

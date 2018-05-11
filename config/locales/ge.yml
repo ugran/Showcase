@@ -17,7 +17,7 @@ ge:
   address: მისამართი
   email: ელ. ფოსტა
   phone: მობ. ნომერი
-  address_value: ჟიული შარტავას 18, 0160, თბილისი, საქართველო
+  address_value: "ჟიული შარტავას ქ. # 18, თბილისი 0160, საქართველო"
   name: სახელი
   phone_number: მობილურის ნომერი
   message: კომენტარი
@@ -42,7 +42,7 @@ ge:
   enable_2fa: ორმაგი დადასტურების ჩართვა
   disable_2fa: ორმაგი დადასტურების გამორთვა
   your_qr_code: თქვენი QR კოდი
-  dashboard: მაინერების ინფორმაცია
+  dashboard: მართვის პანელი
   send_enquiry: შეტყობინების გაგზავნა
   miners: მაინერები
   parts_and_accessories: ნაწილები და აქსესუარები

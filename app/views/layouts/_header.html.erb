@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style='background-color:black; color:white;'>
+<nav class="navbar navbar-expand-lg navbar-dark" style='background-color:black; color:white; font-family:"headline_georgian";'>
     <%= link_to root_path, class:"navbar-brand" do %> <span style='vertical-align:top; color:#fcc118; font-weight:bold;'><i class='material-icons' style='vertical-align:middle; margin-top:-3px; color:#fcc118;'>pie_chart</i> CRYPTOGRAFS</span><% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -53,6 +53,12 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <%= link_to t('two_factor_authentication'), two_factor_authentication_path, class: 'dropdown-item', :method => :post %>
                         <div class="dropdown-divider"></div>
+                        <% if current_user.group_id.present? %>
+                            <% if GroupPayoutHistory.where(group_id: current_user.group_id).present? %>
+                                <%= link_to t('payout_history'), user_history_path(group: current_user.group_id), class: 'dropdown-item' %>
+                                <div class="dropdown-divider"></div>
+                            <% end %>
+                        <% end %>
                         <% if current_user.admin? %>
                             <%= link_to admin_path, class: 'dropdown-item' do %><%= t('admin_settings') %><% end %>
                             <div class="dropdown-divider"></div>
@@ -64,7 +70,7 @@
         <% end %>
         <% unless user_signed_in? %>
             <div class="btn btn-outline-light" data-toggle="modal" data-target="#sign_in_modal" style='margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom:10px; cursor:pointer; margin:0'>
-              Sign In
+              <%= t('sign_in') %>
             </div>
             <div class="modal fade bd-example-modal-sm" id="sign_in_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color:black">
               <div class="modal-dialog modal-sm" role="document">
@@ -76,7 +82,7 @@
                     <div class="modal-body">
                       <div class='form-group' style='margin-left:auto; margin-right:auto;'>
                         <%= f.text_field :email, class: 'form-control', placeholder: t('email'), style: 'width:100%;' %>
-                        <%= f.password_field :password, class: 'form-control', placeholder: t('password'), style: 'width:100%;' %><br />
+                        <%= f.password_field :password, class: 'form-control', placeholder: t('password'), style: 'width:100%; margin-top:5px;' %><br />
                         <%= f.text_field :otp_attempt, class: 'form-control', placeholder: '2FA Key', style: 'width:100%;' %>
                       </div>
                       <%= link_to 'Disable 2FA With Backup Key', two_factor_authentication_path, style: 'color:inherit;' %>

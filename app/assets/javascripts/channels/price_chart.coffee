@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', -> # use page:change if your on turbolinks < 5
+$ ->
   if document.getElementById("price-charts") 
     App.price_chart = App.cable.subscriptions.create "PriceChartChannel",
       received: (data) ->

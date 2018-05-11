@@ -2,8 +2,18 @@
 @import "iziToast";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
+@font-face {
+  font-family:'headline_georgian';
+  src:font-url('bpg_mrgvlovani_caps_2010.ttf') format('trueType');
+}
+
+@font-face {
+  font-family:'georgian';
+  src:font-url('bpg_arial_2009.ttf') format('trueType');
+}
+
 HTML, BODY {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'georgian';
 }
 
 #main {

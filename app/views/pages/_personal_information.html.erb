@@ -8,19 +8,19 @@
             <tbody>
               <tr style="margin-bottom: 10px;">
                 <td><span><%= t('first_name') %>:</span></td>
-                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).first_name %></span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: current_user.id).first_name %></span></td>
               </tr>
               <tr style="margin-bottom: 10px;">
                 <td><span><%= t('last_name') %>:</span></td>
-                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).last_name %></span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: current_user.id).last_name %></span></td>
               </tr>
               <tr style="margin-bottom: 10px;">
                 <td><span><%= t('address') %>:</span></td>
-                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).address %></span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: current_user.id).address %></span></td>
               </tr>
               <tr style="margin-bottom: 10px;">
                 <td><span><%= t('country') %>:</span></td>
-                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).country %></span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: current_user.id).country %></span></td>
               </tr>
               <tr style="margin-bottom: 10px;">
                 <td><span><%= t('email') %>:</span></td>
@@ -28,7 +28,7 @@
               </tr>
               <tr style="margin-bottom: 10px;">
                 <td><span><%= t('phone_number') %>:</span></td>
-                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find(current_user.id).phone_number %></span></td>
+                <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: current_user.id).phone_number %></span></td>
               </tr>
               <tr style="margin-bottom: 10px;">
                 <td><span>

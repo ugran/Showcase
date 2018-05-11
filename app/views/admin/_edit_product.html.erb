@@ -69,6 +69,12 @@
         <%= f.label :field_4_geo %><br />
         <%= f.text_area :field_4_geo, class: "form-control", id: "edit_ck_field_4_geo" %>
       </div>
+      <% if @products_all.present? %>
+        <div class="col-md-12 form-group">
+          <%= f.label :optional_parts %><br />
+          <%= f.select :related_product_id, options_from_collection_for_select(@products_all, 'id', 'name'), :include_blank => true, class: "form-control" %>
+        </div>
+      <% end %>
       <div class='col-md-4 form-group'>
         <%= f.label :image %><br />
         <%= f.file_field :image, class: 'form-control' %>

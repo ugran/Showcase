@@ -126,6 +126,7 @@ class AdminController < ApplicationController
                 redirect_to admin_path , notice: "Product updated."
             end
         elsif params[:edit_product].present?
+            @products_all = Product.all
             @edit_product = Product.find(params[:edit_product].to_i)
         elsif params[:delete_product].present?
             Product.find(params[:delete_product].to_i).destroy

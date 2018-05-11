@@ -20,7 +20,7 @@ class Slushpoolstat < ApplicationRecord
                             btc_hash = BigDecimal.new(btc_hash.to_s) + BigDecimal.new(m.accuhash.to_s)
                         end
                         user_miners.push({worker_name: m.worker_name, hashrate: m.hashrate, avg_hashrate: m.avg_hashrate, temperature: m.temperature})
-                        total_btc_hashrate = (BigDecimal.new(total_btc_hashrate.to_s)+BigDecimal.new(m.hashrate.to_s)).to_f
+                        total_btc_hashrate = (BigDecimal.new(total_btc_hashrate.to_s)+BigDecimal.new(m.hashrate.to_f.to_s)).to_f
                     end
                 end
                 total_hash = BigDecimal.new(total_hash.to_s) + BigDecimal.new(btc_hash.to_s)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_03_151243) do
+ActiveRecord::Schema.define(version: 2018_05_08_095500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,14 @@ ActiveRecord::Schema.define(version: 2018_05_03_151243) do
     t.text "short_description_geo"
     t.text "field_3_geo"
     t.text "field_4_geo"
+  end
+
+  create_table "service_options", force: :cascade do |t|
+    t.json "options"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_options_on_service_id"
   end
 
   create_table "services", force: :cascade do |t|

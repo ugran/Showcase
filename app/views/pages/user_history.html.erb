@@ -1,5 +1,30 @@
-<% @group_payouts %><br/><br/>
-
-<% @payouts.each do |t| %>
-    <%= t %><br/><br/>
-<% end %>
+<div class='container' style='margin-top:50px;'>
+   <table>
+        <thead>
+            <th>Date</th>
+            <th>Total Reward BTC</th>
+            <th>Total BTC Hash</th>
+            <th>Client BTC Hash</th>
+            <th>Client BTC Reward</th>
+            <th>Total Reward LTC</th>
+            <th>Total LTC Hash</th>
+            <th>Client LTC Hash</th>
+            <th>Client LTC Reward</th>
+        </thead>
+        <tbody>
+            <% @payouts.each do |t| %>
+                <tr>
+                    <td><%= t[:date] %></td>
+                    <td><%= t[:btc_total].to_f %></td>
+                    <td><%= t[:total_btc_hash] %></td>
+                    <td><%= t[:payout]["btc_hash"] %></td>
+                    <td><%= t[:payout]["btc_payout"].to_f %></td>
+                    <td><%= t[:ltc_total].to_f %></td>
+                    <td><%= t[:total_ltc_hash] %></td>
+                    <td><%= t[:payout]["ltc_hash"] %></td>
+                    <td><%= t[:payout]["ltc_payout"].to_f %></td>
+                </tr>
+            <% end %>
+        </tbody>
+   </table> 
+</div>

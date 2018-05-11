@@ -1,8 +1,3 @@
-<%= link_to user_history_path(group: @group.id) %>
-    <div class='btn btn-primary'>
-        Payout History
-    </div>
-<% end %>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <% if @btc.present? %>
         <li class="nav-item">
@@ -54,7 +49,7 @@
                                 <td><%= t.worker_name.split('.')[1] %></td>
                                 <td><div id='<%= t.worker_name.gsub('.','') %>-hashrate'><%= t.hashrate %></div></td>
                                 <td><div id='<%= t.worker_name.gsub('.','') %>-avghashrate'><%= t.avg_hashrate %></div></td>
-                                <td><div id='<%= t.worker_name.gsub('.','') %>-temperature'><%= t.temperature%>&deg;</div></td>
+                                <td><div id='<%= t.worker_name.gsub('.','') %>-temperature'><%= t.temperature %>&deg;</div></td>
                                 <td><span id='worker-shares-<%= t.worker_name.gsub('.','') %>'></span></td>
                             </tr>
                         <% end %>
@@ -80,7 +75,7 @@
                                 <td><%= t.worker_name.split('.')[1] %></td>
                                 <td><div id='<%= t.worker_name.gsub('.','') %>-hashrate'><%= t.hashrate %></div></td>
                                 <td><div id='<%= t.worker_name.gsub('.','') %>-avghashrate'><%= t.avg_hashrate %></div></td>
-                                <td><div id='<%= t.worker_name.gsub('.','') %>-temperature'><%= t.temperature%>&deg;</div></td>
+                                <td><div id='<%= t.worker_name.gsub('.','') %>-temperature'><%= t.temperature %>&deg;</div></td>
                                 <td><span id='valid-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:valid_shares] %></td>
                                 <td><span id='stale-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:stale_shares] %></td>
                                 <td><span id='invalid-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:invalid_shares] %></td>

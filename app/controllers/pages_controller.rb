@@ -125,7 +125,9 @@ class PagesController < ApplicationController
             @group_payouts = GroupPayoutHistory.where(group_id: params[:group].to_i)
             @payouts = []
             @group_payouts.each do |t|
-                @payouts.push(t.payouts)
+                if t.payouts.select{ |a| a["user"] == current_user.id}[0].present?
+                    @payouts.push({payout: t.payouts.select{ |a| a["user"] == current_user.id}[0], date: t.created_at, btc_total: t.btc_total_payout, ltc_total: t.ltc_total_payout, total_btc_hash: t.total_btc_hash, total_ltc_hash: t.total_ltc_hash })
+                end
             end
         else
             redirect_to :root
