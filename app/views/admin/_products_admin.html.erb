@@ -112,7 +112,13 @@
               <td><% if I18n.locale == :en %><%= t.short_description.html_safe %><% else %><%= t.short_description_geo.html_safe %><% end %></td>
               <td><%= t.price.to_i %></td>
               <td><% if t.category == 1 %>ASIC Miners <% elsif t.category == 2 %>GPU Miners<% else %>Other Parts<% end %></td>
-              <td><% if t.related_product_id.present? %><%= Product.find_by(id: t.related_product_id).name %><% end %></td>
+              <td>
+                <% if t.related_product_id.present? %>
+                  <% if Product.find_by(id: t.related_product_id).present? %>
+                    <%= Product.find_by(id: t.related_product_id).name %>
+                  <% end %>
+                <% end %>
+              </td>
               <th><%= link_to 'Edit', admin_path(edit_product: t.id) %></th>
               <td><%= link_to 'Delete', admin_path(delete_product: t.id), :"data-turbolinks" => false %></td>
             </tr>
