@@ -12,6 +12,23 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <% if @facebook_metatag_service.present? %>
+      <meta property="fb:app_id"             content="1940350879608660" />
+      <meta property="og:url"                content="<%= request.original_url %>" />
+      <meta property="og:type"               content="product" />
+      <meta property="og:title"              content="<%= Service.find_by(id: @facebook_metatag_service).header %>" />
+      <meta property="og:description"        content="<%= strip_tags(Service.find_by(id: @facebook_metatag_service).description) %>" />
+      <meta property="og:image"              content="<%= image_url Service.find_by(id: @facebook_metatag_service).image %>" />
+    <% end %>
+    <% if @facebook_metatag_product.present? %>
+      <meta property="fb:app_id" content="1940350879608660" />
+      <meta property="og:url"                content="<%= request.original_url %>" />
+      <meta property="og:type"               content="product" />
+      <meta property="og:title"              content="<%= Product.find_by(id: @facebook_metatag_product).name %>" />
+      <meta property="og:description"        content="<%= strip_tags(Product.find_by(id: @facebook_metatag_product).short_description) %>" />
+      <meta property="og:image"              content="<%= image_url Product.find_by(id: @facebook_metatag_product).image %>" />
+    <% end %>
   </head>
 
   <body>
