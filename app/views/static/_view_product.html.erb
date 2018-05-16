@@ -26,10 +26,10 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row" style="font-weight: normal;"><%= Product.find_by(id: @this_product).name %></th>
+                <th scope="row" style="font-weight: normal;"><%= @this_product.name %></th>
                 <td id="product_quantity_enquiry"></td>
-                <td><%= Product.find_by(id: @this_product).weight %> <%= t('kg') %></td>
-                <td><%= Product.find_by(id: @this_product).price.to_i %> USD</td>
+                <td><%= @this_product.weight %> <%= t('kg') %></td>
+                <td><%= @this_product.price.to_i %> USD</td>
               </tr>
               <tr>
                 <td id="optional_parts_name"></td>
@@ -60,15 +60,21 @@
 </div>
 <div class="container" style="margin-top: 70px;">
   <div class="row">
-    <div class="col-md-6" style="background-image:url('<%= image_url Product.find_by(id: @this_product).image(:medium) %>'); background-size:contain; background-repeat: no-repeat; background-position: center center; height: 300px;"></div>
+    <div class="col-md-6" style="background-image:url('<% if @this_product.image.present? %><%= image_url @this_product.image(:medium) %><% end %>'); background-size:contain; background-repeat: no-repeat; background-position: center center; height: 300px;"></div>
     <div class="col-md-6">
-      <h4><% if I18n.locale == :en %><%= Product.find_by(id: @this_product).name %><% else %><%= Product.find_by(id: @this_product).name_geo %><% end %></h4>
-      <div style="color: #888; font-size: 14px;"><% if I18n.locale == :en %><%= Product.find_by(id: @this_product).short_description.html_safe %><% else %><%= Product.find_by(id: @this_product).short_description_geo.html_safe %><% end %></div>
-      <p class="price" style="color:#529bd7; font-size:30px; margin-top: 30px; margin-bottom: 30px;"><%= Product.find_by(id: @this_product).price.to_i %> USD</p>
+      <div style='width:100%;'>
+        <h4><% if I18n.locale == :en %><%= @this_product.name %><% else %><%= @this_product.name_geo %><% end %><i id='fb-share-icon' class="fa fa-facebook-official fa-lg" aria-hidden="true" style='cursor:pointer; float:right;'></i></h4>
+      </div>
+      <div style="color: #888; font-size: 14px;">
+        <% if @this_product.short_description.present? && @this_product.short_description_geo.present? %>
+          <% if I18n.locale == :en %><%= @this_product.short_description.html_safe %><% else %><%= @this_product.short_description_geo.html_safe %><% end %>
+        <% end %>
+      </div>
+      <p class="price" style="color:#529bd7; font-size:30px; margin-top: 30px; margin-bottom: 30px;"><%= @this_product.price.to_i %> USD</p>
       <div>
         <div class="row" style="margin-bottom: 20px">
           <div class="col-md-4"><%= t('weight') %></div>
-          <div class="col-md-4"><%= Product.find_by(id: @this_product).weight %> <%= t('kg') %></div>
+          <div class="col-md-4"><%= @this_product.weight %> <%= t('kg') %></div>
         </div>
         <div class="row"  style="margin-bottom: 20px">
           <div class="col-md-4"><%= t('quantity') %></div>
@@ -83,7 +89,7 @@
         <div class="row" style="">
            <div class="col-md-4" style="margin:auto;"><%= t('optional_parts') %></div>
           <div class="col-md-8">
-            <% if Product.find_by(id: @this_product).related_product_id.present? %>
+            <% if @this_product.related_product_id.present? %>
               <div id="related_product" style="border:1px solid #e7e7e7; cursor: pointer; padding-top: 10px; padding-bottom: 10px;">
                 <%= image_tag Product.find_by(id: @this_product.related_product_id).image(:thumb), style: "height:50px;" %><%= Product.find_by(id: @this_product.related_product_id).name %> &nbsp&nbsp&nbsp<span style="color:#529bd7;"><%= Product.find_by(id: @this_product.related_product_id).price.to_i %> USD</span>
               </div>
@@ -113,15 +119,28 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent" style="margin-top: 20px; margin-bottom: 100px;">
-    <div class="tab-pane fade show active" id="field_1" role="tabpanel" aria-labelledby="field_1-tab"><% if I18n.locale == :en %><%= Product.find_by(id: @this_product).description.html_safe %><% else %><%= Product.find_by(id: @this_product).description_geo.html_safe %><% end %></div>
-    <div class="tab-pane fade" id="field_2" role="tabpanel" aria-labelledby="field_2-tab"><% if I18n.locale == :en %><%= Product.find_by(id: @this_product).specifications.html_safe %><% else %><%= Product.find_by(id: @this_product).specifications_geo.html_safe %><% end %></div>
-    <div class="tab-pane fade" id="field_3" role="tabpanel" aria-labelledby="field_3-tab"><% if I18n.locale == :en %><%= Product.find_by(id: @this_product).field_3.html_safe %><% else %><%= Product.find_by(id: @this_product).field_3_geo.html_safe %><% end %></div>
-    <div class="tab-pane fade" id="field_4" role="tabpanel" aria-labelledby="field_4-tab"><% if I18n.locale == :en %><%= Product.find_by(id: @this_product).field_4.html_safe %><% else %><%= Product.find_by(id: @this_product).field_4_geo.html_safe %><% end %></div>
+    <% if @this_product.description.present? && @this_product.description_geo.present? %>
+      <div class="tab-pane fade show active" id="field_1" role="tabpanel" aria-labelledby="field_1-tab"><% if I18n.locale == :en %><%= @this_product.description.html_safe %><% else %><%= @this_product.description_geo.html_safe %><% end %></div>
+    <% end %>
+    <% if @this_product.specifications.present? && @this_product.specifications_geo.present? %>
+      <div class="tab-pane fade" id="field_2" role="tabpanel" aria-labelledby="field_2-tab"><% if I18n.locale == :en %><%= @this_product.specifications.html_safe %><% else %><%= @this_product.specifications_geo.html_safe %><% end %></div>
+    <% end %>
+    <% if @this_product.field_3.present? && @this_product.field_3_geo.present? %>
+      <div class="tab-pane fade" id="field_3" role="tabpanel" aria-labelledby="field_3-tab"><% if I18n.locale == :en %><%= @this_product.field_3.html_safe %><% else %><%= @this_product.field_3_geo.html_safe %><% end %></div>
+    <% end %>
+    <div class="tab-pane fade" id="field_4" role="tabpanel" aria-labelledby="field_4-tab"><% if I18n.locale == :en %><%= @this_product.field_4.html_safe %><% else %><%= @this_product.field_4_geo.html_safe %><% end %></div>
   </div>
 </div>
 
 <script>
   $(document).ready(function() {
+    $('#fb-share-icon').on('click', function(){
+      FB.ui({
+        method: 'share',
+        display: 'popup',
+        href: '<%= request.original_url %>',
+      }, function(response){});
+    });
     $('#send_enquiry_button').on('click', function(){
       $('#product_quantity_enquiry').html($('#product_quantity').val());
       if ($('#related_product').hasClass("marked")) {
@@ -130,22 +149,22 @@
           $('#optional_parts_quantity').html('1');
           $('#optional_parts_weight').html('<%= Product.find_by(id: @this_product.related_product_id).weight %> kg.');
           $('#optional_parts_price').html('<%= Product.find_by(id: @this_product.related_product_id).price.to_i %> USD');
-          $('#total_price').html($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %> + <%= Product.find_by(id: @this_product.related_product_id).price.to_i %>);
+          $('#total_price').html($('#product_quantity').val() * <%= @this_product.price.to_i %> + <%= Product.find_by(id: @this_product.related_product_id).price.to_i %>);
           $('#optional_product_name_final').val('<%= Product.find_by(id: @this_product.related_product_id).name %>');
           $('#optional_product_price_final').val('<%= Product.find_by(id: @this_product.related_product_id).price.to_i %>');
         <% end %>
-        $('#product_name_final').val('<%= Product.find_by(id: @this_product).name %>');
+        $('#product_name_final').val('<%= @this_product.name %>');
         $('#product_quantity_final').val($('#product_quantity').val());
-        $('#product_price_final').val($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %>);
+        $('#product_price_final').val($('#product_quantity').val() * <%= @this_product.price.to_i %>);
       } else {
         $('#optional_parts_name').html('');
         $('#optional_parts_quantity').html('');
         $('#optional_parts_weight').html('');
         $('#optional_parts_price').html('');
-        $('#product_name_final').val('<%= Product.find_by(id: @this_product).name %>');
+        $('#product_name_final').val('<%= @this_product.name %>');
         $('#product_quantity_final').val($('#product_quantity').val());
-        $('#product_price_final').val($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %>);
-        $('#total_price').html($('#product_quantity').val() * <%= Product.find_by(id: @this_product).price.to_i %>);
+        $('#product_price_final').val($('#product_quantity').val() * <%= @this_product.price.to_i %>);
+        $('#total_price').html($('#product_quantity').val() * <%= @this_product.price.to_i %>);
       };
     });
     $('#related_product').click(function(){

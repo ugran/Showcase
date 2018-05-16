@@ -54,6 +54,7 @@ class StaticController < ApplicationController
             @software = 1
         elsif params[:product_id].present?
             @this_product = Product.find(params[:product_id].to_i)
+            @facebook_metatag_service = Service.find(params[:service_id].to_i)
         elsif params[:send_enquiry].present?
           EnquiryMailer.send_enquiry(params[:product_name_final], params[:product_quantity_final], params[:product_price_final], params[:optional_product_name_final], params[:optional_product_price_final], params[:email], params[:comment]).deliver_later
         end
@@ -64,6 +65,7 @@ class StaticController < ApplicationController
         @services_all = Service.all
         if params[:service_id].present?
           @this_service = Service.find(params[:service_id].to_i)
+          @facebook_metatag_service = Service.find(params[:service_id].to_i)
         elsif params[:send_service_enquiry].present?
             ServiceEnquiryMailer.send_enquiry(params[:this_service_header], params[:first_name_service], params[:last_name_service], params[:phone_number_service], params[:email_service], params[:comment_service], params[:this_service_options_name], params[:this_service_options_list_selected]).deliver_later
         end

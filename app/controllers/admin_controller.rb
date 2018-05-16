@@ -89,6 +89,9 @@ class AdminController < ApplicationController
         elsif params[:show_payouts].present?
             @payouts = GroupPayoutHistory.find(params[:show_payouts].to_i).payouts
             @group_payout = GroupPayoutHistory.find(params[:show_payouts].to_i)
+        elsif params[:show_balances].present?
+            @balances_group = Group.find(params[:show_balances].to_i)
+            @balances_users = @balances_group.users
         elsif params[:delete_miner].present?
             miner = Miner.find(params[:delete_miner].to_i)
             @edit_user = miner.user

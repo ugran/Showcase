@@ -117,6 +117,7 @@
                     <th>#</th>
                     <th>name</th>
                     <th>Payout History</th>
+                    <th>Balances</th>
                     <th>Edit</th>
                     <th>Nicehash</th>
                     <th>Delete</th>
@@ -132,6 +133,9 @@
                             </td>
                             <td>
                                 <%= link_to 'Show', admin_path(group_payout_history: t.id), target: "_blank" %>
+                            </td>
+                            <td>
+                                <%= link_to 'Show Balances', admin_path(show_balances: t.id), target: "_blank" %>
                             </td>
                             <td>
                                 <%= link_to 'Edit', admin_path(edit_group: t.id) %>
