@@ -1,0 +1,117 @@
+<div class="modal fade" id="auto-pay-modal" tabindex="-1" role="dialog" aria-labelledby="auto-pay-modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Auto Pay <span id="auto-pay-email"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style='font-weigh:bold;'>
+          <span id='auto-pay-coin'></span> Balance: <span id='auto-pay-amount'></span>
+        </p>
+        <%= form_with url: admin_path, local: true do |f| %>
+          <%= f.hidden_field :auto_pay_user, id: 'auto_pay_user' %>
+          <%= f.hidden_field :coin, id: 'auto_coin' %>
+          <div class="form-group">
+            <%= f.label :amount %><br />
+            <%= f.number_field :amount, id: 'auto_pay_amount', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :full %><br />
+            <%= f.select :full, options_for_select(["No", "Yes"]), class: 'form-control' %>
+          </div>
+          <%= f.submit('Pay', class:'btn btn-dark') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="manual-pay-modal" tabindex="-1" role="dialog" aria-labelledby="manual-pay-modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Manual Pay <span id="manual-pay-email"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style='font-weigh:bold;'>
+          <span id='manual-pay-coin'></span> Balance: <span id='manual-pay-amount'></span>
+        </p>
+        <%= form_with url: admin_path, local: true do |f| %>
+          <%= f.hidden_field :manual_pay_user, id: 'manual_pay_user' %>
+          <%= f.hidden_field :coin, id: 'manual_coin' %>
+          <div class="form-group">
+            <%= f.label :amount %><br />
+            <%= f.number_field :amount, id: 'manual_pay_amount', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :full %><br />
+            <%= f.select :full, options_for_select(["No", "Yes"]), class: 'form-control' %>
+          </div>
+          <%= f.submit('Pay', class:'btn btn-dark') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <th>User Email</th>
+      <th>BTC</th>
+      <th>LTC</th>
+      <th>Auto Payment</th>
+      <th>Manual</th>
+    </thead>
+    <tbody>
+      <% @balances_users.each do |t| %>
+        <tr>
+          <td><%= t.email %></td>
+          <td><% if t.user_balance.present? %><%= t.user_balance.cur_btc %><% end %></td>
+          <td><% if t.user_balance.present? %><%= t.user_balance.cur_ltc %><% end %></td>
+          <td><% if t.user_balance.present? %><% if t.user_balance.cur_btc > 0.0005 %><span style="cursor: pointer; color: #007bff;" class="auto-pay" useremail="<%= t.email %>" user="<%= t.id %>" btc="<%= t.user_balance.cur_btc %>">Auto Pay BTC</span><% end %><br /><% if t.user_balance.cur_ltc > 0.001 %><span style="cursor: pointer; color: #007bff;" class="auto-pay" useremail="<%= t.email %>" user="<%= t.id %>" ltc="<%= t.user_balance.cur_ltc %>">Auto Pay LTC</span><% end %><% end %></td>
+          <td><% if t.user_balance.present? %><% if t.user_balance.cur_btc > 0.0005 %><span style="cursor: pointer; color: #007bff;" class="manual-pay" useremail="<%= t.email %>" user="<%= t.id %>" btc="<%= t.user_balance.cur_btc %>">Manual Pay BTC</span><% end %><br /><% if t.user_balance.cur_ltc > 0.001 %><span style="cursor: pointer; color: #007bff;" class="manual-pay" useremail="<%= t.email %>" user="<%= t.id %>" ltc="<%= t.user_balance.cur_ltc %>">Manual Pay LTC</span><% end %><% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('.auto-pay').click(function(){
+      $('#auto-pay-modal').modal('show');
+      $('#auto-pay-email').html($(this).attr('useremail'));
+      $('#auto_pay_user').val($(this).attr('user'));
+      if ($(this)[0].hasAttribute("btc")) {
+        $('#auto-pay-coin').html('BTC');
+        $('#auto_coin').val('BTC');
+        $('#auto-pay-amount').html($(this).attr('btc'));
+      } else if ($(this)[0].hasAttribute("ltc")) {
+        $('#auto-pay-coin').html('LTC');
+        $('#auto_coin').val('LTC');
+        $('#auto-pay-amount').html($(this).attr('ltc'));
+      }
+    });
+    $('.manual-pay').click(function(){
+      $('#manual-pay-modal').modal('show');
+      $('#manual-pay-email').html($(this).attr('useremail'));
+      $('#manual_pay_user').val($(this).attr('user'));
+      if ($(this)[0].hasAttribute("btc")) {
+        $('#manual-pay-coin').html('BTC');
+        $('#manual_coin').val('BTC');
+        $('#manual-pay-amount').html($(this).attr('btc'));
+      } else if ($(this)[0].hasAttribute("ltc")) {
+        $('#manual-pay-coin').html('LTC');
+        $('#manual_coin').val('LTC');
+        $('#manual-pay-amount').html($(this).attr('ltc'));
+      }
+    });
+  });
+</script>

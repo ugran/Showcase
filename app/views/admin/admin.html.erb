@@ -21,4 +21,6 @@
     <%= render 'payouts' %>
 <% elsif @facility_carousels.present? %>
     <%= render 'facility_carousels_admin' %>
+<% elsif @balances_group.present? && @balances_users.present? %>
+    <%= render 'show_balances' %>
 <% end %>
