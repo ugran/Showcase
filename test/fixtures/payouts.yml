@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  btc: 9.99
+  ltc: 9.99
+  eth: 9.99
+  sia: 9.99
+  zec: 9.99
+  dash: 9.99
+
+two:
+  user_id: 1
+  btc: 9.99
+  ltc: 9.99
+  eth: 9.99
+  sia: 9.99
+  zec: 9.99
+  dash: 9.99

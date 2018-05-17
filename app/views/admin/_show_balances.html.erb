@@ -9,7 +9,8 @@
       </div>
       <div class="modal-body">
         <p style='font-weigh:bold;'>
-          <span id='auto-pay-coin'></span> Balance: <span id='auto-pay-amount'></span>
+          <span id='auto-pay-coin'></span> Balance: <span id='auto-pay-amount'></span><br/>
+          Wallet: <span id='auto-wallet'></span>
         </p>
         <%= form_with url: admin_path, local: true do |f| %>
           <%= f.hidden_field :auto_pay_user, id: 'auto_pay_user' %>
@@ -40,7 +41,8 @@
       </div>
       <div class="modal-body">
         <p style='font-weigh:bold;'>
-          <span id='manual-pay-coin'></span> Balance: <span id='manual-pay-amount'></span>
+          <span id='manual-pay-coin'></span> Balance: <span id='manual-pay-amount'></span><br/>
+          Wallet: <span id='manual-wallet'></span>
         </p>
         <%= form_with url: admin_path, local: true do |f| %>
           <%= f.hidden_field :manual_pay_user, id: 'manual_pay_user' %>
@@ -75,20 +77,21 @@
           <td><%= t.email %></td>
           <td><% if t.user_balance.present? %><%= t.user_balance.cur_btc %><% end %></td>
           <td><% if t.user_balance.present? %><%= t.user_balance.cur_ltc %><% end %></td>
-          <td><% if t.user_balance.present? %><% if t.user_balance.cur_btc > 0.0005 %><span style="cursor: pointer; color: #007bff;" class="auto-pay" useremail="<%= t.email %>" user="<%= t.id %>" btc="<%= t.user_balance.cur_btc %>">Auto Pay BTC</span><% end %><br /><% if t.user_balance.cur_ltc > 0.001 %><span style="cursor: pointer; color: #007bff;" class="auto-pay" useremail="<%= t.email %>" user="<%= t.id %>" ltc="<%= t.user_balance.cur_ltc %>">Auto Pay LTC</span><% end %><% end %></td>
-          <td><% if t.user_balance.present? %><% if t.user_balance.cur_btc > 0.0005 %><span style="cursor: pointer; color: #007bff;" class="manual-pay" useremail="<%= t.email %>" user="<%= t.id %>" btc="<%= t.user_balance.cur_btc %>">Manual Pay BTC</span><% end %><br /><% if t.user_balance.cur_ltc > 0.001 %><span style="cursor: pointer; color: #007bff;" class="manual-pay" useremail="<%= t.email %>" user="<%= t.id %>" ltc="<%= t.user_balance.cur_ltc %>">Manual Pay LTC</span><% end %><% end %></td>
+          <td><% if t.user_balance.present? %><% if t.user_balance.cur_btc > 0.0005 %><span style="cursor: pointer; color: #007bff;" class="auto-pay" useremail="<%= t.email %>" user="<%= t.id %>" btc="<%= t.user_balance.cur_btc %>" wallet = "<%= t.btc_wallet %>">Auto Pay BTC</span><% end %><br /><% if t.user_balance.cur_ltc > 0.001 %><span style="cursor: pointer; color: #007bff;" class="auto-pay" useremail="<%= t.email %>" user="<%= t.id %>" ltc="<%= t.user_balance.cur_ltc %>" wallet = "<%= t.ltc_wallet %>">Auto Pay LTC</span><% end %><% end %></td>
+          <td><% if t.user_balance.present? %><% if t.user_balance.cur_btc > 0.0005 %><span style="cursor: pointer; color: #007bff;" class="manual-pay" useremail="<%= t.email %>" user="<%= t.id %>" btc="<%= t.user_balance.cur_btc %>" wallet = "<%= t.btc_wallet %>">Manual Pay BTC</span><% end %><br /><% if t.user_balance.cur_ltc > 0.001 %><span style="cursor: pointer; color: #007bff;" class="manual-pay" useremail="<%= t.email %>" user="<%= t.id %>" ltc="<%= t.user_balance.cur_ltc %>" wallet = "<%= t.ltc_wallet %>">Manual Pay LTC</span><% end %><% end %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-
+<%= @poloniex_response %>
 <script>
   $(document).ready(function() {
     $('.auto-pay').click(function(){
       $('#auto-pay-modal').modal('show');
       $('#auto-pay-email').html($(this).attr('useremail'));
       $('#auto_pay_user').val($(this).attr('user'));
+      $('#auto-wallet').html($(this).attr('wallet'));
       if ($(this)[0].hasAttribute("btc")) {
         $('#auto-pay-coin').html('BTC');
         $('#auto_coin').val('BTC');
@@ -103,6 +106,7 @@
       $('#manual-pay-modal').modal('show');
       $('#manual-pay-email').html($(this).attr('useremail'));
       $('#manual_pay_user').val($(this).attr('user'));
+      $('#manual-wallet').html($(this).attr('wallet'));
       if ($(this)[0].hasAttribute("btc")) {
         $('#manual-pay-coin').html('BTC');
         $('#manual_coin').val('BTC');

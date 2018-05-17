@@ -1,5 +1,9 @@
 class AdminController < ApplicationController
     before_action :authenticate_admin, only: [:admin]
+    require 'uri'
+    require 'net/http'
+    require 'net/https'
+    require 'json'
 
     def admin
         if params[:user_management] == '1'
@@ -92,6 +96,121 @@ class AdminController < ApplicationController
         elsif params[:show_balances].present?
             @balances_group = Group.find(params[:show_balances].to_i)
             @balances_users = @balances_group.users
+        elsif params[:auto_pay_user].present?
+            user = User.find(params[:auto_pay_user].to_i)
+            group = Group.find_by(id: user.group_id)
+            if params[:coin] == 'BTC'
+                if params[:full] == 'No'
+                    amount = params[:amount].to_f
+                else
+                    amount = user.user_balance.cur_btc
+                end
+                poloniex_amount = (BigDecimal.new(amount.to_s) - BigDecimal.new("0.0005")).to_s.to_f
+                if group.poloniex_key.present? && group.poloniex_secret.present?
+                    if group.nounce.present?
+                        nounce = group.nounce+1
+                    else
+                        nounce = 0
+                    end
+                    group.update(nounce:nounce)
+                    private_key = group.poloniex_secret
+                    data = URI.encode_www_form({"command" => "withdraw", "nonce" => nounce, "currency" => "BTC", "amount" => poloniex_amount, "address" => user.btc_wallet})
+                    digest = OpenSSL::Digest.new('sha512')
+                    signature = OpenSSL::HMAC.hexdigest(digest, private_key, data)
+                    uri = URI.parse('https://poloniex.com/tradingApi')
+                    https = Net::HTTP.new(uri.host,uri.port)
+                    https.use_ssl = true
+                    header = {"Sign": signature, "Key": group.poloniex_key, 
+                    'Content-Type': 'application/x-www-form-urlencoded'}
+                    req = https.post(uri.path, data, header)
+                    poloniex_resp = req.body
+                    if JSON.parse(poloniex_resp).has_key?("error")
+                      new_nounce = JSON.parse(poloniex_resp)["error"].split('.')[0].scan(/\d/).join('').to_i
+                      group.update(nounce: new_nounce)
+                      if JSON.parse(poloniex_resp)["error"] == "Not enough BTC."
+                        redirect_back fallback_location: admin_path, notice: "Not enough BTC."
+                      end
+                    else
+                        new_balance = (BigDecimal.new(user.user_balance.cur_btc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
+                        new_paid = (BigDecimal.new(user.user_balance.paid_btc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                        new_group = (BigDecimal.new(group.accubtc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
+                        user.user_balance.update(cur_btc: new_balance, paid_btc: new_paid)
+                        group.update(accubtc: new_group)
+                        Payout.create(user_id: user.id, btc: amount)
+
+                        redirect_back fallback_location: admin_path, notice: "Withdrawal Complete."
+                    end
+                end    
+            elsif params[:coin] == 'LTC'
+                if params[:full] == 'No'
+                    amount = params[:amount].to_f
+                else
+                    amount = user.user_balance.cur_ltc
+                end
+                poloniex_amount = (BigDecimal.new(amount.to_s) - BigDecimal.new("0.001")).to_s.to_f
+                if group.poloniex_key.present? && group.poloniex_secret.present?
+                    if group.nounce.present?
+                        nounce = group.nounce+1
+                    else
+                        nounce = 0
+                    end
+                    group.update(nounce:nounce)
+                    private_key = group.poloniex_secret
+                    data = URI.encode_www_form({"command" => "withdraw", "nonce" => nounce, "currency" => "LTC", "amount" => poloniex_amount, "address" => user.ltc_wallet})
+                    digest = OpenSSL::Digest.new('sha512')
+                    signature = OpenSSL::HMAC.hexdigest(digest, private_key, data)
+                    uri = URI.parse('https://poloniex.com/tradingApi')
+                    https = Net::HTTP.new(uri.host,uri.port)
+                    https.use_ssl = true
+                    header = {"Sign": signature, "Key": group.poloniex_key, 
+                    'Content-Type': 'application/x-www-form-urlencoded'}
+                    req = https.post(uri.path, data, header)
+                    poloniex_resp = req.body
+                    if JSON.parse(poloniex_resp).has_key?("error")
+                      new_nounce = JSON.parse(poloniex_resp)["error"].split('.')[0].scan(/\d/).join('').to_i
+                      group.update(nounce: new_nounce)
+                      if JSON.parse(poloniex_resp)["error"] == "Not enough BTC."
+                        redirect_back fallback_location: admin_path, notice: "Not enough BTC."
+                      end
+                    else
+                        new_balance = (BigDecimal.new(user.user_balance.cur_ltc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
+                        new_paid = (BigDecimal.new(user.user_balance.paid_ltc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                        new_group = (BigDecimal.new(group.accultc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
+                        user.user_balance.update(cur_ltc: new_balance, paid_ltc: new_paid)
+                        group.update(accultc: new_group)
+                        Payout.create(user_id: user.id, ltc: amount)
+                        redirect_back fallback_location: admin_path, notice: "Withdrawal Complete."
+                    end
+                end                
+            end
+        elsif params[:manual_pay_user].present?
+            user = User.find(params[:manual_pay_user].to_i)
+            group = Group.find_by(id: user.group_id)
+            if params[:coin] == 'BTC'
+                if params[:full] == 'No'
+                    amount = params[:amount].to_f
+                else
+                    amount = user.user_balance.cur_btc
+                end
+                new_balance = (BigDecimal.new(user.user_balance.cur_btc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
+                new_paid = (BigDecimal.new(user.user_balance.paid_btc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                new_group = (BigDecimal.new(group.accubtc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
+                user.user_balance.update(cur_btc: new_balance, paid_btc: new_paid)
+                group.update(accubtc: new_group)
+                Payout.create(user_id: user.id, btc: amount)
+            elsif params[:coin] == 'LTC'
+                if params[:full] == 'No'
+                    amount = params[:amount].to_f
+                else
+                    amount = user.user_balance.cur_ltc
+                end
+                new_balance = (BigDecimal.new(user.user_balance.cur_ltc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
+                new_paid = (BigDecimal.new(user.user_balance.paid_ltc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                new_group = (BigDecimal.new(group.accultc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
+                user.user_balance.update(cur_ltc: new_balance, paid_ltc: new_paid)
+                group.update(accultc: new_group)
+                Payout.create(user_id: user.id, ltc: amount)
+            end
         elsif params[:delete_miner].present?
             miner = Miner.find(params[:delete_miner].to_i)
             @edit_user = miner.user
