@@ -51,7 +51,7 @@
                         <i class='material-icons'>settings</i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <%= link_to t('two_factor_authentication'), two_factor_authentication_path, class: 'dropdown-item', :method => :post %>
+                        <%= link_to t('user_account'), profile_path, class: 'dropdown-item', :method => :post %>
                         <div class="dropdown-divider"></div>
                         <% if current_user.group_id.present? %>
                             <% if GroupPayoutHistory.where(group_id: current_user.group_id).present? %>

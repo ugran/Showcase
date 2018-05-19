@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#index'
   match '/dashboard' => 'pages#dashboard', as: 'dashboard', via: [:get,:post]
+  match '/profile' => 'pages#profile', as: 'profile', via: [:get,:post]
   match '/showuser' => 'showuser#show_user', as: 'showuser', via: [:get, :post]
   match '/about_us' => 'static#about_us', as: 'about_us', via: [:get,:post]
   match '/contact' => 'static#contact', as: 'contact', via: [:get,:post]

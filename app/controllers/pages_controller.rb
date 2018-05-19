@@ -147,6 +147,12 @@ class PagesController < ApplicationController
         end
     end
 
+    def profile
+        if user_signed_in?
+            @codes = current_user.otp_backup_codes
+        end
+    end
+
 private
 
     def resource_name
