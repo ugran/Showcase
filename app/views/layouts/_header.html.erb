@@ -45,13 +45,13 @@
             </li>
         </ul>
         <% if user_signed_in? %>
-            <ul class='navbar-nav flex-row ml-md-auto d-none d-md-flex' style="margin-left: 10px !important;">
+            <ul class='navbar-nav flex-row ml-md-auto d-md-flex' style="margin-left: 10px !important;">
                 <li class="nav-item dropdown">
                     <a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='color:white'>
                         <i class='material-icons'>settings</i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <%= link_to t('user_account'), profile_path, class: 'dropdown-item', :method => :post %>
+                        <%= link_to t('two_factor_authentication'), two_factor_authentication_path, class: 'dropdown-item', :method => :post %>
                         <div class="dropdown-divider"></div>
                         <% if current_user.group_id.present? %>
                             <% if GroupPayoutHistory.where(group_id: current_user.group_id).present? %>
@@ -129,7 +129,7 @@
               </div>
             </div>
         <% end %>
-        <ul class='navbar-nav flex-row ml-md-auto d-none d-md-flex' style="margin-left: 0px !important;">
+        <ul class='navbar-nav flex-row ml-md-auto d-md-flex' style="margin-left: 0px !important;">
           <li class="nav-item dropdown">
             <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="display:table; background-color:black; border:none; box-shadow:none; color:white; cursor:pointer">
               <% if I18n.locale == :en %><i class="material-icons" style="display:table-cell; vertical-align:middle">language</i><span style="margin-left:5px; font-family: Arial;">EN</span><% elsif I18n.locale == :ge %><i class="material-icons" style="display:table-cell; vertical-align:middle">language</i><span style="margin-left:5px; font-family: Arial;">GE</span><% end %>
