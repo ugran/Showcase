@@ -35,18 +35,6 @@
             <%= f.label :slushpool_api_key %><br />
             <%= f.text_field :slushpool_api_key, value: @group.slushpool_api_key ,class: "form-control" %>
         </div>
-        <div class="form-group">
-                <%= f.label :btc_wallet %><br />
-                <%= f.text_field :btc_wallet, value: @group.btc_wallet ,class: "form-control" %>
-            </div>
-            <div class="form-group">
-                <%= f.label :eth_wallet %><br />
-                <%= f.text_field :eth_wallet, value: @group.eth_wallet ,class: "form-control" %>
-            </div>
-            <div class="form-group">
-                <%= f.label :ltc_wallet %><br />
-                <%= f.text_field :ltc_wallet, value: @group.ltc_wallet ,class: "form-control" %>
-            </div>
         <%= f.submit('Submit', class:'btn btn-dark') %>
     <% end %>
 </div>

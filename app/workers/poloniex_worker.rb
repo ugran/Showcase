@@ -50,7 +50,7 @@ class PoloniexWorker
             ltc_before = accu_ltc
             ltc_after = ltc_balance
             total_ltc_payout = (BigDecimal.new(ltc_balance.to_s)-BigDecimal.new(accu_ltc.to_s)).to_s.to_f
-            group.update(accultc: ltc_balance.to_s.to_f)
+            group.update(accultc: ltc_balance)
           end
           users.each do |t|
             ltc_hash = 0
@@ -111,15 +111,24 @@ class PoloniexWorker
             end
             payouts.push({user: user.id, btc_payout: btc_payout, ltc_payout: ltc_payout, btc_hash: user_btc_hash, ltc_hash: user_ltc_hash})
           end
-          if total_ltc_payout > 0 || total_btc_payout > 0
-            GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, total_btc_hash: total_btc_hash, total_ltc_hash: total_ltc_hash, payouts: payouts)
-            PoloniexWorker.perform_in(5.minutes, group_id)
+          if total_ltc_payout.present?
+            if total_ltc_payout > 0
+              GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, total_btc_hash: total_btc_hash, total_ltc_hash: total_ltc_hash, payouts: payouts)
+            end
           end
+          if total_btc_payout.present?
+            if total_btc_payout > 0
+              GroupPayoutHistory.create(group_id: group.id, btc_before: btc_before, btc_after: btc_after, btc_total_payout: total_btc_payout, ltc_before: ltc_before, ltc_after: ltc_after, ltc_total_payout: total_ltc_payout, total_btc_hash: total_btc_hash, total_ltc_hash: total_ltc_hash, payouts: payouts)
+            end
+          end
+          PoloniexWorker.perform_in(5.minutes, group_id)
         end
       end
-    rescue
+    rescue => error
       logger.info 'Error happened in Poloniex background job and the proccess restarted.'
       PoloniexWorker.perform_in(30.seconds, group_id)
+      puts error
+      puts error.backtrace
     end
   end
 

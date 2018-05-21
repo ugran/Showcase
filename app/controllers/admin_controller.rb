@@ -80,6 +80,10 @@ class AdminController < ApplicationController
             @active_users = User.where(active: true)
             @inactive_users = User.where(active: false)
             @groups = Group.all
+        elsif params[:delete_user].present?
+            user = User.find(params[:delete_user].to_i)
+            user.destroy
+            redirect_back fallback_location: admin_path, notice: "User deleted."
         elsif params[:delete_group].present?
             @user_management = 1
             Group.find(params[:delete_group].to_i).destroy
@@ -105,7 +109,6 @@ class AdminController < ApplicationController
                 else
                     amount = user.user_balance.cur_btc
                 end
-                poloniex_amount = (BigDecimal.new(amount.to_s) - BigDecimal.new("0.0005")).to_s.to_f
                 if group.poloniex_key.present? && group.poloniex_secret.present?
                     if group.nounce.present?
                         nounce = group.nounce+1
@@ -114,7 +117,7 @@ class AdminController < ApplicationController
                     end
                     group.update(nounce:nounce)
                     private_key = group.poloniex_secret
-                    data = URI.encode_www_form({"command" => "withdraw", "nonce" => nounce, "currency" => "BTC", "amount" => poloniex_amount, "address" => user.btc_wallet})
+                    data = URI.encode_www_form({"command" => "withdraw", "nonce" => nounce, "currency" => "BTC", "amount" => amount, "address" => user.btc_wallet})
                     digest = OpenSSL::Digest.new('sha512')
                     signature = OpenSSL::HMAC.hexdigest(digest, private_key, data)
                     uri = URI.parse('https://poloniex.com/tradingApi')
@@ -132,12 +135,11 @@ class AdminController < ApplicationController
                       end
                     else
                         new_balance = (BigDecimal.new(user.user_balance.cur_btc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
-                        new_paid = (BigDecimal.new(user.user_balance.paid_btc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                        new_paid = (BigDecimal.new(user.user_balance.paid_btc.to_s) + BigDecimal.new(amount.to_s)).to_s.to_f
                         new_group = (BigDecimal.new(group.accubtc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
                         user.user_balance.update(cur_btc: new_balance, paid_btc: new_paid)
                         group.update(accubtc: new_group)
                         Payout.create(user_id: user.id, btc: amount)
-
                         redirect_back fallback_location: admin_path, notice: "Withdrawal Complete."
                     end
                 end    
@@ -147,7 +149,6 @@ class AdminController < ApplicationController
                 else
                     amount = user.user_balance.cur_ltc
                 end
-                poloniex_amount = (BigDecimal.new(amount.to_s) - BigDecimal.new("0.001")).to_s.to_f
                 if group.poloniex_key.present? && group.poloniex_secret.present?
                     if group.nounce.present?
                         nounce = group.nounce+1
@@ -156,7 +157,7 @@ class AdminController < ApplicationController
                     end
                     group.update(nounce:nounce)
                     private_key = group.poloniex_secret
-                    data = URI.encode_www_form({"command" => "withdraw", "nonce" => nounce, "currency" => "LTC", "amount" => poloniex_amount, "address" => user.ltc_wallet})
+                    data = URI.encode_www_form({"command" => "withdraw", "nonce" => nounce, "currency" => "LTC", "amount" => amount, "address" => user.ltc_wallet})
                     digest = OpenSSL::Digest.new('sha512')
                     signature = OpenSSL::HMAC.hexdigest(digest, private_key, data)
                     uri = URI.parse('https://poloniex.com/tradingApi')
@@ -174,7 +175,7 @@ class AdminController < ApplicationController
                       end
                     else
                         new_balance = (BigDecimal.new(user.user_balance.cur_ltc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
-                        new_paid = (BigDecimal.new(user.user_balance.paid_ltc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                        new_paid = (BigDecimal.new(user.user_balance.paid_ltc.to_s) + BigDecimal.new(amount.to_s)).to_s.to_f
                         new_group = (BigDecimal.new(group.accultc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
                         user.user_balance.update(cur_ltc: new_balance, paid_ltc: new_paid)
                         group.update(accultc: new_group)
@@ -193,7 +194,7 @@ class AdminController < ApplicationController
                     amount = user.user_balance.cur_btc
                 end
                 new_balance = (BigDecimal.new(user.user_balance.cur_btc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
-                new_paid = (BigDecimal.new(user.user_balance.paid_btc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                new_paid = (BigDecimal.new(user.user_balance.paid_btc.to_s) + BigDecimal.new(amount.to_s)).to_s.to_f
                 new_group = (BigDecimal.new(group.accubtc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
                 user.user_balance.update(cur_btc: new_balance, paid_btc: new_paid)
                 group.update(accubtc: new_group)
@@ -205,7 +206,7 @@ class AdminController < ApplicationController
                     amount = user.user_balance.cur_ltc
                 end
                 new_balance = (BigDecimal.new(user.user_balance.cur_ltc.to_s) - BigDecimal.new(amount.to_s)).to_s.to_f
-                new_paid = (BigDecimal.new(user.user_balance.paid_ltc.to_s) + BigDecimal.new(amoun.to_s)).to_s.to_f
+                new_paid = (BigDecimal.new(user.user_balance.paid_ltc.to_s) + BigDecimal.new(amount.to_s)).to_s.to_f
                 new_group = (BigDecimal.new(group.accultc.to_s)-BigDecimal.new(amount.to_s)).to_s.to_f
                 user.user_balance.update(cur_ltc: new_balance, paid_ltc: new_paid)
                 group.update(accultc: new_group)
