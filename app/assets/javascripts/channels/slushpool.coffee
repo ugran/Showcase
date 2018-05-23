@@ -2,8 +2,7 @@ $ ->
   if document.getElementById("btc-dashboard")
     App.slushpool = App.cable.subscriptions.create "SlushpoolChannel",
       received: (data) ->
-        console.log(data)
-        $('#btc-total-hashrate').html data.bcast.user_total_hashrate
+        $('#btc-total-hashrate').html data.bcast.user_total_btc_hashrate
         $('#btc-confirmed-reward').html data.bcast.user_confirmed_reward
         $('#btc-unconfirmed-reward').html data.bcast.user_unconfirmed_reward
         $('#btc-estimated-reward').html data.bcast.user_estimated_reward
@@ -21,8 +20,7 @@ $ ->
   if document.getElementsByClassName("showuser")[0]?
     App.slushpool = App.cable.subscriptions.create { channel: "SlushpoolChannel", user: parseInt(document.getElementsByClassName("showuser")[0].id)},
       received: (data) ->
-        console.log(data)
-        $('#btc-total-hashrate').html data.bcast.user_total_hashrate
+        $('#btc-total-hashrate').html data.bcast.user_total_btc_hashrate
         $('#btc-confirmed-reward').html data.bcast.user_confirmed_reward
         $('#btc-unconfirmed-reward').html data.bcast.user_unconfirmed_reward
         $('#btc-estimated-reward').html data.bcast.user_estimated_reward

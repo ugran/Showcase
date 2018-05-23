@@ -96,10 +96,10 @@ class ShowuserController < ApplicationController
                     end
                 else
                     @group = @user.group
-                    if @group.litecoinpool_api_key.present?
+                    if @group.litecoinpool_api_key.present? && Miner.where(user_id: @user.id, algorithm: 'Scrypt').present?
                         @ltc = 1
                     end
-                    if @group.slushpool_api_key.present?
+                    if @group.slushpool_api_key.present? && Miner.where(user_id: @user.id, algorithm: 'SHA256').present?
                         @btc = 1
                     end
                     @miners = @user.miners

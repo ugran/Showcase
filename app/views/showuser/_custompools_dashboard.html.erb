@@ -67,6 +67,9 @@
                         <th>Hashrate</th>
                         <th>Avg. Hashrate</th>
                         <th>Temp.</th>
+                        <th>Valid Shares</th>
+                        <th>Stale Shares</th>
+                        <th>Invalid Shares</th>
                     </thead>
                     <tbody>
                         <% @miners.where(algorithm: 'Scrypt').each_with_index do |t,i| %>
@@ -79,8 +82,6 @@
                                 <td><span id='valid-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:valid_shares] %></td>
                                 <td><span id='stale-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:stale_shares] %></td>
                                 <td><span id='invalid-shares-<%= t.worker_name.gsub('.','') %>'></span><%#= v[:invalid_shares] %></td>
-                                <td><span id='rewards-<%= t.worker_name.gsub('.','') %>'></span><%#= (v[:rewards]-v[:rewards]*current_user.percent_fee.to_i/100).round(6) %></td>
-                                <td><span id='rewards-24-<%= t.worker_name.gsub('.','') %>'></span><%#= (v[:rewards_24h]-v[:rewards_24h]*current_user.percent_fee.to_i/100).round(6) %></td>
                             </tr>
                         <% end %>
                     </tbody>

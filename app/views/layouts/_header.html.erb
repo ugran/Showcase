@@ -85,7 +85,8 @@
                         <%= f.password_field :password, class: 'form-control', placeholder: t('password'), style: 'width:100%; margin-top:5px;' %><br />
                         <%= f.text_field :otp_attempt, class: 'form-control', placeholder: '2FA Key', style: 'width:100%;' %>
                       </div>
-                      <%= link_to 'Disable 2FA With Backup Key', two_factor_authentication_path, style: 'color:inherit;' %>
+                      <%= link_to 'Disable 2FA With Backup Key', two_factor_authentication_path, style: 'color:inherit;' %><br/>
+                      <%= link_to 'Forgot Password?', new_user_password_path, style: 'color:inherit;' %>
                       <div class='form-group' style='margin-left:auto; margin-right:auto; margin-bottom:10px; padding-top:10px'>
                           <%= f.submit t('sign_in'), class: 'btn btn-outline-light my-2 my-sm-0', style: 'cursor:pointer' %>
                       </div>

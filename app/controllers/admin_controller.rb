@@ -80,6 +80,11 @@ class AdminController < ApplicationController
             @active_users = User.where(active: true)
             @inactive_users = User.where(active: false)
             @groups = Group.all
+        elsif params[:disable2fa].present?
+            user = User.find(params[:disable2fa].to_i)
+            user.otp_required_for_login = false
+            user.save!
+            redirect_back fallback_location: admin_path, notice: "2FA Disabled"
         elsif params[:delete_user].present?
             user = User.find(params[:delete_user].to_i)
             user.destroy

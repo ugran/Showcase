@@ -22,6 +22,7 @@
                     <th>Edit</th>
                     <th>Nicehash</th>
                     <th>Activation</th>
+                    <th>Disable 2FA</th>
                 </thead>
                 <tbody>
                     <% @active_users.each do |t| %>
@@ -55,6 +56,11 @@
                             <td>
                                 <%= link_to 'Toggle', admin_path(toggle_user_activation: t.id), data: {confirm: 'Are you sure?'} %>
                             </td>
+                            <td>
+                                <% if t.otp_required_for_login == true %>
+                                    <%= link_to 'Disable', admin_path(disable2fa: t.id), data: {confirm: 'Are you sure?'} %>
+                                <% end %>
+                            </td>
                         </tr>
                     <% end %>
                 </tbody>
@@ -70,6 +76,7 @@
                     <th>Edit</th>
                     <th>Nicehash</th>
                     <th>Activation</th>
+                    <th>Disable 2FA</th>
                     <th>Delete</th>
                 </thead>
                 <tbody>
@@ -103,6 +110,11 @@
                             </td>
                             <td>
                                 <%= link_to 'Toggle', admin_path(toggle_user_activation: t.id), data: {confirm: 'Are you sure?'} %>
+                            </td>
+                            <td>
+                                <% if t.otp_required_for_login == true %>
+                                    <%= link_to 'Disable', admin_path(disable2fa: t.id), data: {confirm: 'Are you sure?'} %>
+                                <% end %>
                             </td>
                             <td><%= link_to 'Delete', admin_path(delete_user: t.id), data: {confirm: 'Are you sure?'} %></td>
                         </tr>

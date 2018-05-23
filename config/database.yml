@@ -30,5 +30,5 @@ production:
   password: Sh3m1shv1!#* # replace this with your own password
   host: localhost
   encoding: UTF8
-  pool: 6
+  pool: 25
   timeout: 5000

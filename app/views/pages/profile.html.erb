@@ -31,9 +31,11 @@
                 <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: current_user.id).phone_number %></span></td>
               </tr>
               <tr style="margin-bottom: 10px;">
-                <td><span>
-                  <div><%= t('two_factor_authentication') %>: &nbsp</div>
-                </span></td>
+                <td>
+                  <span>
+                    <%= t('two_factor_authentication') %>:
+                  </span>
+                </td>
                 <td>
                   <% if current_user.otp_required_for_login == true %><%= t('enabled') %><% else %><%= t('disabled') %><% end %>
                 </td>

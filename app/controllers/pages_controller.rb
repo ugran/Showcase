@@ -103,18 +103,19 @@ class PagesController < ApplicationController
                     end
                 else
                     @group = current_user.group
-                    if @group.litecoinpool_api_key.present?
+                    if @group.litecoinpool_api_key.present? && Miner.where(user_id: current_user.id, algorithm: 'Scrypt').present?
                         @ltc = 1
                     end
-                    if @group.slushpool_api_key.present?
+                    if @group.slushpool_api_key.present? && Miner.where(user_id: current_user.id, algorithm: 'SHA256').present?
                         @btc = 1
                     end
                     @miners = current_user.miners
                 end
-            else
-                if params[:personal_information].present?
-                PersonalInformation.create(first_name: params[:first_name], last_name: params[:last_name], phone_number: params[:phone_number], country: params[:country], address: params[:address], comment: params[:comment], user_id: current_user.id, status: true)
-                redirect_back fallback_location: root_path, notice: "Information saved"
+            end
+            if params[:personal_information].present?
+                unless current_user.personal_information.present?
+                    PersonalInformation.create(first_name: params[:first_name], last_name: params[:last_name], phone_number: params[:phone_number], country: params[:country], address: params[:address], comment: params[:comment], user_id: current_user.id, status: true)
+                    redirect_back fallback_location: root_path, notice: "Information saved"
                 end
             end
         end

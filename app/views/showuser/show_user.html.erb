@@ -1,4 +1,49 @@
 <% if current_user.admin? %>
+    <div style='margin:20px;'>
+        <div class="row" id="personal_info">
+            <div class="col-md-6" style="font-size:18px; letter-spacing: 1px; border-right: 1px solid #babbbc;">
+            <h4 style="margin-bottom: 20px; font-weight: bold;"><%= t('user_profile') %></h4>
+            <table>
+                <tbody>
+                <tr style="margin-bottom: 10px;">
+                    <td><span><%= t('first_name') %>:</span></td>
+                    <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: @user.id).first_name %></span></td>
+                </tr>
+                <tr style="margin-bottom: 10px;">
+                    <td><span><%= t('last_name') %>:</span></td>
+                    <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: @user.id).last_name %></span></td>
+                </tr>
+                <tr style="margin-bottom: 10px;">
+                    <td><span><%= t('address') %>:</span></td>
+                    <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: @user.id).address %></span></td>
+                </tr>
+                <tr style="margin-bottom: 10px;">
+                    <td><span><%= t('country') %>:</span></td>
+                    <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: @user.id).country %></span></td>
+                </tr>
+                <tr style="margin-bottom: 10px;">
+                    <td><span><%= t('email') %>:</span></td>
+                    <td><span style="font-size: 18px; letter-spacing: 1px;"><%= @user.email %></span></td>
+                </tr>
+                <tr style="margin-bottom: 10px;">
+                    <td><span><%= t('phone_number') %>:</span></td>
+                    <td><span style="font-size: 18px; letter-spacing: 1px;"><%= PersonalInformation.find_by(user_id: @user.id).phone_number %></span></td>
+                </tr>
+                <tr style="margin-bottom: 10px;">
+                    <td>
+                    <span>
+                        <%= t('two_factor_authentication') %>:
+                    </span>
+                    </td>
+                    <td>
+                    <% if @user.otp_required_for_login == true %><%= t('enabled') %><% else %><%= t('disabled') %><% end %>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
     <% if @user.active? %>
         <div class='showuser' id='<%= @user.id %>'>
         <div id='dashboard'>
