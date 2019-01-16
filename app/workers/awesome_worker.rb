@@ -7,7 +7,9 @@ class AwesomeWorker
 
   def perform(*args)
     begin
-      awesome = URI.parse('http://109.172.247.148:17790/api/miners?key=19a23495fd3e42c4b62e6bca34a90bb1').read
+      awesome_host = 'somehost'
+      key = 'somekey'
+      awesome = URI.parse(somehost+'/api/miners?key='+key).read
       awesome_miners = []
       JSON.parse(awesome, symbolize_names: true)[:groupList].each do |t|
         t[:minerList].each do |a|
